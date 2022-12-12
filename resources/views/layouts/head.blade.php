@@ -1,30 +1,19 @@
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Electromuebles Alexa</title>
-    <meta name="keywords" content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops" />
-    <meta name="description" content="Best ecommerce html template for single and multi vendor store.">
-    <meta name="author" content="ashishmaraviya">
-    <!-- site Favicon -->
-    <link rel="icon" href="{{asset('images/favicon/favicon.png')}}" sizes="32x32" />
-    <link rel="apple-touch-icon" href="{{asset('images/favicon/favicon.png')}}" />
-    <meta name="msapplication-TileImage" content="{{asset('images/favicon/favicon.png')}}" />
-    <!-- css Icon Font -->
-    <link rel="stylesheet" href="{{asset('css/vendor/ecicons.min.css')}}" />
-    <!-- css All Plugins Files -->
-    <link rel="stylesheet" href="{{asset('css/plugins/animate.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/plugins/swiper-bundle.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/plugins/jquery-ui.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/plugins/countdownTimer.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/plugins/slick.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/plugins/nouislider.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/plugins/bootstrap.css')}}" />
-    <!-- Main Style -->
-    <link rel="stylesheet" href="{{asset('css/demo1.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}" />
-    <!-- Background css -->
-    <link rel="stylesheet" id="bg-switcher-css" href="{{asset('css/backgrounds/bg-4.css')}}">
-    <link rel="stylesheet" href="{{asset('css/rating.css')}}">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ekka - Admin Dashboard HTML Template.">
+
+    <title>Ekka - Admin Dashboard HTML Template.</title>
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
+    <!-- Ekka CSS -->
+    <link id="ekka-css" rel="stylesheet" href="{{asset('admin/assets/css/ekka.css')}}" />
+    <!-- FAVICON -->
+    <link href="{{asset('admin/assets/img/favicon.png')}}" rel="shortcut icon" />
 </head>

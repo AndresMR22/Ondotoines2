@@ -38,33 +38,9 @@ class HomeController extends Controller
    
     public function index()
     {
-        $categorias = Categoria::all();
-        // dd($categorias[1]->productos);
-        // foreach($categorias[1]->productos as $pro)
-        // {
-            
-        //     dd($pro->deleted_at);
-        // }
-
-            
-        $productos = Producto::paginate(10);
-        
-        $muebles = Producto::where('categoria_id','2')->get();
-        $ofertasTemporales = collect();
+      
        
-
-        foreach($productos as $producto)
-        {
-           
-            if(isset($producto->productoprecio))//existe o existio un descuento
-            {
-                if($producto->productoprecio->fin_descuento>Carbon::now())
-                $ofertasTemporales->push($producto);
-            }
-        }
-        
-        // dd($muebles[0]->images->url);
-        return view('web.index',compact('muebles','categorias','productos','ofertasTemporales'));
+        return view('web.index');
     }
 
     public function tienda()

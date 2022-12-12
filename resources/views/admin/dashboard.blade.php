@@ -1,466 +1,827 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en" dir="ltr">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Melody Admin</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="{{asset('admin/vendors/iconfonts/font-awesome/css/all.min.css')}}">
-  <link rel="stylesheet" href="{{asset('admin/vendors/css/vendor.bundle.base.css')}}">
-  <link rel="stylesheet" href="{{asset('admin/vendors/css/vendor.bundle.addons.css')}}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="http://www.urbanui.com/" />
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ekka - Admin Dashboard eCommerce HTML Template.">
+
+	<title>Ekka - Admin Dashboard eCommerce HTML Template.</title>
+
+	<!-- GOOGLE FONTS -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+
+	<link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
+
+	<!-- PLUGINS CSS STYLE -->
+	<link href="{{asset('admin/assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+	<link href="{{asset('admin/assets/plugins/simplebar/simplebar.css')}}" rel="stylesheet" />
+
+	<!-- Ekka CSS -->
+	<link id="ekka-css" href="{{asset('admin/assets/css/ekka.css')}}" rel="stylesheet" />
+
+	<!-- FAVICON -->
+	<link href="{{asset('admin/assets/img/favicon.png')}}" rel="shortcut icon" />
+
 </head>
-<body>
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{route('home')}}"><img src="{{asset('images/logo/logoAlexa.png')}}" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{{route('home')}}"><img src="{{asset('images/logo/isotipoAlexa.png')}}" alt="logo"/></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="fas fa-bars"></span>
-        </button>
-        <ul class="navbar-nav">
-         
-        </ul>
-        <ul class="navbar-nav navbar-nav-right">
-       
-        
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="fas fa-shopping-cart mx-0"></i>
-              <span class="count">{{count($shopping_cart->shopping_cart_details)}}</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-             @foreach($shopping_cart->shopping_cart_details as $shopping_cart_detail)
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-danger">
-                   <img src="{{$shopping_cart_detail->producto->images->pluck('url')[0]}}">
-                   {{-- <a><i class="fas fa-times"></i></a>  --}}
-                  </div>
-                 
-                </div>
-                <div class="preview-item-content" style="display:flex; justify-content:space-evenly;">
-                  <div>
-                    <h6 class="preview-subject font-weight-medium">{{$shopping_cart_detail->producto->nombre}}</h6>
-                    <p class="font-weight-light small-text">
-                      {{$shopping_cart_detail->precio}}x{{$shopping_cart_detail->cantidad}}
-                    </p>
-                  </div>
-                  <div>
-                    <a href="{{route('shoppingCartDetail.retirar',$shopping_cart_detail)}}"><i class="fas fa-times"></i></a>
-                  </div>
-                
-                </div>
-                {{-- <div class="preview-thumbnail"> --}}
-              
-                {{-- </div> --}}
 
-                
-              </a>
-              
-              <div class="dropdown-divider"></div>
-              @endforeach
-              {{-- <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="fas fa-wrench mx-0"></i>
-                  </div>
-                </div>
-              
-              </a> --}}
-             
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-envelope mx-0"></i>
-              <span class="count">25</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-              <div class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
-                </p>
-                <span class="badge badge-info badge-pill float-right">View all</span>
-              </div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                    <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium">David Grey
-                    <span class="float-right font-weight-light small-text">1 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    The meeting is cancelled
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                    <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
-                    <span class="float-right font-weight-light small-text">15 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    New product launch
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                    <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
-                    <span class="float-right font-weight-light small-text">18 Minutes ago</span>
-                  </h6>
-                  <p class="font-weight-light small-text">
-                    Upcoming board meeting
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('images/logo/admin.png')}}" alt="profile"/>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              {{-- <a class="dropdown-item">
-                <i class="fas fa-cog text-primary"></i>
-                Settings
-              </a>
-              <div class="dropdown-divider"></div> --}}
-              <a class="dropdown-item">
-                <i class="fas fa-power-off text-primary"></i>
-                Cerrar sesión
-              </a>
-            </div>
-          </li>
-       
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="fas fa-bars"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close fa fa-times"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles primary"></div>
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
-   
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item nav-profile">
-            <div class="nav-link">
-              <div class="profile-image">
-                <img src="{{asset('images/logo/admin.png')}}" alt="image"/>
-              </div>
-              <div class="profile-name">
-                <p class="name">
-                  Bienvenido
-                </p>
-                <p class="designation">
-                  {{auth()->user()->name}}
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.dashboard')}}">
-              <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-        
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts3" aria-expanded="false" aria-controls="page-layouts3">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Venta</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts3">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('venta.formVenta')}}">Agregar</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{route('producto.index')}}">Ver todos</a></li> --}}
-              </ul>
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('venta.ventasContado')}}">Ventas contado</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{route('producto.index')}}">Ver todos</a></li> --}}
-              </ul>
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('venta.ventasCredito')}}">Ventas credito</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{route('producto.index')}}">Ver todos</a></li> --}}
-              </ul>
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('venta.ventasPagadas')}}">Ventas pagadas</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{route('producto.index')}}">Ver todos</a></li> --}}
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Clientes</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('cliente.create')}}">Agregar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('cliente.index')}}">Ver todos</a></li>
-              </ul>
-            </div>
-          </li>
+<body class="ec-header-fixed ec-sidebar-fixed ec-sidebar-light ec-header-light" id="body">
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts2" aria-expanded="false" aria-controls="page-layouts2">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Deudas</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts2">
-              <ul class="nav flex-column sub-menu">
-                {{-- <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="">Agregar</a></li> --}}
-                <li class="nav-item"> <a class="nav-link" href="{{route('deuda.index')}}">Ver todos</a></li>
-              </ul>
-            </div>
-          </li>
+	<!--  WRAPPER  -->
+	<div class="wrapper">
+		
+		<!-- LEFT MAIN SIDEBAR -->
+		<div class="ec-left-sidebar ec-bg-sidebar">
+			<div id="sidebar" class="sidebar ec-sidebar-footer">
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts4" aria-expanded="false" aria-controls="page-layouts4">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Proveedores</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts4">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="">Agregar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Ver todos</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts5" aria-expanded="false" aria-controls="page-layouts5">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Abonos</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts5">
-              <ul class="nav flex-column sub-menu">
-                {{-- <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="">Agregar</a></li> --}}
-                <li class="nav-item"> <a class="nav-link" href="{{route('abono.index')}}">Ver todos</a></li>
-              </ul>
-            </div>
-          </li>
+				<div class="ec-brand">
+					<a href="index.html" title="Ekka">
+						<img class="ec-brand-icon" src="{{asset('admin/assets/img/logo/ec-site-logo.png')}}" alt="" />
+						<span class="ec-brand-name text-truncate">Ekka</span>
+					</a>
+				</div>
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts6" aria-expanded="false" aria-controls="page-layouts6">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Productos</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts6">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('producto.create')}}">Agregar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('producto.index')}}">Ver todos</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts8" aria-expanded="false" aria-controls="page-layouts8">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Descuentos</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts8">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('descuento.crear')}}">Agregar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Ver todos</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
-              <i class="fas fa-columns menu-icon"></i>
-              <span class="menu-title">Categorías</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="sidebar-layouts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('categoria.create')}}">Agregar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('categoria.index')}}">Ver todos</a></li>
-             </ul>
-            </div>
-          </li>
+				<!-- begin sidebar scrollbar -->
+				<div class="ec-navigation" data-simplebar>
+					<!-- sidebar menu -->
+					<ul class="nav sidebar-inner" id="sidebar-menu">
+						<!-- Dashboard -->
+						<li class="active">
+							<a class="sidenav-item-link" href="{{route('admin.dashboard')}}">
+								<i class="mdi mdi-view-dashboard-outline"></i>
+								<span class="nav-text">Dashboard</span>
+							</a>
+							<hr>
+						</li>
 
-      
+						<!-- Vendors -->
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-account-group-outline"></i>
+								<span class="nav-text">Citas</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('cita.index')}}">
+											<span class="nav-text">Agendar</span>
+										</a>
+									</li>
 
-          <li class="nav-item d-none d-lg-block">
-            <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts2" aria-expanded="false" aria-controls="sidebar-layouts2">
-              <i class="fas fa-columns menu-icon"></i>
-              <span class="menu-title">Subcategorías</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="sidebar-layouts2">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('subcategoria.create')}}">Agregar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('subcategoria.index')}}">Ver todos</a></li>
-             </ul>
-            </div>
-          </li>
-        
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-         
-          <div class="row grid-margin">
-            <div class="col-12">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fa fa-user mr-2"></i>
-                          Clientes
-                        </p>
-                        <h2>54000</h2>
-                        <label class="badge badge-outline-success badge-pill">2.7% increase</label>
-                      </div>
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                          Avg Time
-                        </p>
-                        <h2>123.50</h2>
-                        <label class="badge badge-outline-danger badge-pill">30% decrease</label>
-                      </div>
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                          Downloads
-                        </p>
-                        <h2>3500</h2>
-                        <label class="badge badge-outline-success badge-pill">12% increase</label>
-                      </div>
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fas fa-check-circle mr-2"></i>
-                          Update
-                        </p>
-                        <h2>7500</h2>
-                        <label class="badge badge-outline-success badge-pill">57% increase</label>
-                      </div>
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fas fa-chart-line mr-2"></i>
-                          Sales
-                        </p>
-                        <h2>9000</h2>
-                        <label class="badge badge-outline-success badge-pill">10% increase</label>
-                      </div>
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                          Pending
-                        </p>
-                        <h2>7500</h2>
-                        <label class="badge badge-outline-danger badge-pill">16% decrease</label>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+								</ul>
+							</div>
+						</li>
 
-          @yield('contenido')
-          
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © {{date('Y')}}. Todos los derechos reservados.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Made with <i class="far fa-heart text-danger"></i> by GAMR</span>
-          </div>
-        </footer>
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+						
 
-  <!-- plugins:js -->
-  <script src="{{asset('admin/vendors/js/vendor.bundle.base.js')}}"></script>
-  <script src="{{asset('admin/vendors/js/vendor.bundle.addons.js')}}"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="{{asset('admin/js/off-canvas.js')}}"></script>
-  <script src="{{asset('admin/js/hoverable-collapse.js')}}"></script>
-  <script src="{{asset('admin/js/misc.js')}}"></script>
-  <script src="{{asset('admin/js/settings.js')}}"></script>
-  <script src="{{asset('admin/js/todolist.js')}}"></script>
+						<!-- Category -->
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-dns-outline"></i>
+								<span class="nav-text">Tratamiento</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('tratamiento.create')}}">
+											<span class="nav-text">Registrar</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('tratamiento.index')}}">
+											<span class="nav-text">Listar</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 
-  {{-- <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../vendors/js/vendor.bundle.addons.js"></script>
-  <!-- endinject -->
-  <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/misc.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script> --}}
-  <script src="{{asset('admin/js/data-table.js')}}"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="{{asset('admin/js/dashboard.js')}}"></script>
-  <script src="{{asset('admin/js/tabs.js')}}"></script>
-  <!-- End custom js for this page-->
-  @include('sweetalert::alert')
+						<!-- Products -->
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-palette-advanced"></i>
+								<span class="nav-text">Pacientes</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="products" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('paciente.create')}}">
+											<span class="nav-text">Agregar</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('paciente.index')}}">
+											<span class="nav-text">Listar</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<!-- Orders -->
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-cart"></i>
+								<span class="nav-text">Procedimiento</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('procedimiento.create')}}">
+											<span class="nav-text">Agregar</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('procedimiento.index')}}">
+											<span class="nav-text">Listar</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!--  PAGE WRAPPER -->
+		<div class="ec-page-wrapper">
+
+			<!-- Header -->
+			<header class="ec-main-header" id="header">
+				<nav class="navbar navbar-static-top navbar-expand-lg">
+					<!-- Sidebar toggle button -->
+					<button id="sidebar-toggler" class="sidebar-toggle"></button>
+					<!-- search form -->
+					<div class="search-form d-lg-inline-block">
+						<div class="input-group">
+							<input type="text" name="query" id="search-input" class="form-control"
+								placeholder="search.." autofocus autocomplete="off" />
+							<button type="button" name="search" id="search-btn" class="btn btn-flat">
+								<i class="mdi mdi-magnify"></i>
+							</button>
+						</div>
+						<div id="search-results-container">
+							<ul id="search-results"></ul>
+						</div>
+					</div>
+
+					<!-- navbar right -->
+					<div class="navbar-right">
+						<ul class="nav navbar-nav">
+							<!-- User Account -->
+							<li class="dropdown user-menu">
+								<button class="dropdown-toggle nav-link ec-drop" data-bs-toggle="dropdown"
+									aria-expanded="false">
+									<img src="{{asset('admin/assets/img/user/user.png')}}" class="user-image" alt="User Image" />
+								</button>
+								<ul class="dropdown-menu dropdown-menu-right ec-dropdown-menu">
+									<!-- User image -->
+									<li class="dropdown-header">
+										<img src="{{asset('admin/assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
+										<div class="d-inline-block">
+											John Deo <small class="pt-1">john.example@gmail.com</small>
+										</div>
+									</li>
+									<li>
+										<a href="user-profile.html">
+											<i class="mdi mdi-account"></i> My Profile
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="mdi mdi-email"></i> Message
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+									</li>
+									<li class="right-sidebar-in">
+										<a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Setting </a>
+									</li>
+									<li class="dropdown-footer">
+										<a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown notifications-menu custom-dropdown">
+								<button class="dropdown-toggle notify-toggler custom-dropdown-toggler">
+									<i class="mdi mdi-bell-outline"></i>
+								</button>
+
+								<div class="card card-default dropdown-notify dropdown-menu-right mb-0">
+									<div class="card-header card-header-border-bottom px-3">
+										<h2>Notifications</h2>
+									</div>
+
+									<div class="card-body px-0 py-0">
+										<ul class="nav nav-tabs nav-style-border p-0 justify-content-between" id="myTab"
+											role="tablist">
+											<li class="nav-item mx-3 my-0 py-0">
+												<a href="#" class="nav-link active pb-3" id="home2-tab"
+													data-bs-toggle="tab" data-bs-target="#home2" role="tab"
+													aria-controls="home2" aria-selected="true">All (10)</a>
+											</li>
+
+											<li class="nav-item mx-3 my-0 py-0">
+												<a href="#" class="nav-link pb-3" id="profile2-tab" data-bs-toggle="tab"
+													data-bs-target="#profile2" role="tab" aria-controls="profile2"
+													aria-selected="false">Msgs (5)</a>
+											</li>
+
+											<li class="nav-item mx-3 my-0 py-0">
+												<a href="#" class="nav-link pb-3" id="contact2-tab" data-bs-toggle="tab"
+													data-bs-target="#contact2" role="tab" aria-controls="contact2"
+													aria-selected="false">Others (5)</a>
+											</li>
+										</ul>
+
+										<div class="tab-content" id="myNotifications">
+											<div class="tab-pane fade show active" id="home2" role="tabpanel">
+												<ul class="list-unstyled" data-simplebar style="height: 360px">
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u2.jpg')}}"
+																	alt="Image">
+																<span class="status away"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Nitin</h4>
+																	<p class="last-msg">Lorem ipsum dolor sit, amet
+																		consectetur adipisicing elit. Nam itaque
+																		doloremque odio, eligendi delectus vitae.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 30 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification media-active">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u1.jpg')}}"
+																	alt="Image">
+																<span class="status active"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Lovina</h4>
+																	<p class="last-msg">Donec mattis augue a nisl
+																		consequat, nec imperdiet ex rutrum. Fusce et
+																		vehicula enim. Sed in enim eu odio vehic.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-white">
+																		<i class="mdi mdi-clock-outline"></i> Just
+																		now...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u5.jpg')}}"
+																	alt="Image">
+																<span class="status away"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Crinali</h4>
+																	<p class="last-msg">Lorem ipsum dolor sit, amet
+																		consectetur adipisicing elit. Nam itaque
+																		doloremque odio, eligendi delectus vitae.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification event-active">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-info text-white">
+																<i class="mdi mdi-calendar-check font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Upcomming event added</h4>
+																	<p class="last-msg font-size-14">03/Jan/2020 (1pm -
+																		2pm)</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 10 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+																<i class="mdi mdi-chart-areaspline font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Yearly Sales report</h4>
+																	<p class="last-msg font-size-14">Lorem ipsum dolor
+																		sit, amet consectetur adipisicing elit. Nam
+																		itaque doloremque odio, eligendi delectus vitae.
+																	</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
+																<i
+																	class="mdi mdi-account-multiple-check font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">New request</h4>
+																	<p class="last-msg font-size-14">Add Dany Jones as
+																		your contact consequat nec imperdiet ex rutrum.
+																		Fusce et vehicula enim. Sed in enim.</p>
+
+																	<span
+																		class="my-1 btn btn-sm btn-success">Accept</span>
+																	<span
+																		class="my-1 btn btn-sm btn-secondary">Delete</span>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary d-block">
+																		<i class="mdi mdi-clock-outline"></i> 5 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-danger text-white">
+																<i class="mdi mdi-server-network-off font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Server overloaded</h4>
+																	<p class="last-msg font-size-14">Donec mattis augue
+																		a nisl consequat, nec imperdiet ex rutrum. Fusce
+																		et vehicula enim. Sed in enim eu odio vehic.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 30 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-purple text-white">
+																<i class="mdi mdi-playlist-check font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Task complete</h4>
+																	<p class="last-msg font-size-14">Nam ut nisi erat.
+																		Ut quis tortor varius, hendrerit arcu quis,
+																		congue nisl. In scelerisque, sem ut ve.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 2 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+												</ul>
+											</div>
+
+											<div class="tab-pane fade" id="profile2" role="tabpanel">
+												<ul class="list-unstyled" data-simplebar style="height: 360px">
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u6.jpg')}}"
+																	alt="Image">
+																<span class="status away"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Hardiko</h4>
+																	<p class="last-msg">Donec mattis augue a nisl
+																		consequat, nec imperdiet ex rutrum. Fusce et
+																		vehicula enim. Sed in enim eu odio vehic.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u7.jpg')}}"
+																	alt="Image">
+																<span class="status away"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Browin</h4>
+																	<p class="last-msg">Nam ut nisi erat. Ut quis tortor
+																		varius, hendrerit arcu quis, congue nisl. In
+																		scelerisque, sem ut ve.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification media-active">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u1.jpg')}}"
+																	alt="Image">
+																<span class="status active"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">jenelia</h4>
+																	<p class="last-msg">Donec mattis augue a nisl
+																		consequat, nec imperdiet ex rutrum. Fusce et
+																		vehicula enim. Sed in enim eu odio vehic.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-white">
+																		<i class="mdi mdi-clock-outline"></i> Just
+																		now...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u2.jpg')}}"
+																	alt="Image">
+																<span class="status away"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Bhavlio</h4>
+																	<p class="last-msg">Lorem ipsum dolor sit, amet
+																		consectetur adipisicing elit. Nam itaque
+																		doloremque odio, eligendi delectus vitae.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+															<div class="position-relative mr-3">
+																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u5.jpg')}}"
+																	alt="Image">
+																<span class="status away"></span>
+															</div>
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Browini</h4>
+																	<p class="last-msg">Lorem ipsum dolor sit, amet
+																		consectetur adipisicing elit. Nam itaque
+																		doloremque odio, eligendi delectus vitae.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+												</ul>
+											</div>
+
+											<div class="tab-pane fade" id="contact2" role="tabpanel">
+												<ul class="list-unstyled" data-simplebar style="height: 360px">
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification event-active">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-info text-white">
+																<i class="mdi mdi-calendar-check font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Upcomming event added</h4>
+																	<p class="last-msg font-size-14">03/Jan/2020 (1pm -
+																		2pm)</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 10 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+																<i class="mdi mdi-chart-areaspline font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">New Sales report</h4>
+																	<p class="last-msg font-size-14">Lorem ipsum dolor
+																		sit, amet consectetur adipisicing elit. Nam
+																		itaque doloremque odio, eligendi delectus vitae.
+																	</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 1 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
+																<i
+																	class="mdi mdi-account-multiple-check font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">New Request</h4>
+																	<p class="last-msg font-size-14">Add Dany Jones as
+																		your contact consequat nec imperdiet ex rutrum.
+																		Fusce et vehicula enim. Sed in enim.</p>
+
+																	<span
+																		class="my-1 btn btn-sm btn-success">Accept</span>
+																	<span
+																		class="my-1 btn btn-sm btn-secondary">Delete</span>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary d-block">
+																		<i class="mdi mdi-clock-outline"></i> 5 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-danger text-white">
+																<i class="mdi mdi-server-network-off font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">Server overloaded</h4>
+																	<p class="last-msg font-size-14">Donec mattis augue
+																		a nisl consequat, nec imperdiet ex rutrum. Fusce
+																		et vehicula enim. Sed in enim eu odio vehic.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 30 min
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+
+													<li>
+														<a href="javscript:void(0)"
+															class="media media-message media-notification">
+
+															<div
+																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-purple text-white">
+																<i class="mdi mdi-playlist-check font-size-20"></i>
+															</div>
+
+															<div class="media-body d-flex justify-content-between">
+																<div class="message-contents">
+																	<h4 class="title">New Task complete</h4>
+																	<p class="last-msg font-size-14">Nam ut nisi erat.
+																		Ut quis tortor varius, hendrerit arcu quis,
+																		congue nisl. In scelerisque, sem ut ve.</p>
+
+																	<span
+																		class="font-size-12 font-weight-medium text-secondary">
+																		<i class="mdi mdi-clock-outline"></i> 2 hrs
+																		ago...
+																	</span>
+																</div>
+															</div>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<ul class="dropdown-menu dropdown-menu-right d-none">
+									<li class="dropdown-header">You have 5 notifications</li>
+									<li>
+										<a href="#">
+											<i class="mdi mdi-account-plus"></i> New user registered
+											<span class=" font-size-12 d-inline-block float-right"><i
+													class="mdi mdi-clock-outline"></i> 10 AM</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="mdi mdi-account-remove"></i> User deleted
+											<span class=" font-size-12 d-inline-block float-right"><i
+													class="mdi mdi-clock-outline"></i> 07 AM</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="mdi mdi-chart-areaspline"></i> Sales report is ready
+											<span class=" font-size-12 d-inline-block float-right"><i
+													class="mdi mdi-clock-outline"></i> 12 PM</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="mdi mdi-account-supervisor"></i> New client
+											<span class=" font-size-12 d-inline-block float-right"><i
+													class="mdi mdi-clock-outline"></i> 10 AM</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="mdi mdi-server-network-off"></i> Server overloaded
+											<span class=" font-size-12 d-inline-block float-right"><i
+													class="mdi mdi-clock-outline"></i> 05 AM</span>
+										</a>
+									</li>
+									<li class="dropdown-footer">
+										<a class="text-center" href="#"> View All </a>
+									</li>
+								</ul>
+							</li>
+							<li class="right-sidebar-in right-sidebar-2-menu">
+								<i class="mdi mdi-settings-outline mdi-spin"></i>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+
+			<!-- CONTENT WRAPPER -->
+		@yield('contenido')
+
+			<!-- Footer -->
+			<footer class="footer mt-auto">
+				<div class="copyright bg-white">
+					<p>
+						Copyright &copy; <span id="ec-year"></span><a class="text-primary"
+						href="https://themeforest.net/user/ashishmaraviya" target="_blank"> Ekka Admin Dashboard</a>. All Rights Reserved.
+					  </p>
+				</div>
+			</footer>
+
+		</div> <!-- End Page Wrapper -->
+	</div> <!-- End Wrapper -->
+
+	<!-- Common Javascript -->
+	<script src="{{asset('admin/assets/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
+	<script src="{{asset('admin/assets/js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/simplebar/simplebar.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/jquery-zoom/jquery.zoom.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/slick/slick.min.js')}}"></script>
+
+	<!-- Chart -->
+	<script src="{{asset('admin/assets/plugins/charts/Chart.min.js')}}"></script>
+	<script src="{{asset('admin/assets/js/chart.js')}}"></script>
+
+	<!-- Google map chart -->
+	<script src="{{asset('admin/assets/plugins/charts/google-map-loader.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/charts/google-map.js')}}"></script>
+
+	<!-- Date Range Picker -->
+	<script src="{{asset('admin/assets/plugins/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('admin/assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
+	<script src="{{asset('admin/assets/js/date-range.js')}}"></script>
+
+	<!-- Option Switcher -->
+	<script src="{{asset('admin/assets/plugins/options-sidebar/optionswitcher.js')}}"></script>
+
+	<!-- Ekka Custom -->
+	<script src="{{asset('admin/assets/js/ekka.js')}}"></script>
 </body>
-
 
 </html>

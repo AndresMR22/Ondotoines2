@@ -27,28 +27,27 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Paginator::useBootstrap();
-        $categorias = Categoria::all();
-        $productos = Producto::paginate(10);
-        $dataEmpresa = Empresa::all();
-        $empresa = $dataEmpresa->first();
-        $productoscount = Producto::select(DB::raw('count(*) as producto_count, categoria_id'))
-        ->groupBy('categoria_id')->get();
-        // dd($productoscount);
-        $colores = collect();
-        foreach($productos as $key => $producto)
-        {
-            foreach($producto->colores as $color)
-            {
-                $colores->push($color->codigo);
-            }
-        }
+      
+        // $dataEmpresa = Empresa::all();
+        // $empresa = $dataEmpresa->first();
+        // $productoscount = Producto::select(DB::raw('count(*) as producto_count, categoria_id'))
+        // ->groupBy('categoria_id')->get();
+        // // dd($productoscount);
+        // $colores = collect();
+        // foreach($productos as $key => $producto)
+        // {
+        //     foreach($producto->colores as $color)
+        //     {
+        //         $colores->push($color->codigo);
+        //     }
+        // }
         
-        view()->share([
-            'categorias'=>$categorias,
-            'productos'=>$productos,
-            'empresa'=> $empresa,
-            'colores'=>$colores,
-            'productoscount'=>$productoscount
-        ]);
+        // view()->share([
+        //     'categorias'=>$categorias,
+        //     'productos'=>$productos,
+        //     'empresa'=> $empresa,
+        //     'colores'=>$colores,
+        //     'productoscount'=>$productoscount
+        // ]);
     }
 }

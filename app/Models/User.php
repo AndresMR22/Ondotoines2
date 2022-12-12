@@ -29,17 +29,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cliente()
+    public function perfil()//Perfil
     {
-        return $this->hasOne(Cliente::class);
+        return $this->hasOne(Perfil::class);
     }
 
-    public function cuentas()
-    {
-        return $this->hasMany(Cuenta::class);
-    }
-
-    public function shoppingCarts(){
-        return $this->hasMany(ShoppingCart::class);
-    }
 }
