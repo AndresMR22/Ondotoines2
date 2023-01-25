@@ -30,4 +30,11 @@ class Paciente extends Model
         return $this->hasMany(Cita::class);
     }
 
+    public function tratamientos()
+    {
+        return $this->hasMany(Tratamiento::class);
+    }
+
+    
+
 }

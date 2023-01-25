@@ -1,46 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Ekka - Admin Dashboard eCommerce HTML Template.">
-
-	<title>Ekka - Admin Dashboard eCommerce HTML Template.</title>
-
-	<!-- GOOGLE FONTS -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
-
-	<link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
-
-	<!-- PLUGINS CSS STYLE -->
-	<link href="{{asset('admin/assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-	<link href="{{asset('admin/assets/plugins/simplebar/simplebar.css')}}" rel="stylesheet" />
-
-	<!-- Ekka CSS -->
-	<link id="ekka-css" href="{{asset('admin/assets/css/ekka.css')}}" rel="stylesheet" />
-
-	<!-- FAVICON -->
-	<link href="{{asset('admin/assets/img/favicon.png')}}" rel="shortcut icon" />
-
-</head>
+@include('layouts.dashboard.head')
 
 <body class="ec-header-fixed ec-sidebar-fixed ec-sidebar-light ec-header-light" id="body">
 
 	<!--  WRAPPER  -->
 	<div class="wrapper">
-		
 		<!-- LEFT MAIN SIDEBAR -->
 		<div class="ec-left-sidebar ec-bg-sidebar">
 			<div id="sidebar" class="sidebar ec-sidebar-footer">
 
 				<div class="ec-brand">
 					<a href="index.html" title="Ekka">
-						<img class="ec-brand-icon" src="{{asset('admin/assets/img/logo/ec-site-logo.png')}}" alt="" />
-						<span class="ec-brand-name text-truncate">Ekka</span>
+						<img class="ec-brand-icon" src="{{asset('images/icons/logo.png')}}" alt="" />
+						<span class="ec-brand-name text-truncate">ODNTNS</span>
 					</a>
 				</div>
 
@@ -57,6 +31,24 @@
 							<hr>
 						</li>
 
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-account-group-outline"></i>
+								<span class="nav-text">Admin</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('administrador.create')}}">
+											<span class="nav-text">Agregar</span>
+										</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
+
 						<!-- Vendors -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
@@ -67,6 +59,28 @@
 								<ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
 									<li class="">
 										<a class="sidenav-item-link" href="{{route('cita.index')}}">
+											<span class="nav-text">Agendar</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('admin.calendario')}}">
+											<span class="nav-text">Calendario</span>
+										</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-account-group-outline"></i>
+								<span class="nav-text">Odontograma</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('odontograma.index')}}">
 											<span class="nav-text">Agendar</span>
 										</a>
 									</li>
@@ -143,6 +157,14 @@
 							</div>
 						</li>
 
+							<!-- Orders -->
+							<li class="has-sub">
+								<a class="sidenav-item-link" href="{{route('seguimiento.index')}}">
+									<i class="mdi mdi-cart"></i>
+									<span class="nav-text">Seguimiento</span> 
+								</a>
+							</li>
+
 						
 					</ul>
 				</div>
@@ -178,35 +200,38 @@
 							<li class="dropdown user-menu">
 								<button class="dropdown-toggle nav-link ec-drop" data-bs-toggle="dropdown"
 									aria-expanded="false">
-									<img src="{{asset('admin/assets/img/user/user.png')}}" class="user-image" alt="User Image" />
+									@if(isset(auth()->user()->imagen))
+										<img src="{{auth()->user()->imagen->url}}" class="user-image" alt="User Image" />
+										@else
+										<img src="" class="user-image" alt="Foto" />
+										@endif
 								</button>
 								<ul class="dropdown-menu dropdown-menu-right ec-dropdown-menu">
 									<!-- User image -->
 									<li class="dropdown-header">
-										<img src="{{asset('admin/assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
+										@if(isset(auth()->user()->imagen))
+										<img src="{{auth()->user()->imagen->url}}" class="img-circle" alt="User Image" />
+										@else
+										<img src="" class="img-circle" alt="Foto" />
+										@endif
 										<div class="d-inline-block">
-											John Deo <small class="pt-1">john.example@gmail.com</small>
+											{{auth()->user()->name}} <small class="pt-1">{{auth()->user()->email}}</small>
 										</div>
 									</li>
 									<li>
 										<a href="user-profile.html">
-											<i class="mdi mdi-account"></i> My Profile
+											<i class="mdi mdi-account"></i> Mi Perfil
 										</a>
 									</li>
-									<li>
-										<a href="#">
-											<i class="mdi mdi-email"></i> Message
-										</a>
-									</li>
-									<li>
-										<a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
-									</li>
-									<li class="right-sidebar-in">
-										<a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Setting </a>
-									</li>
+									
 									<li class="dropdown-footer">
-										<a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+										<a onclick="event.preventDefault();
+										document.getElementById('logout-form').submit();"> <i class="mdi mdi-logout"></i> Cerrar sesión </a>
 									</li>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST"
+									class="d-none">
+									@csrf
+								</form>
 								</ul>
 							</li>
 							<li class="dropdown notifications-menu custom-dropdown">
@@ -216,7 +241,7 @@
 
 								<div class="card card-default dropdown-notify dropdown-menu-right mb-0">
 									<div class="card-header card-header-border-bottom px-3">
-										<h2>Notifications</h2>
+										<h2>Notificaciones</h2>
 									</div>
 
 									<div class="card-body px-0 py-0">
@@ -225,20 +250,20 @@
 											<li class="nav-item mx-3 my-0 py-0">
 												<a href="#" class="nav-link active pb-3" id="home2-tab"
 													data-bs-toggle="tab" data-bs-target="#home2" role="tab"
-													aria-controls="home2" aria-selected="true">All (10)</a>
+													aria-controls="home2" aria-selected="true">Pendientes (1)</a>
 											</li>
-
+{{-- 
 											<li class="nav-item mx-3 my-0 py-0">
 												<a href="#" class="nav-link pb-3" id="profile2-tab" data-bs-toggle="tab"
 													data-bs-target="#profile2" role="tab" aria-controls="profile2"
-													aria-selected="false">Msgs (5)</a>
+													aria-selected="false">Atrasadas (0)</a>
 											</li>
 
 											<li class="nav-item mx-3 my-0 py-0">
 												<a href="#" class="nav-link pb-3" id="contact2-tab" data-bs-toggle="tab"
 													data-bs-target="#contact2" role="tab" aria-controls="contact2"
 													aria-selected="false">Others (5)</a>
-											</li>
+											</li> --}}
 										</ul>
 
 										<div class="tab-content" id="myNotifications">
@@ -246,7 +271,7 @@
 												<ul class="list-unstyled" data-simplebar style="height: 360px">
 													<li>
 														<a href="javscript:void(0)"
-															class="media media-message media-notification">
+															class="media media-message media-notification ">
 															<div class="position-relative mr-3">
 																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u2.jpg')}}"
 																	alt="Image">
@@ -254,206 +279,19 @@
 															</div>
 															<div class="media-body d-flex justify-content-between">
 																<div class="message-contents">
-																	<h4 class="title">Nitin</h4>
-																	<p class="last-msg">Lorem ipsum dolor sit, amet
-																		consectetur adipisicing elit. Nam itaque
-																		doloremque odio, eligendi delectus vitae.</p>
+																	<h4 class="title">Daniel</h4>
+																	<p class="last-msg">Cita próxima a las 15:00 de 2023-01-07</p>
 
 																	<span
 																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> 30 min
-																		ago...
+																		<i class="mdi mdi-clock-outline"></i> Dentro de 1 hora...
 																	</span>
 																</div>
 															</div>
 														</a>
 													</li>
 
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification media-active">
-															<div class="position-relative mr-3">
-																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u1.jpg')}}"
-																	alt="Image">
-																<span class="status active"></span>
-															</div>
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">Lovina</h4>
-																	<p class="last-msg">Donec mattis augue a nisl
-																		consequat, nec imperdiet ex rutrum. Fusce et
-																		vehicula enim. Sed in enim eu odio vehic.</p>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-white">
-																		<i class="mdi mdi-clock-outline"></i> Just
-																		now...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
-
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification">
-															<div class="position-relative mr-3">
-																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u5.jpg')}}"
-																	alt="Image">
-																<span class="status away"></span>
-															</div>
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">Crinali</h4>
-																	<p class="last-msg">Lorem ipsum dolor sit, amet
-																		consectetur adipisicing elit. Nam itaque
-																		doloremque odio, eligendi delectus vitae.</p>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> 1 hrs
-																		ago...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
-
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification event-active">
-
-															<div
-																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-info text-white">
-																<i class="mdi mdi-calendar-check font-size-20"></i>
-															</div>
-
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">Upcomming event added</h4>
-																	<p class="last-msg font-size-14">03/Jan/2020 (1pm -
-																		2pm)</p>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> 10 min
-																		ago...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
-
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification">
-
-															<div
-																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
-																<i class="mdi mdi-chart-areaspline font-size-20"></i>
-															</div>
-
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">Yearly Sales report</h4>
-																	<p class="last-msg font-size-14">Lorem ipsum dolor
-																		sit, amet consectetur adipisicing elit. Nam
-																		itaque doloremque odio, eligendi delectus vitae.
-																	</p>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> 1 hrs
-																		ago...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
-
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification">
-
-															<div
-																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
-																<i
-																	class="mdi mdi-account-multiple-check font-size-20"></i>
-															</div>
-
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">New request</h4>
-																	<p class="last-msg font-size-14">Add Dany Jones as
-																		your contact consequat nec imperdiet ex rutrum.
-																		Fusce et vehicula enim. Sed in enim.</p>
-
-																	<span
-																		class="my-1 btn btn-sm btn-success">Accept</span>
-																	<span
-																		class="my-1 btn btn-sm btn-secondary">Delete</span>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-secondary d-block">
-																		<i class="mdi mdi-clock-outline"></i> 5 min
-																		ago...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
-
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification">
-
-															<div
-																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-danger text-white">
-																<i class="mdi mdi-server-network-off font-size-20"></i>
-															</div>
-
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">Server overloaded</h4>
-																	<p class="last-msg font-size-14">Donec mattis augue
-																		a nisl consequat, nec imperdiet ex rutrum. Fusce
-																		et vehicula enim. Sed in enim eu odio vehic.</p>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> 30 min
-																		ago...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
-
-													<li>
-														<a href="javscript:void(0)"
-															class="media media-message media-notification">
-
-															<div
-																class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-purple text-white">
-																<i class="mdi mdi-playlist-check font-size-20"></i>
-															</div>
-
-															<div class="media-body d-flex justify-content-between">
-																<div class="message-contents">
-																	<h4 class="title">Task complete</h4>
-																	<p class="last-msg font-size-14">Nam ut nisi erat.
-																		Ut quis tortor varius, hendrerit arcu quis,
-																		congue nisl. In scelerisque, sem ut ve.</p>
-
-																	<span
-																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> 2 hrs
-																		ago...
-																	</span>
-																</div>
-															</div>
-														</a>
-													</li>
+													
 
 												</ul>
 											</div>
@@ -789,7 +627,7 @@
 				<div class="copyright bg-white">
 					<p>
 						Copyright &copy; <span id="ec-year"></span><a class="text-primary"
-						href="https://themeforest.net/user/ashishmaraviya" target="_blank"> Ekka Admin Dashboard</a>. All Rights Reserved.
+						href="https://themeforest.net/user/ashishmaraviya" target="_blank"> ODONTOINES</a>. Todos los derechos reservados.
 					  </p>
 				</div>
 			</footer>
@@ -797,31 +635,7 @@
 		</div> <!-- End Page Wrapper -->
 	</div> <!-- End Wrapper -->
 
-	<!-- Common Javascript -->
-	<script src="{{asset('admin/assets/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
-	<script src="{{asset('admin/assets/js/bootstrap.bundle.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/simplebar/simplebar.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/jquery-zoom/jquery.zoom.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/slick/slick.min.js')}}"></script>
-
-	<!-- Chart -->
-	<script src="{{asset('admin/assets/plugins/charts/Chart.min.js')}}"></script>
-	<script src="{{asset('admin/assets/js/chart.js')}}"></script>
-
-	<!-- Google map chart -->
-	<script src="{{asset('admin/assets/plugins/charts/google-map-loader.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/charts/google-map.js')}}"></script>
-
-	<!-- Date Range Picker -->
-	<script src="{{asset('admin/assets/plugins/daterangepicker/moment.min.js')}}"></script>
-    <script src="{{asset('admin/assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
-	<script src="{{asset('admin/assets/js/date-range.js')}}"></script>
-
-	<!-- Option Switcher -->
-	<script src="{{asset('admin/assets/plugins/options-sidebar/optionswitcher.js')}}"></script>
-
-	<!-- Ekka Custom -->
-	<script src="{{asset('admin/assets/js/ekka.js')}}"></script>
+	@include('layouts.dashboard.scripts')
 </body>
 
 </html>

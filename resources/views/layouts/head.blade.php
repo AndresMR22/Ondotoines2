@@ -2,9 +2,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Ekka - Admin Dashboard HTML Template.">
+    <meta name="description" content="ODONTOINES">
 
-    <title>Ekka - Admin Dashboard HTML Template.</title>
+    <title>ODONTOINES</title>
     
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,5 +15,11 @@
     <!-- Ekka CSS -->
     <link id="ekka-css" rel="stylesheet" href="{{asset('admin/assets/css/ekka.css')}}" />
     <!-- FAVICON -->
-    <link href="{{asset('admin/assets/img/favicon.png')}}" rel="shortcut icon" />
+    <link href="{{asset('images/icons/logoBlanco.png')}}" rel="shortcut icon" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/locales-all.js"></script>
+    
+    <script src="https://kit.fontawesome.com/a022389a13.js" crossorigin="anonymous"></script>
 </head>

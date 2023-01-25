@@ -34,4 +34,9 @@ class User extends Authenticatable
         return $this->hasOne(Perfil::class);
     }
 
+    public function imagen()
+    {
+        return $this->morphOne(Imagen::class,'tipo');
+    }
+
 }

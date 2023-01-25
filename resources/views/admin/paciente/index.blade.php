@@ -1,5 +1,27 @@
 @extends('admin.dashboard')
 @section('contenido')
+
+        @if (Session::has('mensaje'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            {{ Session::get('mensaje') }}
+            <button type="button" class="close" data-dismiss="alert" role="alert">
+                <span aria-button="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        @if (count($errors) > 0)
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
 			<!-- CONTENT WRAPPER -->
 			<div class="ec-content-wrapper">
 				<div class="content">
@@ -76,34 +98,19 @@
                             </div>
 
                             <div class="modal-body px-4">
-                                {{-- <div class="form-group row mb-6">
-                                    <label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">User
-                                        Image</label>
-
-                                    <div class="col-sm-8 col-lg-10">
-                                        <div class="custom-file mb-1">
-                                            <input type="file" class="custom-file-input" id="coverImage"
-                                                required>
-                                            <label class="custom-file-label" for="coverImage">Choose
-                                                file...</label>
-                                            <div class="invalid-feedback">Example invalid custom file feedback
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
 
                                 <div class="row mb-2">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="firstName">Nombre</label>
-                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$paciente->nombre}}">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$paciente->nombre}}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="lastName">Apellido</label>
-                                            <input type="text" class="form-control" name="apellido" id="apellido" value="{{$paciente->apellido}}">
+                                            <input type="text" class="form-control" name="apellido" id="apellido" value="{{$paciente->apellido}}" required>
                                         </div>
                                     </div>
 
@@ -111,7 +118,7 @@
                                         <div class="form-group mb-4">
                                             <label for="userName">Edad</label>
                                             <input type="number" class="form-control" name="edad" id="edad"
-                                                value="{{$paciente->edad}}">
+                                                value="{{$paciente->edad}}" required>
                                         </div>
                                     </div>
 
@@ -119,7 +126,7 @@
                                         <div class="form-group mb-4">
                                             <label for="email">Teléfono</label>
                                             <input type="tel" class="form-control" name="telefono" id="telefono"
-                                                value="{{$paciente->telefono}}">
+                                                value="{{$paciente->telefono}}" required>
                                         </div>
                                     </div>
 
@@ -127,7 +134,7 @@
                                         <div class="form-group mb-4">
                                             <label for="Birthday">Sexo</label>
                                             <input type="text" class="form-control" name="sexo" id="sexo"
-                                                value="{{$paciente->sexo}}">
+                                                value="{{$paciente->sexo}}" required>
                                         </div>
                                     </div>
 

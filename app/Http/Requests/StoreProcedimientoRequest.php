@@ -24,7 +24,8 @@ class StoreProcedimientoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"required|string|min:3|max:50",
+            "precio"=>"required|numeric|min:0|max:500",
         ];
     }
 }

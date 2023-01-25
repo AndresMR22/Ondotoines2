@@ -30,6 +30,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::create([
             "nombre"=>$request->nombre
         ]);
+        
         if(request()->hasFile('imagen')){
             $file = request()->file('imagen');
             // foreach($images as $image){

@@ -1,6 +1,28 @@
 
 @extends('admin.dashboard')
 @section('contenido')
+
+@if (Session::has('mensaje'))
+<div class="alert alert-danger alert-dismissible" role="alert">
+    {{ Session::get('mensaje') }}
+    <button type="button" class="close" data-dismiss="alert" role="alert">
+        <span aria-button="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if (count($errors) > 0)
+<div class="alert alert-danger" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>
+                {{ $error }}
+            </li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 			<!-- CONTENT WRAPPER -->
 			<div class="ec-content-wrapper">
 				<div class="content">
@@ -27,16 +49,21 @@
 										
 										<div class="col-lg-12">
 											<div class="ec-vendor-upload-detail">
-												<form class="row g-3" action="{{route('procedimiento.store')}}" method="POST">
+												<form class="row g-3" action="{{route('procedimiento.store')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
 													<div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Nombre</label>
-														<input type="text" name="nombre" class="form-control slug-title" id="nombre">
+														<input type="text" required name="nombre" value="{{old('nombre')}}" class="form-control slug-title" id="nombre">
 													</div>
 
 													<div class="col-md-6">
 														<label class="form-label">Precio</label>
-														<input type="number" name="precio" class="form-control" id="precio">
+														<input type="number" required value="{{old('precio')}}" min="0" name="precio" class="form-control" id="precio">
+													</div>
+
+													<div class="col-md-6">
+														<label class="form-label">Imagen</label>
+														<input type="file" required  name="imagen" class="form-control" id="imagen">
 													</div>
 													
 													

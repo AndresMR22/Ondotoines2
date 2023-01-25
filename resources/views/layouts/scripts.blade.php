@@ -26,6 +26,37 @@ integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var citas = document.getElementById('citas').value;
+        citas = JSON.parse(citas);
+        console.log(citas)
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth', locale:'es', headerToolbar:
+          {
+            left:'prev,next today',
+            center:'title',
+            right:'dayGridMonth,timeGridWeek,timeGridDay'
+          },
+          
+          events: citas,
+          dateClick:function(data)
+          {
+            let fecha = data.dateStr
+            document.getElementById('fecha').value = fecha;
+            $('#modalEditar').modal('toggle');
+            $('#modalEditar').modal('show');
+            // $('#modalEditar').modal('hide');
+
+          },
+          eventOverlap: function(stillEvent, movingEvent) {
+    return stillEvent.allDay && movingEvent.allDay;
+  }
+        });
+        calendar.render();
+      });
+
+
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
     }

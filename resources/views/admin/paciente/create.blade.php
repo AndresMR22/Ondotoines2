@@ -1,6 +1,28 @@
 
 @extends('admin.dashboard')
 @section('contenido')
+
+@if (Session::has('mensaje'))
+<div class="alert alert-danger alert-dismissible" role="alert">
+    {{ Session::get('mensaje') }}
+    <button type="button" class="close" data-dismiss="alert" role="alert">
+        <span aria-button="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if (count($errors) > 0)
+<div class="alert alert-danger" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>
+                {{ $error }}
+            </li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 			<!-- CONTENT WRAPPER -->
 			<div class="ec-content-wrapper">
 				<div class="content">
@@ -31,73 +53,48 @@
                                                     @csrf
 													<div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Nombre</label>
-														<input type="text" name="nombre" class="form-control slug-title" id="nombre">
+														<input type="text" name="nombre" class="form-control slug-title" value="{{old('nombre')}}" id="nombre" required>
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Apellido</label>
-														<input type="text" name="apellido" class="form-control slug-title" id="apellido">
+														<input type="text" name="apellido" class="form-control slug-title" value="{{ old('apellido') }}" id="apellido" required>
 													</div>
-
-
-                                                 
 
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Lugar de nacimiento</label>
-														<input type="text" name="lugar_nac" class="form-control slug-title" id="lugar_nac">
+														<input type="text" name="lugar_nac" class="form-control slug-title" value="{{ old('lugar_nac') }}" id="lugar_nac" required>
 													</div>
 
-                                                    
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Ocupación</label>
-														<input type="text" name="ocupacion" class="form-control slug-title" id="ocupacion">
+														<input type="text" name="ocupacion" class="form-control slug-title" value="{{ old('ocupacion') }}" id="ocupacion" required>
 													</div>
 
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Dirección</label>
-														<input type="text" name="direccion" class="form-control slug-title" id="direccion">
+														<input type="text" name="direccion" class="form-control slug-title" value="{{ old('direccion') }}" id="direccion" required>
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">cedula</label>
-														<input type="text" name="cedula" class="form-control slug-title" id="cedula">
+														<input type="text" name="cedula" class="form-control slug-title" value="{{ old('cedula') }}" id="cedula" required>
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">telefono</label>
-														<input type="text" name="telefono" class="form-control slug-title" id="telefono">
+														<input type="tel" name="telefono" class="form-control slug-title" value="{{ old('telefono') }}" id="telefono" required>
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">sexo</label>
-														<input type="text" name="sexo" class="form-control slug-title" id="sexo">
+														<input type="text" name="sexo" class="form-control slug-title" value="{{ old('sexo') }}" id="sexo" required>
 													</div>
-
-
-
-                                                    
-													{{-- <div class="col-md-6">
-														<label class="form-label">Select Categories</label>
-														<select name="categories" id="Categories" class="form-select">
-															<optgroup label="Fashion">
-																<option value="t-shirt">T-shirt</option>
-																<option value="dress">Dress</option>
-															</optgroup>
-															<optgroup label="Furniture">
-																<option value="table">Table</option>
-																<option value="sofa">Sofa</option>
-															</optgroup>
-															<optgroup label="Electronic">
-																<option value="phone">I Phone</option>
-																<option value="laptop">Laptop</option>
-															</optgroup>
-														</select>
-													</div> --}}
 												
 													
 													<div class="col-md-6">
 														<label class="form-label">Edad</label>
-														<input type="number" name="edad" class="form-control" id="edad">
+														<input type="number" name="edad" class="form-control" id="edad" value="{{ old('edad') }}" required>
 													</div>
 													<div class="col-md-12">
 														<label class="form-label">Observación</label>
-														<textarea name="observacion" class="form-control" rows="4"></textarea>
+														<textarea name="observacion" class="form-control" value="{{ old('observacion') }}" rows="4"></textarea>
 													</div>
 													
 													<div class="col-md-12">

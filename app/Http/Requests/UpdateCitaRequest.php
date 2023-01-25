@@ -24,7 +24,12 @@ class UpdateCitaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "medico"=>"required|string|min:3|max:150",
+            "estado"=>"required|string|max:20",
+            "especialidad"=>"required|string|min:3|max:100",
+            "fecha_inicio"=>"required|date",
+            "fecha_fin"=>"required|date",
+            "telefono"=>"required|string|min:10",
         ];
     }
 }

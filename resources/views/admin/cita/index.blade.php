@@ -1,5 +1,27 @@
 @extends('admin.dashboard')
 @section('contenido')
+
+@if (Session::has('mensaje'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            {{ Session::get('mensaje') }}
+            <button type="button" class="close" data-dismiss="alert" role="alert">
+                <span aria-button="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 			<!-- CONTENT WRAPPER -->
 			<div class="ec-content-wrapper">
 				<div class="content">
@@ -74,18 +96,17 @@
                                                                 </div>
                                     
                                                                 <div class="modal-body px-4">
-                                    
                                                                     <div class="row mb-2">
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Medico</label>
-                                                                                <input type="text" class="form-control" name="medico" id="medico" value="{{$cita->medico}}">
+                                                                                <input type="text" class="form-control" name="medico" id="medico" value="{{$cita->medico}}" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Especialidad</label>
-                                                                                <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$cita->especialidad}}">
+                                                                                <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$cita->especialidad}}" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -93,7 +114,7 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Estado</label>
-                                                                                <select name="estado" id="estado" class="form-select">
+                                                                                <select name="estado" id="estado" class="form-select" required>
                                                                                     <option value="pendiente" {{$cita->estado == 'pendiente'?'selected':''}}>Pendiente</option>
                                                                                     <option value="atendido" {{$cita->estado != 'pendiente'?'selected':''}}>Atendido</option>
                                                                             </select>
@@ -102,7 +123,7 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Teléfono</label>
-                                                                                <input type="tel" class="form-control" name="telefono" id="telefono" value="{{$cita->telefono}}">
+                                                                                <input type="tel" class="form-control" name="telefono" required id="telefono" value="{{$cita->telefono}}">
                                                                            </div>
                                                                         </div>
                                                                     </div>
@@ -110,13 +131,13 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Fecha Inicio</label>
-                                                                                <input type="datetime-local" class="form-control" name="fecha_inicio" id="fecha_inicioEditar{{$cita->id}}" value="{{$cita->fecha_inicio}}">
+                                                                                <input type="datetime-local" required class="form-control" name="fecha_inicio" id="fecha_inicioEditar{{$cita->id}}" value="{{$cita->fecha_inicio}}">
                                                                          </div>
                                                                         </div>
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Fecha Fin</label>
-                                                                                <input type="datetime-local" class="form-control" name="fecha_fin" id="fecha_finEditar{{$cita->id}}" value="{{$cita->fecha_fin}}">
+                                                                                <input type="datetime-local" required class="form-control" name="fecha_fin" id="fecha_finEditar{{$cita->id}}" value="{{$cita->fecha_fin}}">
                                                                            </div>
                                                                         </div>
                                                                     </div>
@@ -159,14 +180,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="firstName">Médico</label>
-                                            <input type="text" class="form-control" name="medico" id="medico">
+                                            <input type="text" class="form-control" name="medico" id="medico" value="{{old('medico')}}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="lastName">Especialidad</label>
-                                            <input type="text" class="form-control" name="especialidad" id="especialidad" >
+                                            <input type="text" class="form-control" name="especialidad" value="{{old('especialidad')}}"  id="especialidad" >
                                         </div>
                                     </div>
 
@@ -175,29 +196,28 @@
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="email">Fecha Inicio</label>
-                                            <input type="datetime-local" class="form-control" onchange="selectFI();" name="fecha_inicio" id="fecha_inicio"
-                                                >
+                                            <input type="datetime-local" min="{{date('Y-m-d H:i')}}" class="form-control" value="{{old('fecha_inicio')}}" onchange="selectFI();" name="fecha_inicio" id="fecha_inicio"
+                                                required>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="Birthday">Fecha Fin</label>
-                                            <input type="datetime-local" class="form-control" onchange="selectFF();" name="fecha_fin" id="fecha_fin"
-                                                >
+                                            <input type="datetime-local" class="form-control" value="{{old('fecha_fin')}}" onchange="selectFF();" name="fecha_fin" id="fecha_fin"
+                                               required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="userName">Teléfono</label>
-                                            <input type="tel" class="form-control" name="telefono" id="telefono"
-                                               >
+                                            <input type="tel" class="form-control" value="{{old('telefono')}}" required name="telefono" id="telefono">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label class="form-label">Paciente</label>
-                                            <select name="paciente_id" id="paciente" class="form-select">
+                                            <select name="paciente_id" id="paciente" class="form-select" required>
                                                     @foreach($pacientes as $paciente)
                                                     <option value="{{$paciente->id}}">{{$paciente->nombre}}</option>
                                                     @endforeach
@@ -220,11 +240,13 @@
             </div>
             
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+                crossorigin="anonymous" referrerpolicy="no-referrer">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+                integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer">
+            </script>
 
             <script>
                 var fechaInicio = null;
@@ -233,6 +255,7 @@
                 function selectFI()
                 {
                     fechaInicio = document.getElementById('fecha_inicio').value;
+                    document.getElementById('fecha_fin').min = fechaInicio;
                     if(fechaFin!=null)
                     {
                         fechasSeleccionadas=true;

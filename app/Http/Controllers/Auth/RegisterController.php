@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::ADMINS;
 
     /**
      * Create a new controller instance.
@@ -39,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
     /**
@@ -51,24 +52,38 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
     protected function create(array $data)
     {
+      // dd($data);
       $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
       ]);
-      $user->assignRole('Cliente');
-      $shopping_cart  = ShoppingCart::get_the_session_shopping_cart();
-      $shopping_cart->update([
-          "user_id"=>$user->id
-      ]);
+      
+      if(isset($data['foto']))
+        {
+            $file = $data['foto'];
+                     $elemento = Cloudinary::upload($file->getRealPath(),['folder'=>'administradores']);
+              $public_id = $elemento->getPublicId();
+              $url = $elemento->getSecurePath();
+               $user->imagen()->create([
+                  'url'=>$url,
+                  'public_id'=>$public_id
+                  ]);   
+        }
+
+      $user->assignRole('Administrador');
+    //   $shopping_cart  = ShoppingCart::get_the_session_shopping_cart();
+    //   $shopping_cart->update([
+    //       "user_id"=>$user->id
+    //   ]);
       return $user;
     }
 }

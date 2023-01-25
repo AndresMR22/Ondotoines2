@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Paciente;
+use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCitaRequest;
 use App\Http\Requests\UpdateCitaRequest;
@@ -42,7 +43,7 @@ class CitaController extends Controller
      */
     public function store(StoreCitaRequest $request)
     {
-      
+        
        Cita::create([
         "fecha_inicio"=>$request->fecha_inicio,
         "fecha_fin"=>$request->fecha_fin,
@@ -51,6 +52,14 @@ class CitaController extends Controller
         "estado"=>"pendiente",
         "especialidad"=>$request->especialidad,
         "paciente_id"=>$request->paciente_id, 
+       ]);
+
+       $paciente = Paciente::find($request->paciente_id);
+
+       Evento::create([
+        "start"=>$request->fecha_inicio,
+        "end"=>$request->fecha_fin,
+        "title"=>$paciente->nombre
        ]);
 
        return back();

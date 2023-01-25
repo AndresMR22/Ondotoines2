@@ -24,7 +24,11 @@ class StoreTratamientoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "medico"=>"required|string|min:3|max:150",
+            "especialidad"=>"required|string|min:3|max:100",
+            "asunto"=>"required|string|min:5|max:100",
+            "observacion"=>"nullable|string|max:256",
+            "paciente_id"=>"required",
         ];
     }
 }

@@ -42,7 +42,7 @@
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Fecha Inicio</label>
-														<input type="datetime-local" name="fecha_inicio" class="form-control slug-title" id="fecha_inicio">
+														<input type="datetime-local"  name="fecha_inicio" class="form-control slug-title" id="fecha_inicio">
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Fecha Fin</label>

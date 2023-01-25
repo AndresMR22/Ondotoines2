@@ -10,7 +10,7 @@
 						<div class="card-header bg-primary">
 							<div class="ec-brand">
 								<a href="index.html" title="Ekka">
-									<img class="ec-brand-icon" src="{{asset('admin/assets/img/logo/logo-login.png')}}" alt="" />
+									<img class="ec-brand-icon" src="{{asset('images/icons/logo.png')}}" alt="" />
 								</a>
 							</div>
 						</div>
@@ -39,7 +39,7 @@
                                     </div>
 									
 									<div class="col-md-12">
-										<div class="d-flex my-2 justify-content-between">
+										{{-- <div class="d-flex my-2 justify-content-between">
 											<div class="d-inline-block mr-3">
 												<div class="control control-checkbox">Remember me
 													<input type="checkbox" />
@@ -48,11 +48,11 @@
 											</div>
 											
 											<p><a class="text-blue" href="#">Forgot Password?</a></p>
-										</div>
+										</div> --}}
 										
 										<button type="submit" class="btn btn-primary btn-block mb-4">Iniciar</button>
 										
-										<p class="sign-upp">Don't have an account yet ?
+										<p class="sign-upp">No tienes una cuenta ?
 											<a class="text-blue" href="{{route('register')}}">Registrarse</a>
 										</p>
 									</div>

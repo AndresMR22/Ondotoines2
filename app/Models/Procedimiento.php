@@ -18,4 +18,9 @@ class Procedimiento extends Model
         return $this->belongsToMany(Tratamiento::class);
     }
 
+    public function imagen()
+    {
+        return $this->morphOne(Imagen::class,'tipo');
+    }
+
 }

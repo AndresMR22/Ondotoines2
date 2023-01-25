@@ -1,5 +1,27 @@
 @extends('admin.dashboard')
 @section('contenido')
+
+@if (Session::has('mensaje'))
+<div class="alert alert-danger alert-dismissible" role="alert">
+    {{ Session::get('mensaje') }}
+    <button type="button" class="close" data-dismiss="alert" role="alert">
+        <span aria-button="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if (count($errors) > 0)
+<div class="alert alert-danger" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>
+                {{ $error }}
+            </li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
     <!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
         <div class="content">
@@ -31,8 +53,16 @@
                                     <tbody>
                                         @foreach ($procedimientos as $pro)
                                             <tr>
-                                                <td><img class="tbl-thumb" src="assets/img/products/p1.jpg"
-                                                        alt="Product Image" /></td>
+                                                {{-- {{$pro->imagen->url}} --}}
+                                                <td>
+                                                    @if(isset($pro->imagen))
+                                                    <img class="tbl-thumb" src="{{$pro->imagen->url}}"
+                                                    alt="Procedimiento" />
+                                                    @else
+                                                    <img class="tbl-thumb" src="assets/img/products/p1.jpg"
+                                                        alt="Procedimiento" />
+                                                        @endif
+                                                    </td>
                                                 <td>{{ $pro->nombre }}</td>
                                                 <td>{{ $pro->precio }}</td>
                                                 <td>
@@ -66,7 +96,7 @@
                                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                     <div class="modal-content">
                                                         <form method="POST"
-                                                            action="{{ route('procedimiento.update', $pro->id) }}">
+                                                            action="{{ route('procedimiento.update', $pro->id) }}" enctype="multipart/form-data">
                                                             @method('PATCH')
                                                             @csrf
                                                             <div class="modal-header px-4">
@@ -82,7 +112,7 @@
                                                                             <label for="firstName">Nombre</label>
                                                                             <input type="text" class="form-control"
                                                                                 name="nombre" id="nombre"
-                                                                                value="{{ $pro->nombre }}">
+                                                                                value="{{ $pro->nombre }}" required>
                                                                         </div>
                                                                     </div>
 
@@ -91,11 +121,31 @@
                                                                             <label for="lastName">Precio</label>
                                                                             <input type="number" class="form-control"
                                                                                 name="precio" id="precio"
-                                                                                value="{{ $pro->precio }}">
+                                                                                value="{{ $pro->precio }}" required>
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
+
+                                                                <div class="row mb-2">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label for="firstName">Cambiar foto</label>
+                                                                            <input type="file" class="form-control"
+                                                                                name="foto" id="foto" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label for="firstName">Foto actual</label>
+                                                                            @if(isset($pro->imagen))
+                                                                            <img width="100px;" src="{{$pro->imagen->url}}">
+                                                                            @else
+                                                                            <img src="" alt="procedimiento dental">
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div> 
                                                             </div>
 
                                                             <div class="modal-footer px-4">

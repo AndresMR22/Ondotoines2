@@ -1,5 +1,27 @@
 @extends('admin.dashboard')
 @section('contenido')
+
+    @if (Session::has('mensaje'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        {{ Session::get('mensaje') }}
+        <button type="button" class="close" data-dismiss="alert" role="alert">
+            <span aria-button="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    @if (count($errors) > 0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>
+                    {{ $error }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 <div class="ec-content-wrapper">
     <div class="content">
         <div class="breadcrumb-wrapper breadcrumb-wrapper-2 breadcrumb-contacts">
@@ -134,7 +156,7 @@
                                                                         </tr>
                                                                     </thead>
                         
-                                                                    <tbody>
+                                                                    <tbody id="procedimientosTabla">
                                                                         @foreach($procedimientos as $key => $procedimiento)
                                                                         <tr >
                                                                             <td id="nombre{{$key}}">{{$procedimiento->nombre}}</td>
@@ -180,11 +202,33 @@
     var proSelected = []
 
     function guardar()
-    {
-        let form = document.getElementById('formTratamiento');
-        document.getElementById('procedimientos').value = JSON.stringify(proSelected)
-        form.submit();
+    {   
+        if(proSelected.length == 0)
+        {
+            alert('Debe agregar al menos 1 procedimiento al tratamiento.')
+        }else
+        {
+            let form = document.getElementById('formTratamiento');
+            document.getElementById('procedimientos').value = JSON.stringify(proSelected)
+            form.submit();
+        }
+       
     }
+
+    document.addEventListener('DOMContentLoaded',function(){
+        let bodyPro = document.getElementById('procedimientosTabla');
+        console.log(bodyPro.children)
+        let tr = bodyPro.children;
+        for(let i = 0; i < tr.length ; i++)
+        {
+            let cantidad = tr[i].children[1].children[0].value
+            let precio = tr[i].children[2].children[0].value
+            let id = tr[i].children[3].children[0].id
+            // console.log(id)
+            document.getElementById(id).value = cantidad*precio;
+        }
+        
+    })
 
     function calcularTotal(idFila)
     {
@@ -241,8 +285,8 @@
                                         <td>${total}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" onclick="eliminarFila(${i})"
-                                                    class="btn btn-outline-danger">-</button>
+                                                <a type="button" onclick="eliminarFila(${i})"
+                                                    class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>`
