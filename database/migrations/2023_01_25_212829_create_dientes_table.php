@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('odontogramas', function (Blueprint $table) {
+        Schema::create('dientes', function (Blueprint $table) {
             $table->id();
-            $table->text('observacion')->nullable();
-            $table->unsignedBigInteger('tratamiento_id');
-            $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade')->onUpdate('cascade');
-            
+            $table->integer('posicion')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('odontogramas');
+        Schema::dropIfExists('dientes');
     }
 };

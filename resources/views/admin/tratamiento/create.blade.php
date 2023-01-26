@@ -29,8 +29,9 @@
                 <p class="breadcrumbs"><span><a href="index.html">Dashboard</a></span>
                     <span><i class="mdi mdi-chevron-right"></i></span>Tratamiento</p>
         </div>
-        <div class="my-3 d-flex justify-content-center">
+        <div class="my-3 d-flex justify-content-center" style="gap:20px;">
             <a data-bs-toggle="modal" data-bs-target="#modalProcedimientos" class="btn btn-primary">Agregar Procedimiento</a>
+            <a href="{{route('odontograma.index')}}" class="btn btn-info">Odontograma</a>
         </div>
 
         <div class="row">

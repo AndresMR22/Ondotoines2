@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Odontograma;
 
 class OdontogramaSeeder extends Seeder
 {
@@ -14,6 +15,10 @@ class OdontogramaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Odontograma::create([
+            "observacion"=>"Observación de prueba",
+            "tratamiento_id"=>1
+        ]);
+
     }
 }

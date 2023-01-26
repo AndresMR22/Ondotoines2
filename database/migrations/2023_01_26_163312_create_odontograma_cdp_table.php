@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('odontogramas', function (Blueprint $table) {
+        Schema::create('odontograma_cdp', function (Blueprint $table) {
             $table->id();
-            $table->text('observacion')->nullable();
-            $table->unsignedBigInteger('tratamiento_id');
-            $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade')->onUpdate('cascade');
-            
+            $table->unsignedBigInteger('odontograma_id');// 1
+            $table->unsignedBigInteger('cdp_id');// 1          
+            $table->foreign('odontograma_id')->references('id')->on('odontogramas');
+            $table->foreign('cdp_id')->references('id')->on('cara_diente_proceso');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('odontogramas');
+        Schema::dropIfExists('odontograma_cdp');
     }
 };

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Odontograma;
+use App\Models\Diente;
+use App\Models\Cara;
+use App\Models\CaraDienteProceso;
+use App\Models\Odontograma_cdp;
 use App\Http\Requests\StoreOdontogramaRequest;
 use App\Http\Requests\UpdateOdontogramaRequest;
 
@@ -28,15 +32,33 @@ class OdontogramaController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreOdontogramaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(StoreOdontogramaRequest $request)
     {
-        //
+        // dd($request);
+        $odontograma = Odontograma::create([
+            "observacion"=>"Odontograma de prueba",
+            "tratamiento_id"=>$request->idTratamiento
+        ]);
+            // dd($request);
+        $idCara = $request->procesos[0]['idCara'];
+        $idDiente = $request->procesos[0]['idDiente'];
+        $idReferencia = $request->procesos[0]['idReferencia'];
+
+        // dd($idCara,$idDiente,$idReferencia);
+        // $diente = Diente::find($idDiente);
+        $cara = Cara::find($idCara);
+        $cara->dientes()->attach($idDiente,['proceso_id'=>$idReferencia]);
+        // $diente->caras()->attach($idCara,['proceso_id'=>$idReferencia]);
+        
+        $cdp = CaraDienteProceso::orderBy('id','DESC')->take(1)->first();
+                Odontograma_cdp::create([
+                    "odontograma_id"=>$odontograma->id,
+                    "cdp_id" => $cdp->id
+                ]);
+    
+
+        return 1;
     }
 
     /**
@@ -56,9 +78,9 @@ class OdontogramaController extends Controller
      * @param  \App\Models\Odontograma  $odontograma
      * @return \Illuminate\Http\Response
      */
-    public function edit(Odontograma $odontograma)
+    public function edit($idTratamiento)
     {
-        //
+        return view('admin.odontograma.index',compact('idTratamiento'));
     }
 
     /**

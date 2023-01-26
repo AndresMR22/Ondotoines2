@@ -49,5 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     // Route::post('/venta/guardarVenta',[VentaController::class,'guardarVenta'])->name('venta.guardarVenta');
 
 });
+
+
 Route::get('cita/validarhorario',[CitaController::class,'validarHorario'])->name('cita.validarHorario');
 Route::get('tratamiento/editarTratamiento',[TratamientoController::class,'editarTratamiento'])->name('tratamiento.editar');

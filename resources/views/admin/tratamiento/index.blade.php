@@ -65,6 +65,9 @@
                                                             ><i class="fas fa-edit"></i></a>
                                                     </div>
                                                     <div class="btn-group mb-1">
+                                                        <a title="Odontograma" href="{{route('odontograma.edit',$tra->id)}}" class="btn btn-outline-info"><i class="fas fa-teeth"></i></a>
+                                                    </div>
+                                                    <div class="btn-group mb-1">
                                                         <a onclick="eliminarTratamiento({{ $tra->id }})"
                                                             class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
                                                     </div>
