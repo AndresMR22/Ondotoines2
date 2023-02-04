@@ -13,6 +13,7 @@ class CaraDienteProceso extends Pivot
         'cara_id',
         'diente_id',
         'proceso_id',
+        'posicion_cara'
     ];
 
     // ============== odontograma_cdp

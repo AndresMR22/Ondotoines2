@@ -22,6 +22,7 @@
 </div>
 @endif
 
+<input type="hidden" name="datos" id="datos" value="{{$datos}}">
     <!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
         <div class="content">
@@ -1314,7 +1315,6 @@
             {
                 'idDiente':idDiente,
                 'idCara':idCara,
-                'idCaraOriginal':idCaraColor,
                 'idReferencia':idReferencia
             }
             arregloProcesos.push(data)
@@ -1362,6 +1362,17 @@
    //  data-bs-toggle="modal" data-bs-target="#modalCrear"
    document.addEventListener('DOMContentLoaded',function()
    {
+    let datos = JSON.parse(document.getElementById('datos').value)
+        datos.forEach(item => {
+            console.log(item)
+           let cara =  document.getElementById('pos'+item.posicion_cara)
+           cara.title = item.descripcion;
+           if(cara!=undefined || cara!=null)
+           {
+            
+            cara.style.backgroundColor=item.color;
+           }
+        })
         document.querySelectorAll('.estiloCubo').forEach((item,i) =>{
         // item.setAttribute('id',i)
         item.addEventListener('click',showOptions)

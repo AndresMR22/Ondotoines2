@@ -5,102 +5,88 @@ namespace App\Http\Controllers;
 use App\Models\Odontograma;
 use App\Models\Diente;
 use App\Models\Cara;
+use App\Models\Tratamiento;
 use App\Models\CaraDienteProceso;
+use App\Models\Proceso;
 use App\Models\Odontograma_cdp;
 use App\Http\Requests\StoreOdontogramaRequest;
 use App\Http\Requests\UpdateOdontogramaRequest;
 
 class OdontogramaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('admin.odontograma.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    
     public function store(StoreOdontogramaRequest $request)
     {
-        // dd($request);
         $odontograma = Odontograma::create([
-            "observacion"=>"Odontograma de prueba",
-            "tratamiento_id"=>$request->idTratamiento
+            "observacion"=>"Odontograma de prueba4",
+            "tratamiento_id"=>1
         ]);
-            // dd($request);
-        $idCara = $request->procesos[0]['idCara'];
-        $idDiente = $request->procesos[0]['idDiente'];
-        $idReferencia = $request->procesos[0]['idReferencia'];
+            
+            
+            foreach($request->procesos as $key => $proceso)
+            {
 
-        // dd($idCara,$idDiente,$idReferencia);
-        // $diente = Diente::find($idDiente);
-        $cara = Cara::find($idCara);
-        $cara->dientes()->attach($idDiente,['proceso_id'=>$idReferencia]);
-        // $diente->caras()->attach($idCara,['proceso_id'=>$idReferencia]);
-        
-        $cdp = CaraDienteProceso::orderBy('id','DESC')->take(1)->first();
+                $idCara = $proceso['idCara'];
+                $idDiente = $proceso['idDiente'];
+                $diente = Diente::where('posicion',$idDiente)->first();
+                $idReferencia = $proceso['idReferencia'];
+                $posicionCara = $proceso['idCaraOriginal'];
+                // dd($idCara,
+                // $idDiente,
+                // $idReferencia,
+                // $posicionCara);
+                $cara = Cara::find($idCara);
+                $cara->dientes()->attach($diente->id,['proceso_id'=>$idReferencia,'posicion_cara'=>$posicionCara]);
+                
+                $cdp = CaraDienteProceso::orderBy('id','DESC')->take(1)->first();
                 Odontograma_cdp::create([
-                    "odontograma_id"=>$odontograma->id,
-                    "cdp_id" => $cdp->id
-                ]);
-    
-
+                            "odontograma_id"=>$odontograma->id,
+                            "cdp_id" => $cdp->id
+                        ]);
+            }
+        
         return 1;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Odontograma  $odontograma
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Odontograma $odontograma)
+    public function show($id)
     {
-        //
+        $tratamiento = Tratamiento::find($id);
+        $odontogramas = $tratamiento->odontograma->get();
+        // dd($odontogramas);
+        $odonto = Odontograma::find($odontogramas[1]->id);//tiene que tratar de ser first un tratamiento un unico odontograma
+        $datos =  $odonto->cdps()->get();
+        foreach($datos as $key => $dato)
+        {
+            $procesoId = $dato->proceso_id;
+            $proceso = Proceso::find($procesoId);
+            $color = $proceso->color;
+            $descripcion = $proceso->descripcion;
+            $dato->setAttribute('color',$color);
+            $dato->setAttribute('descripcion',$descripcion);
+        }
+        $idTratamiento = $id;
+    return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Odontograma  $odontograma
-     * @return \Illuminate\Http\Response
-     */
     public function edit($idTratamiento)
     {
         return view('admin.odontograma.index',compact('idTratamiento'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateOdontogramaRequest  $request
-     * @param  \App\Models\Odontograma  $odontograma
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateOdontogramaRequest $request, Odontograma $odontograma)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Odontograma  $odontograma
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Odontograma $odontograma)
     {
         //

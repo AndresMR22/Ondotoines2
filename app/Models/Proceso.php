@@ -12,6 +12,7 @@ class Proceso extends Model
     public $fillable=
     [
         "nombre",
+        "color","descripcion"
     ];
 
     // public function caras()

@@ -10,6 +10,7 @@ class Odontograma extends Model
     use HasFactory;
     public $fillable=
     [
+        "id",
         "observacion",
         "tratamiento_id"
     ];
@@ -18,5 +19,11 @@ class Odontograma extends Model
     {
         return $this->belongsTo(Tratamiento::class);
     }
+
+      // =========================== dieta_alimento_comida_dia
+      public function cdps()
+      {
+          return $this->belongsToMany(CaraDienteProceso::class,'odontograma_cdp','odontograma_id','cdp_id')->withTimestamps();
+      }
 
 }

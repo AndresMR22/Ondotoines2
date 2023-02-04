@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('cara_id');
             $table->unsignedBigInteger('diente_id');
-            $table->unsignedBigInteger('proceso_id');       
+            $table->unsignedBigInteger('proceso_id');    
+            $table->integer('posicion_cara');
             $table->foreign('cara_id')->references('id')->on('caras');
             $table->foreign('diente_id')->references('id')->on('dientes');
             $table->foreign('proceso_id')->references('id')->on('procesos');
