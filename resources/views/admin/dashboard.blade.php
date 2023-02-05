@@ -34,7 +34,7 @@
 
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-account-group-outline"></i>
+								<i class="mdi mdi-account-key"></i>
 								<span class="nav-text">Admin</span> <b class="caret"></b>
 							</a>
 							<div class="collapse">
@@ -52,7 +52,7 @@
 						<!-- Vendors -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-account-group-outline"></i>
+								<i class="mdi mdi-calendar"></i>
 								<span class="nav-text">Citas</span> <b class="caret"></b>
 							</a>
 							<div class="collapse">
@@ -72,7 +72,7 @@
 							</div>
 						</li>
 
-						<li class="has-sub">
+						{{-- <li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
 								<i class="mdi mdi-account-group-outline"></i>
 								<span class="nav-text">Odontograma</span> <b class="caret"></b>
@@ -87,14 +87,14 @@
 
 								</ul>
 							</div>
-						</li>
+						</li> --}}
 
 						
 
 						<!-- Category -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-dns-outline"></i>
+								<i class="mdi mdi-table-edit"></i>
 								<span class="nav-text">Tratamiento</span> <b class="caret"></b>
 							</a>
 							<div class="collapse">
@@ -116,7 +116,7 @@
 						<!-- Products -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-palette-advanced"></i>
+								<i class="mdi mdi-account-box"></i>
 								<span class="nav-text">Pacientes</span> <b class="caret"></b>
 							</a>
 							<div class="collapse">
@@ -138,7 +138,7 @@
 						<!-- Orders -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-cart"></i>
+								<i class="mdi mdi-table-column-plus-after"></i>
 								<span class="nav-text">Procedimiento</span> <b class="caret"></b>
 							</a>
 							<div class="collapse">
@@ -160,7 +160,7 @@
 							<!-- Orders -->
 							<li class="has-sub">
 								<a class="sidenav-item-link" href="{{route('seguimiento.index')}}">
-									<i class="mdi mdi-cart"></i>
+									<i class="mdi mdi-account-search"></i>
 									<span class="nav-text">Seguimiento</span> 
 								</a>
 							</li>

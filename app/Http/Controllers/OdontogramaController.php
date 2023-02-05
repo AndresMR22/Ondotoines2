@@ -28,7 +28,7 @@ class OdontogramaController extends Controller
     {
         $odontograma = Odontograma::create([
             "observacion"=>"Odontograma de prueba4",
-            "tratamiento_id"=>1
+            "tratamiento_id"=>$request->get('idTratamiento')
         ]);
             
             
@@ -60,10 +60,9 @@ class OdontogramaController extends Controller
     public function show($id)
     {
         $tratamiento = Tratamiento::find($id);
-        $odontogramas = $tratamiento->odontograma->get();
-        // dd($odontogramas);
-        $odonto = Odontograma::find($odontogramas[1]->id);//tiene que tratar de ser first un tratamiento un unico odontograma
+        $odonto = Odontograma::where('tratamiento_id',$tratamiento->id)->first();
         $datos =  $odonto->cdps()->get();
+        // dd($datos);
         foreach($datos as $key => $dato)
         {
             $procesoId = $dato->proceso_id;
