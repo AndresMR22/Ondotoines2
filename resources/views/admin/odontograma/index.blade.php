@@ -1245,6 +1245,35 @@
         </div>
     </div>
 
+     {{-- MODAL OPCIONES CLICK DERECHO --}}
+     <div class="modal fade modal-opciones-click-derecho" id="modalOpcionesClickDerecho" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header px-4">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">OPCIONES</h5>
+                    </div>
+
+                    <div class="modal-body px-4">
+                    <div class="texto" style=" display:flex; justify-content: center;">
+                        <p style="text-align:justify">¿Desea retirar el proceso a realizar en esta cara del diente?</p>
+                    </div>
+                    <div class="botones" style=" display:flex; justify-content: center; align-items:center; gap:15px;">
+                        <a id="confirmarRetirarProceso"  class="btn btn-success">SI</a>
+                        <a onclick="$('.modal-opciones-click-derecho').modal('hide');" class="btn btn-danger">NO</a>
+                    </div>
+                    </div>
+
+                    {{-- <div class="modal-footer px-4">
+                        <button type="submit" class="btn btn-primary btn-pill">Guardar cambios</button>
+                    </div> --}}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="posCaraColorRetirar" id="posCaraColorRetirar">
     <form id="formulario">
         @csrf
     </form>
@@ -1334,6 +1363,8 @@
             }
           
             console.log('procesos:',arregloProcesos)
+
+            $(".modal-add-contact").modal("hide");
         }
 
         function guardarCambios()
@@ -1348,25 +1379,78 @@
                             idTratamiento:document.getElementById('idTratamiento').value                        
                             }
                     }).done(function(res) {
-                        alert('hola')
-                        //    if(res==1)
-						//    {
-						// 	window.location.href = "/admin/tratamiento"
-						//    }else
-						//    {
-						// 	alert('No se pudo actualizar el tratamiento')
-						//    }
+                           if(res==1)
+						   {
+							window.location.href = "/admin/tratamiento"
+						   }else
+						   {
+							alert('No se pudo actualizar el tratamiento')
+						   }
                         })
         }
 
+        var clickDerecho = false;
    //  data-bs-toggle="modal" data-bs-target="#modalCrear"
    document.addEventListener('DOMContentLoaded',function()
    {
         document.querySelectorAll('.estiloCubo').forEach((item,i) =>{
         // item.setAttribute('id',i)
+        
         item.addEventListener('click',showOptions)
+        item.addEventListener("contextmenu",showOptionsProceso)
+
+           
+       
     })
         
    })
+
+   function showOptionsProceso(e)
+   {
+    let tieneColorLaCara = e.target.style[0]
+    let pos = e.target.id
+    let posCaraColor = pos.substr(3)
+    document.getElementById('posCaraColorRetirar').value = posCaraColor
+     document.getElementById('confirmarRetirarProceso').addEventListener('click',retirarProceso)
+
+     
+            if(!clickDerecho && tieneColorLaCara != undefined)
+            {
+                
+                $(".modal-opciones-click-derecho").modal("show");
+                clickDerecho = true;
+            } 
+            else
+            {
+                $(".modal-opciones-click-derecho").modal("hide");
+                clickDerecho = false;
+            }
+               
+   }
+
+   function retirarProceso()
+   {
+    let posCaraColor = document.getElementById('posCaraColorRetirar').value;
+    let cant = Object.keys(arregloProcesos);
+    let long = cant.length;
+
+        for(let i = 0; i<arregloProcesos.length; i++)
+        {
+            if(arregloProcesos[i].idCaraOriginal == posCaraColor)
+            {
+                delete arregloProcesos[i]
+                let auxProcesos = []
+                                for (let x = 0; x < long; x++) {
+                                    if (arregloProcesos[x] !== undefined)
+                                        auxProcesos.push(arregloProcesos[x]);
+                                }
+                                arregloProcesos =[
+                                    ...auxProcesos
+                                ]
+                console.log('arreglo de procesos:',arregloProcesos)
+            }
+        }
+   }
+  
     </script>
 @endsection

@@ -64,13 +64,15 @@
                                                              href="{{route('tratamiento.edit', $tra->id)}}"
                                                             ><i class="fas fa-edit"></i></a>
                                                     </div>
+                                                    @if(isset($tra->odontograma))
                                                     <div class="btn-group mb-1">
-                                                        <a title="Odontograma" href="{{route('odontograma.edit',$tra->id)}}" class="btn btn-outline-info"><i class="fas fa-teeth"></i></a>
+                                                        <a title="Ver mi odontograma" href="{{route('odontograma.show',$tra->id)}}" class="btn btn-outline-primary"><i class="fas fa-teeth"></i></a>
                                                     </div>
-
+                                                    @else
                                                     <div class="btn-group mb-1">
-                                                        <a title="Odontograma" href="{{route('odontograma.show',$tra->id)}}" class="btn btn-outline-primary"><i class="fas fa-teeth"></i></a>
+                                                        <a title="Rellenar odontograma" href="{{route('odontograma.edit',$tra->id)}}" class="btn btn-outline-info"><i class="fas fa-teeth"></i></a>
                                                     </div>
+                                                    @endif
 
                                                     <div class="btn-group mb-1">
                                                         <a onclick="eliminarTratamiento({{ $tra->id }})"
