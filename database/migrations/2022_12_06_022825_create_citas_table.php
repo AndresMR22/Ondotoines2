@@ -20,9 +20,13 @@ return new class extends Migration
             $table->string('telefono')->nullable();
             $table->string('medico')->nullable();
             $table->string('estado')->nullable();
+            $table->string('asunto')->nullable();
             $table->string('especialidad')->nullable();
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('mensaje_id')->nullable();
+            $table->foreign('mensaje_id')->references('id')->on('mensajes')->onDelete('cascade')->onUpdate('cascade');
+           
             $table->timestamps();
         });
     }

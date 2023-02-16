@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Paciente;
+use App\Models\Mensaje;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCitaRequest;
@@ -44,14 +45,15 @@ class CitaController extends Controller
     public function store(StoreCitaRequest $request)
     {
         
-       Cita::create([
+       $cita = Cita::create([
         "fecha_inicio"=>$request->fecha_inicio,
         "fecha_fin"=>$request->fecha_fin,
         "telefono"=>$request->telefono,
         "medico"=>$request->medico,
         "estado"=>"pendiente",
         "especialidad"=>$request->especialidad,
-        "paciente_id"=>$request->paciente_id, 
+        "paciente_id"=>$request->paciente_id,
+        "asunto" => $request->asunto
        ]);
 
        $paciente = Paciente::find($request->paciente_id);
@@ -61,6 +63,17 @@ class CitaController extends Controller
         "end"=>$request->fecha_fin,
         "title"=>$paciente->nombre
        ]);
+
+    //    $mensaje = Mensaje::create([
+    //     "nombre"=>"Mensaje de prueba",
+    //     "email"=>"gamr21@outlook.es",
+    //     "telefono"=>"0988703045",
+    //     "asunto"=>"Notificacion",
+    //     "mensaje"=>"El paciente ha reservado una cita",
+
+    //    ]);
+
+      
 
        return back();
     }
@@ -111,6 +124,7 @@ class CitaController extends Controller
             "medico"=>$request->medico,
             "estado"=>$request->estado,
             "especialidad"=>$request->especialidad,
+            "asunto" => $request->asunto
         ]);
 
         return back();

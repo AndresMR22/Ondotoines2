@@ -33,9 +33,7 @@
                         <span><i class="mdi mdi-chevron-right"></i></span>Odontograma
                     </p>
                 </div>
-                <div>
-                    <a href="{{ route('procedimiento.create') }}" class="btn btn-primary"> Agregar procedimiento</a>
-                </div>
+                
             </div>
 
             <style>

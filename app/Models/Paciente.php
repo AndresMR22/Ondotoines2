@@ -23,6 +23,7 @@ class Paciente extends Model
         "telefono",
         "sexo",
         "observacion",
+        "correo"
     ];
 
     public function citas()

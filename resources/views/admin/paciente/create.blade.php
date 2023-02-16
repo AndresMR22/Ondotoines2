@@ -60,6 +60,11 @@
 														<input type="text" name="apellido" class="form-control slug-title" value="{{ old('apellido') }}" id="apellido" required>
 													</div>
 
+													<div class="col-md-6">
+														<label for="inputEmail4" class="form-label">Correo</label>
+														<input type="email" name="correo" class="form-control slug-title" value="{{ old('correo') }}" id="correo" required>
+													</div>
+
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Lugar de nacimiento</label>
 														<input type="text" name="lugar_nac" class="form-control slug-title" value="{{ old('lugar_nac') }}" id="lugar_nac" required>

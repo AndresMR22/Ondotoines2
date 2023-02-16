@@ -48,6 +48,7 @@ class PacienteController extends Controller
             "telefono"=>$request->telefono,
             "sexo"=>$request->sexo,
             "observacion"=>$request->observacion,
+            "correo" => $request->correo
         ]);
 
         return redirect()->route('paciente.index');
@@ -91,6 +92,7 @@ class PacienteController extends Controller
         "telefono"=>$request->telefono,
         "edad"=>$request->edad,
         "sexo"=>$request->sexo,
+        "correo"=>$request->correo
        ]);
 
        return back();

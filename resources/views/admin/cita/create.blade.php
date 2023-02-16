@@ -32,6 +32,10 @@
 														<label for="inputEmail4" class="form-label">Medico</label>
 														<input type="text" name="medico" class="form-control slug-title" id="medico">
 													</div>
+													<div class="col-md-6">
+														<label for="inputEmail4" class="form-label">Asunto</label>
+														<input type="text" name="asunto" class="form-control slug-title" id="asunto">
+													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Especialidad</label>
 														<input type="text" name="especialidad" class="form-control slug-title" id="especialidad">

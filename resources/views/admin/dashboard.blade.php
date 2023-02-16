@@ -250,7 +250,7 @@
 											<li class="nav-item mx-3 my-0 py-0">
 												<a href="#" class="nav-link active pb-3" id="home2-tab"
 													data-bs-toggle="tab" data-bs-target="#home2" role="tab"
-													aria-controls="home2" aria-selected="true">Pendientes (1)</a>
+													aria-controls="home2" aria-selected="true">Pendientes ({{ auth()->user()->unreadNotifications->count() }})</a>
 											</li>
 {{-- 
 											<li class="nav-item mx-3 my-0 py-0">
@@ -269,28 +269,30 @@
 										<div class="tab-content" id="myNotifications">
 											<div class="tab-pane fade show active" id="home2" role="tabpanel">
 												<ul class="list-unstyled" data-simplebar style="height: 360px">
+													@foreach (auth()->user()->unreadNotifications as $notification)
 													<li>
 														<a href="javscript:void(0)"
 															class="media media-message media-notification ">
 															<div class="position-relative mr-3">
-																<img class="rounded-circle" src="{{asset('admin/assets/img/user/u2.jpg')}}"
-																	alt="Image">
-																<span class="status away"></span>
+																<i class="fas {{$notification->data['icon']}}"></i>
+																{{-- <span class="status away"></span> --}}
 															</div>
+														
 															<div class="media-body d-flex justify-content-between">
 																<div class="message-contents">
-																	<h4 class="title">Daniel</h4>
-																	<p class="last-msg">Cita próxima a las 15:00 de 2023-01-07</p>
+																	<h4 class="title">{{$notification->data['nombres']}}</h4>
+																	<p class="last-msg">Cita: {{$notification->data['hora']}} de 2023-01-07</p>
 
 																	<span
 																		class="font-size-12 font-weight-medium text-secondary">
-																		<i class="mdi mdi-clock-outline"></i> Dentro de 1 hora...
+																		<i class="mdi mdi-clock-outline"></i> Dentro de {{$notification->data['horasFaltantes']}} horas...
 																	</span>
 																</div>
 															</div>
+														
 														</a>
 													</li>
-
+													@endforeach
 													
 
 												</ul>

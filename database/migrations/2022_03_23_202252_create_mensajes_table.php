@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('mensajes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('email');
-            $table->string('telefono');
-            $table->text('asunto');
-            $table->longtext('mensaje');
+            $table->string('nombre')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telefono')->nullable();
+            $table->text('asunto')->nullable();
+            $table->longtext('mensaje')->nullable();
+            $table->string('hora')->nullable();
+            $table->string('horasFaltantes')->nullable();
+            $table->string('notificado')->nullable();
 
             $table->timestamps();
         });
