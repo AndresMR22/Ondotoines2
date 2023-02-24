@@ -25,18 +25,18 @@
             <div class="col-xl-3 col-sm-6 p-b-15 lbl-card">
                 <div class="card card-mini dash-card card-3">
                     <div class="card-body">
-                        <h2 class="mb-1">15,503</h2>
-                        <p>Daily Order</p>
-                        <span class="mdi mdi-package-variant"></span>
+                        <h2 class="mb-1">{{ auth()->user()->unreadNotifications->count() }}</h2>
+                        <p>Notificaciones pendientes</p>
+                        <span class="mdi mdi-bell"></span>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 p-b-15 lbl-card">
                 <div class="card card-mini dash-card card-4">
                     <div class="card-body">
-                        <h2 class="mb-1">$98,503</h2>
-                        <p>Daily Revenue</p>
-                        <span class="mdi mdi-currency-usd"></span>
+                        <h2 class="mb-1">{{count($admins)}}</h2>
+                        <p>Admins</p>
+                        <span class="mdi mdi-account-key"></span>
                     </div>
                 </div>
             </div>

@@ -50,6 +50,7 @@ class SendAlert extends Command
                         "telefono"=>$paciente->telefono,
                         "asunto"=>$cita->asunto,
                         "mensaje"=>$mensajeAlerta,
+                        "cita_id"=>$cita->id,
                         "notificado"=>"SI",
                         "hora" => $horaInicio,
                         "horasFaltantes"=>$diff

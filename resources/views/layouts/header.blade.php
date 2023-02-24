@@ -69,7 +69,7 @@
                         <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
                             <div class="header-icon"><img src="{{asset('images/icons/cart.svg')}}"
                                     class="svg_img header_svg" alt="" /></div>
-                            <span class="ec-header-count cart-count-lable">{{count($shopping_cart->shopping_cart_details)}}</span>
+                            {{-- <span class="ec-header-count cart-count-lable">{{count($shopping_cart->shopping_cart_details)}}</span> --}}
                         </a>
                         <!-- Header Cart End -->
                         <!-- Header menu Start -->
@@ -137,7 +137,7 @@
                             <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle" title="articulos carrito">
                                 <div class="header-icon"><img src="{{asset('images/icons/cart.svg')}}"
                                         class="svg_img header_svg" alt="" /></div>
-                                <span class="ec-header-count cart-count-lable">{{count($shopping_cart->shopping_cart_details)}}</span>
+                                {{-- <span class="ec-header-count cart-count-lable">{{count($shopping_cart->shopping_cart_details)}}</span> --}}
                             </a>
                             <!-- Header Cart End -->
                         </div>

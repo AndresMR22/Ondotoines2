@@ -17,8 +17,9 @@ class AdminController extends Controller
     {
         $pacientes = Paciente::all();
         $citas = Cita::all();
+        $admins = User::all();
 
-        return view('admin.estadisticas',compact('pacientes','citas'));
+        return view('admin.estadisticas',compact('pacientes','citas','admins'));
     }
     public function index()
     {

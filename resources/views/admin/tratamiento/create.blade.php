@@ -31,7 +31,6 @@
         </div>
         <div class="my-3 d-flex justify-content-center" style="gap:20px;">
             <a data-bs-toggle="modal" data-bs-target="#modalProcedimientos" class="btn btn-primary">Agregar Procedimiento</a>
-            <a href="{{route('odontograma.index')}}" class="btn btn-info">Odontograma</a>
         </div>
 
         <div class="row">
@@ -86,7 +85,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-12 d-flex justify-content-center">
                                         <a onclick="guardar()" class="btn btn-primary">Guardar</a>
                                     </div>
                                 </div>

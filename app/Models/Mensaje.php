@@ -9,6 +9,7 @@ class Mensaje extends Model
 {
     use HasFactory;
     public $fillable=[
+        "cita_id",
         "nombre",
         "email",
         "telefono",

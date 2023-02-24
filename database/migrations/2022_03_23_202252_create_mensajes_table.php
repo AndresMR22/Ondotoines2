@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('mensajes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->nullable();
+            $table->string('cita_id')->nullable();
             $table->string('email')->nullable();
             $table->string('telefono')->nullable();
             $table->text('asunto')->nullable();

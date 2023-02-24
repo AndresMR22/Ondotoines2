@@ -32,7 +32,6 @@ class NotificacionMensaje extends Notification
                     ->line('Thank you for using our application!');
     }
 
-    
     public function toArray($notifiable)
     {
         return [
@@ -40,6 +39,7 @@ class NotificacionMensaje extends Notification
                 "correo"=>$this->mensaje->email,
                 "asunto"=>$this->mensaje->asunto,
                 "mensaje"=>$this->mensaje->mensaje,
+                "cita_id"=>$this->mensaje->cita_id,
                 "hora"=>$this->mensaje->hora,
                 "horasFaltantes"=>$this->mensaje->horasFaltantes,
                 "icon"=>"fa-shopping-cart",

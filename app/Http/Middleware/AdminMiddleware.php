@@ -15,6 +15,6 @@ class AdminMiddleware
             return $next($request);
         
             //sino redirigir a login
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

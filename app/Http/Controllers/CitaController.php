@@ -36,6 +36,15 @@ class CitaController extends Controller
         return view('admin.cita.create',compact('pacientes'));
     }
 
+    public function marcar_una_leida($notificacion_id, $cita_id){
+        auth()->user()->unreadNotifications->when($notificacion_id, function ($query) use
+        ($notificacion_id){
+            return $query->where('id',$notificacion_id);
+        })->markAsRead();
+        $cita = Cita::findOrFail($cita_id);
+        return redirect()->route('cita.show', $cita->id);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -84,9 +93,18 @@ class CitaController extends Controller
      * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function show(Cita $cita)
+    public function show($id)
     {
-        //
+        $cita = Cita::find($id);
+        $paciente = Paciente::find($cita->paciente_id);
+        return view('admin.cita.show',compact('cita','paciente'));
+    }
+
+    public function verNotificaciones()
+    {
+        $notificaciones = Mensaje::all();
+        auth()->user()->unreadNotifications->markAsRead();
+        return view('admin.notificacion.index',compact('notificaciones'));
     }
 
     /**
@@ -167,4 +185,12 @@ class CitaController extends Controller
        $fechas = array('fechaInicio'=>$fechaInicioBD, 'fechaFin'=>$fechaFinBD);
         return $fechas;
     }
+
+    public function eliminarNotificacion($id)
+    {
+        Mensaje::destroy($id);
+        return back();
+    }
+
+   
 }

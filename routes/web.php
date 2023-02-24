@@ -48,6 +48,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     // Route::get('/deuda/abonos/{cliente_id}',[AbonoController::class,'abonosByCliente'])->name('abono.abonosByCliente');
     // Route::post('/venta/guardarVenta',[VentaController::class,'guardarVenta'])->name('venta.guardarVenta');
 
+    //NOTIFICACIONES
+    Route::get('marcar_una_leida/{notificacion_id}/{orden_id}',[CitaController::class,'marcar_una_leida'])->name('marcar_una_leida');
+
+    //REDIRECCION NOTIFICACIONES LEIDAS
+    Route::get('/datos-cita/{id}',[CitaController::class, 'show'])->name('cita.showOrden');
+    //LEER TODAS LAS NOTIFICACIONES
+    Route::get('/notificaciones',[CitaController::class, 'verNotificaciones'])->name('cita.showNotificaciones');
+    //ELIMINAR NOTIFICACION
+    Route::delete('/eliminar-notificacion/{id}',[CitaController::class, 'eliminarNotificacion'])->name('cita.eliminarNotificacion');
+
+
+
 });
 
 
