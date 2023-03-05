@@ -26,7 +26,7 @@ class StorePacienteRequest extends FormRequest
         return [
             "nombre"=>"required|string|min:3|max:150",
             "apellido"=>"required|string|min:3|max:150",
-            "edad"=>"required|numeric|min:5|max:100",
+            "fecha_nac"=>"required|string",
             "lugar_nac"=>"required|string|min:3|max:100",
             "ocupacion"=>"required|string|min:5|max:100",
             "direccion"=>"required|string|min:5|max:250",

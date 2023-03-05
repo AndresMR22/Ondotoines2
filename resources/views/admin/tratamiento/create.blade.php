@@ -42,20 +42,16 @@
 
                             <form method="POST" action="{{route('tratamiento.store')}}" id="formTratamiento">
                                 @csrf
-                                <div class="form-group row">
-                                    <label for="text" class="col-12 col-form-label">Asunto</label> 
-                                    <div class="col-12">
-                                        <input id="asunto" name="asunto" class="form-control here slug-title" type="text">
-                                    </div>
-                                </div>
 
                                 <div class="form-group row">
-                                    <label for="slug" class="col-12 col-form-label">Medico</label> 
-                                    <div class="col-12">
-                                        <input id="medico" name="medico" class="form-control here set-slug" type="text">
-                                        {{-- <small>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</small> --}}
-                                    </div>
+                                    <label class="form-label">Medicos</label>
+                                    <select name="medico" id="medico" class="form-select">
+                                            @foreach($medicos as $medico)
+                                            <option value="{{$medico->nombre}}">{{$medico->nombre}}</option>
+                                            @endforeach
+                                    </select>
                                 </div>
+
 
                                 <div class="form-group row">
                                     <label class="col-12 col-form-label"> Observación</label> 
@@ -64,15 +60,21 @@
                                     </div>
                                 </div> 
 
+                                <p id="textoId"></p> 
+
                                 <div class="form-group row">
-                                    <label class="form-label">Pacientes</label>
-                                    <select name="paciente_id" id="paciente" class="form-select">
-                                        {{-- <optgroup label="Fashion"> --}}
-                                            @foreach($pacientes as $paciente)
-                                            <option value="{{$paciente->id}}">{{$paciente->nombre}}</option>
-                                            @endforeach
-                                        {{-- </optgroup> --}}
-                                    </select>
+                                    <label class="col-12 col-form-label"> Paciente</label> 
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" name="texto" id="texto">
+                                    </div>
+                                    <div class="col-4">
+                                        <a class="btn btn-primary" onclick="buscarPaciente()"><i class="fas fa-search"></i></a>
+                                    </div>
+                                </div>
+
+
+                                <div class="resultadosPaciente" id="resultadosPaciente">
+                                    
                                 </div>
                                
 
@@ -91,6 +93,8 @@
                                 </div>
 
                                 <input type="hidden" name="procedimientos" id="procedimientos">
+                               
+                                <input type="hidden" name="paciente_id" id="paciente_id">
                             </form>
 
                         </div>
@@ -129,7 +133,7 @@
                                      <div class="modal fade modal-add-contact" id="modalProcedimientos" tabindex="-1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                             <div class="modal-content">
-                                                <form  >
+                                                
                                                     <div class="modal-header px-4 d-flex justify-content-between" >
                                                         <div>
                                                             <h5 class="modal-title" id="exampleModalCenterTitle">Procedimientos disponibles</h5>
@@ -184,7 +188,10 @@
                                                             data-bs-dismiss="modal">Cancelar</button>
                                                         <button type="submit" class="btn btn-primary btn-pill">Guardar cambios</button>
                                                     </div> --}}
-                                                </form>
+                                               
+                                                    
+                                                    
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -305,6 +312,69 @@
         console.log('idFilaProc:'+idFilaProc)
         proSelected = proSelected.filter(item => item.idFila != idFilaProc)
         console.log(proSelected)
+    }
+
+       
+
+    function buscarPaciente()
+    {
+        let texto = document.getElementById('texto').value
+        if(texto.length>=3)
+        {
+            $.ajax({
+                            url: "{{ route('tratamiento.buscarPaciente') }}",
+                            dataType: "json",
+                            data: {
+                                nombre:texto
+                                }
+                            }).done(function(res)
+                            {
+                                let bodyPacientes = document.getElementById('resultadosPaciente')
+                                $(bodyPacientes).empty();
+                                res.forEach((item,i)=>{
+                                    $(bodyPacientes).append(`
+                                    <div style="display:flex; justify-content:center; transform: scale(0.7);">
+                                   <input type="checkbox" class="checkbox" class="checkbox" name="paciente_id" id="paciente${item.id}" >
+                                    <label class="form-control">${item.nombre} ${item.apellido}</label>  
+                                    </div>
+                                    `);
+    
+                                    document.querySelectorAll('li.nav-item').forEach(item => {
+                                        
+                                    });
+    
+                                   document.querySelectorAll('.checkbox').forEach(item =>
+                                   {
+                                        item.addEventListener('click', traer);
+                                   })
+    
+                                })
+                            })
+        }else
+        {
+            alert('Ingrese minimo 3 letras para la búsqueda')
+        }
+
+                    
+    }
+
+    var texto = "";
+    function traer(e)
+    {
+        // console.log(e.target.checked)
+        let nowCheckbox = e
+        // let id = e.target.id;
+        // document.getElementById('textoId').textContent = e.target.id
+        document.querySelectorAll('.checkbox').forEach(item => {
+            item.checked = false;
+        })
+        nowCheckbox.target.checked = true;
+        let id = nowCheckbox.target.attributes.id.value;
+        id = id.substr(8)
+        // texto = nowCheckbox.target.attributes.id.value
+        
+        document.getElementById('paciente_id').value = id;
+        
     }
 
 </script>

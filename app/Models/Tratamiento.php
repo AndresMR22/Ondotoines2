@@ -10,7 +10,7 @@ class Tratamiento extends Model
     use HasFactory;
 
     public $fillable = [
-        "asunto",
+        // "asunto",
         "observacion",
         "especialidad",
         "medico",

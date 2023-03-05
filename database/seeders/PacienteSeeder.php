@@ -18,7 +18,7 @@ class PacienteSeeder extends Seeder
         Paciente::create([
             "nombre"=>"Andres",
             "apellido"=>"Morales",
-            "edad"=>"24",
+            "fecha_nac"=>"1998-08-13",
             "lugar_nac"=>"Cuenca",
             "ocupacion"=>"Dev",
             "direccion"=>"Sto Dgo",
@@ -32,7 +32,7 @@ class PacienteSeeder extends Seeder
         Paciente::create([
             "nombre"=>"Daniel",
             "apellido"=>"Molina",
-            "edad"=>"25",
+            "fecha_nac"=>"1998-10-11",
             "lugar_nac"=>"Macas",
             "ocupacion"=>"Dev",
             "correo"=> "daniel@gmail.com",

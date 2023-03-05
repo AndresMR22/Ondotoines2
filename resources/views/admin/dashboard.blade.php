@@ -49,6 +49,28 @@
 							</div>
 						</li>
 
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-medical-bag"></i>
+								<span class="nav-text">Medicos</span> <b class="caret"></b>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('medico.create')}}">
+											<span class="nav-text">Agregar</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{route('medico.index')}}">
+											<span class="nav-text">Listar</span>
+										</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
+
 						<!-- Vendors -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
@@ -166,7 +188,7 @@
 							</li>
 
 							<li class="has-sub">
-								<a class="sidenav-item-link" href="{{route('seguimiento.index')}}">
+								<a class="sidenav-item-link" href="{{route('cita.showNotificaciones')}}">
 									<i class="mdi mdi-bell-ring"></i>
 									<span class="nav-text">Notificaciones</span> 
 								</a>

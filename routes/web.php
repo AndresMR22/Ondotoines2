@@ -12,6 +12,7 @@ use App\Http\Controllers\ProcedimientoController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\OdontogramaController;
+use App\Http\Controllers\MedicoController;
 
 Auth::routes();
 
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::resource('cita',CitaController::class);
     Route::resource('administrador',AdminController::class);
     Route::resource('odontograma',OdontogramaController::class);
+    Route::resource('medico',MedicoController::class);
     //Seguimiento pacientes
     Route::get('/seguimiento',[SeguimientoController::class,'index'])->name('seguimiento.index');
     Route::get('/seguimiento/paciente/{id}',[SeguimientoController::class,'datosByPaciente'])->name('seguimiento.datosByPaciente');
@@ -65,3 +67,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
 Route::get('cita/validarhorario',[CitaController::class,'validarHorario'])->name('cita.validarHorario');
 Route::get('tratamiento/editarTratamiento',[TratamientoController::class,'editarTratamiento'])->name('tratamiento.editar');
+Route::get('tratamiento/buscar',[TratamientoController::class,'buscarPaciente'])->name('tratamiento.buscarPaciente');

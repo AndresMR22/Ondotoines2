@@ -89,13 +89,16 @@
 													</div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">sexo</label>
-														<input type="text" name="sexo" class="form-control slug-title" value="{{ old('sexo') }}" id="sexo" required>
+														<select name="sexo" id="sexo" class="form-select" required>
+																<option value="M">Masculino</option>
+																<option value="M">Femenino</option>
+														</select>
 													</div>
 												
 													
 													<div class="col-md-6">
-														<label class="form-label">Edad</label>
-														<input type="number" name="edad" class="form-control" id="edad" value="{{ old('edad') }}" required>
+														<label class="form-label">Fecha de nacimiento</label>
+														<input type="date" name="fecha_nac" class="form-control" id="fecha_nac" value="{{ old('fecha_nac') }}" required>
 													</div>
 													<div class="col-md-12">
 														<label class="form-label">Observación</label>

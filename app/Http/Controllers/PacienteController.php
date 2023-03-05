@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
+use Carbon\Carbon;
+use DateTime;
 
 class PacienteController extends Controller
 {
@@ -16,6 +18,14 @@ class PacienteController extends Controller
     public function index()
     {
         $pacientes = Paciente::all();
+        foreach($pacientes as $paciente)
+        {
+            $fechaNac = $paciente->fecha_nac;
+            $nacimiento = new DateTime($fechaNac);
+            $ahora = new DateTime(date("Y-m-d"));
+            $diferencia = $ahora->diff($nacimiento);
+            $paciente->setAttribute('edad',$diferencia->y);
+        }
         return view('admin.paciente.index',compact('pacientes'));
     }
 
@@ -40,7 +50,7 @@ class PacienteController extends Controller
         Paciente::create([
             "nombre"=>$request->nombre,
             "apellido"=>$request->apellido,
-            "edad"=>$request->edad,
+            "fecha_nac"=>$request->fecha_nac,
             "lugar_nac"=>$request->lugar_nac,
             "ocupacion"=>$request->ocupacion,
             "direccion"=>$request->direccion,
@@ -90,7 +100,7 @@ class PacienteController extends Controller
         "nombre"=>$request->nombre,
         "apellido"=>$request->apellido,
         "telefono"=>$request->telefono,
-        "edad"=>$request->edad,
+        "fecha_nac"=>$request->edad,
         "sexo"=>$request->sexo,
         "correo"=>$request->correo
        ]);

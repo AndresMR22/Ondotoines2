@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tratamientos', function (Blueprint $table) {
             $table->id();
-            $table->text("asunto")->nullable();
+            // $table->text("asunto")->nullable();
             $table->text("observacion")->nullable();
             $table->text("especialidad")->nullable();
             $table->text("medico")->nullable();

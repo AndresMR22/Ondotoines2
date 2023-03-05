@@ -38,7 +38,6 @@
                                 <table id="responsive-data-table" class="table" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Asunto</th>
                                             <th>Especialidad</th>
                                             <th>Medico</th>
                                             <th>Paciente</th>
@@ -49,7 +48,6 @@
                                     <tbody>
                                         @foreach ($tratamientos as $key => $tra)
                                             <tr>
-                                                <td>{{ $tra->asunto }}</td>
                                                 <td>{{ $tra->especialidad }}</td>
                                                 <td>{{ $tra->medico }}</td>
                                                 <td>{{ $tra->paciente->nombre }}</td>

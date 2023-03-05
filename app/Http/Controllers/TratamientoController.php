@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tratamiento;
 use App\Models\Paciente;
 use App\Models\Procedimiento;
+use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTratamientoRequest;
 use App\Http\Requests\UpdateTratamientoRequest;
@@ -37,13 +38,19 @@ class TratamientoController extends Controller
     {
         $pacientes = Paciente::all();
         $procedimientos = Procedimiento::all();
-        return view('admin.tratamiento.create',compact('pacientes','procedimientos'));
+        $medicos = Medico::all();
+        return view('admin.tratamiento.create',compact('pacientes','procedimientos','medicos'));
     }
 
-   
-    public function store(StoreTratamientoRequest $request)
-    {
+   public function buscarPaciente(Request $request)
+   {
+    $nombre = $request->get('nombre');
+    $pacientes = Paciente::where('nombre','like','%'.$nombre.'%')->get();
+    return $pacientes;
+   }
 
+    public function store(Request $request)
+    {
         $procedimientos = $request->procedimientos;
         $procedimientos = json_decode($procedimientos);
         
@@ -53,7 +60,7 @@ class TratamientoController extends Controller
         }
         
         $tratamiento =  Tratamiento::create([
-            "asunto"=>$request->asunto,
+            // "asunto"=>$request->asunto,
             "observacion"=>$request->observacion,
             "especialidad"=>$request->especialidad,
             "medico"=>$request->medico,
@@ -86,7 +93,7 @@ class TratamientoController extends Controller
         if($tratamiento!=null)
         {
             $tratamiento->update([
-                "asunto"=>$request->asunto,
+                // "asunto"=>$request->asunto,
                 "especialidad"=>$request->especialidad,
                 "medico",$request->medico
             ]);
@@ -131,7 +138,7 @@ class TratamientoController extends Controller
        $tra =  Tratamiento::find($id);
        
        $tra->update([
-        "asunto"=>$request->get('asunto'),
+        // "asunto"=>$request->get('asunto'),
         "observacion"=>$request->get('observacion'),
         "especialidad"=>$request->get('especialidad'),
         "medico"=>$request->get('medico'),

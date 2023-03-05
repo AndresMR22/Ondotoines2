@@ -15,7 +15,7 @@ class Paciente extends Model
     public $fillable=[
         "nombre",
         "apellido",
-        "edad",
+        "fecha_nac",
         "lugar_nac",
         "ocupacion",
         "direccion",

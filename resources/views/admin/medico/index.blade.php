@@ -27,12 +27,12 @@
 				<div class="content">
 					<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
 						<div>
-							<h1>Pacientes</h1>
+							<h1>Medicos</h1>
 							<p class="breadcrumbs"><span><a href="">Dashboard</a></span>
-								<span><i class="mdi mdi-chevron-right"></i></span>Pacientes</p>
+								<span><i class="mdi mdi-chevron-right"></i></span>Medicos</p>
 						</div>
 						<div>
-							<a href="{{route('paciente.create')}}" class="btn btn-primary"> Agregar paciente</a>
+							<a href="{{route('medico.create')}}" class="btn btn-primary"> Agregar medico</a>
 						</div>
 					</div>
 					<div class="row">
@@ -44,28 +44,19 @@
 											style="width:100%">
 											<thead>
 												<tr>
-													<th>Paciente</th>
 													<th>Nombres</th>
-													<th>Edad</th>
-													<th>Cedula</th>
-													<th>Teléfono</th>
-													<th>Sexo</th>
+													<th>Especialidad</th>
 													<th>Acciones</th>
 												</tr>
 											</thead>
 
 											<tbody>
-                                                @foreach($pacientes as $paciente)
+                                                @foreach($medicos as $medico)
 												<tr>
-													<td><img class="tbl-thumb" src="assets/img/products/p1.jpg" alt="Product Image" /></td>
-													<td>{{$paciente->nombre}} {{$paciente->apellido}}</td>
-													<td>{{$paciente->edad}}</td>
-													<td>{{$paciente->cedula}}</td>
-													<td>{{$paciente->telefono}}</td>
-													<td>{{$paciente->sexo}}</td>
+													<td>{{$medico->nombre}}</td>
+													<td>{{$medico->especialidad}}</td>
 													<td>
-                                                        <a class="btn btn-info" title="Observaciones" data-bs-toggle="modal" data-bs-target="#modalObservacion{{$paciente->id}}" ><i class="fas fa-eye"></i></a>
-														<div class="btn-group mb-1">
+                                                     	<div class="btn-group mb-1">
 															<button type="button"
 																class="btn btn-outline-success">Info</button>
 															<button type="button"
@@ -76,10 +67,10 @@
 															</button>
 
 															<div class="dropdown-menu">
-																<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditar{{$paciente->id}}" >Editar</a>
-																<a onclick="eliminarPaciente({{$paciente->id}})" class="dropdown-item" >Eliminar</a>
+																<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditar{{$medico->id}}" >Editar</a>
+																<a onclick="eliminarPaciente({{$medico->id}})" class="dropdown-item" >Eliminar</a>
 															</div>
-                                                            <form id="formEliminar{{$paciente->id}}" method="POST" action="{{route('paciente.destroy',$paciente->id)}}">
+                                                            <form id="formEliminar{{$medico->id}}" method="POST" action="{{route('medico.destroy',$medico->id)}}">
                                                                 @csrf
                                                                 {{method_field('DELETE')}}
                                                             </form>
@@ -87,15 +78,15 @@
 													</td>
 												</tr>
 
-                                                {{-- MODAL EDITAR PACIENTE --}}
-            <div class="modal fade modal-add-contact" id="modalEditar{{$paciente->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                {{-- MODAL EDITAR Medico --}}
+            <div class="modal fade modal-add-contact" id="modalEditar{{$medico->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
-                        <form method="POST" action="{{route('paciente.update',$paciente->id)}}">
+                        <form method="POST" action="{{route('medico.update',$medico->id)}}">
                             @method('PATCH')
                             @csrf
                             <div class="modal-header px-4">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Editar Paciente</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Editar Especialidad</h5>
                             </div>
 
                             <div class="modal-body px-4">
@@ -104,40 +95,18 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="firstName">Nombre</label>
-                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$paciente->nombre}}" required>
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$medico->nombre}}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="lastName">Apellido</label>
-                                            <input type="text" class="form-control" name="apellido" id="apellido" value="{{$paciente->apellido}}" required>
+                                            <label for="lastName">Especialidad</label>
+                                            <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$medico->especialidad}}" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="form-group mb-4">
-                                            <label for="userName">Edad</label>
-                                            <input type="number" class="form-control" name="edad" id="edad"
-                                                value="{{$paciente->edad}}" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group mb-4">
-                                            <label for="email">Teléfono</label>
-                                            <input type="tel" class="form-control" name="telefono" id="telefono"
-                                                value="{{$paciente->telefono}}" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group mb-4">
-                                            <label for="Birthday">Sexo</label>
-                                            <input type="text" class="form-control" name="sexo" id="sexo"
-                                                value="{{$paciente->sexo}}" required>
-                                        </div>
-                                    </div>
+                                   
 
                                    
                                 </div>
@@ -157,10 +126,10 @@
 
 
                       {{-- MODAL OBSERVACION --}}
-                      <div class="modal fade modal-add-contact" id="modalObservacion{{$paciente->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal fade modal-add-contact" id="modalObservacion{{$medico->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
-                                <form method="POST" action="{{route('paciente.update',$paciente->id)}}">
+                                <form method="POST" action="{{route('medico.update',$medico->id)}}">
                                     @method('PATCH')
                                     @csrf
                                     <div class="modal-header px-4">
@@ -172,7 +141,7 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <textarea class="form-control">{{$paciente->observacion}}</textarea>
+                                                    <textarea class="form-control">{{$medico->observacion}}</textarea>
                                                 </div>
                                             </div>
         
