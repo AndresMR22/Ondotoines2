@@ -17,7 +17,8 @@ class MedicoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "nombre"=> $this->faker->sentence(),
+            "especialidad"=> $this->faker->sentence()
         ];
     }
 }

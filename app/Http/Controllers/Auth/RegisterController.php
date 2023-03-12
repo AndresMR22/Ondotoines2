@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -84,6 +85,7 @@ class RegisterController extends Controller
     //   $shopping_cart->update([
     //       "user_id"=>$user->id
     //   ]);
+    Alert::toast('Administrador agregado', 'success');
       return $user;
     }
 }

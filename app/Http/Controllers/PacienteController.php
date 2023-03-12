@@ -7,6 +7,7 @@ use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
 use Carbon\Carbon;
 use DateTime;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PacienteController extends Controller
 {
@@ -61,6 +62,7 @@ class PacienteController extends Controller
             "correo" => $request->correo
         ]);
 
+        Alert::toast('Paciente registrado', 'success');
         return redirect()->route('paciente.index');
     }
 
@@ -100,11 +102,13 @@ class PacienteController extends Controller
         "nombre"=>$request->nombre,
         "apellido"=>$request->apellido,
         "telefono"=>$request->telefono,
-        "fecha_nac"=>$request->edad,
+        "fecha_nac"=>$request->fecha_nac,
+        "lugar_nac"=>$request->lugar_nac,
         "sexo"=>$request->sexo,
         "correo"=>$request->correo
        ]);
 
+       Alert::toast('Paciente actualizado', 'success');
        return back();
     }
 
@@ -117,6 +121,7 @@ class PacienteController extends Controller
     public function destroy($id)
     {
         Paciente::destroy($id);
+        Alert::toast('Paciente eliminado', 'success');
         return back();
     }
 }

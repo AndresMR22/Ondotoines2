@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Medico;
 use App\Http\Requests\StoreMedicoRequest;
 use App\Http\Requests\UpdateMedicoRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MedicoController extends Controller
 {
@@ -26,7 +27,7 @@ class MedicoController extends Controller
             "nombre"=>$request->nombre,
             "especialidad"=>$request->especialidad
         ]);
-
+        Alert::toast('Medico agregado', 'success');
         return redirect()->route('medico.index');
     }
 
@@ -47,13 +48,14 @@ class MedicoController extends Controller
         "nombre"=>$request->nombre,
         "especialidad"=>$request->especialidad,
        ]);
-
+       Alert::toast('Medico actualizado', 'success');
        return back();
     }
 
     public function destroy($id)
     {
         Medico::destroy($id);
+        Alert::toast('Medico eliminado', 'success');
         return back();
     }
 }

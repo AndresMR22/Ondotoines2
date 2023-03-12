@@ -23,6 +23,7 @@
 @endif
 
 <input type="hidden" name="datos" id="datos" value="{{$datos}}">
+<input type="hidden" name="odontograma_id" id="odontograma_id" value="{{$odontograma_id}}">
     <!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
         <div class="content">
@@ -1470,81 +1471,113 @@
         </div>
     </div>
 
+    {{-- MODAL OPCIONES CLICK DERECHO --}}
+    <div class="modal fade modal-opciones-click-derecho" id="modalOpcionesClickDerecho" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <form >
+                    @csrf
+                    <div class="modal-header px-4">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">OPCIONES</h5>
+                    </div>
+
+                    <div class="modal-body px-4">
+                    <div class="texto" style=" display:flex; justify-content: center;">
+                        <p style="text-align:justify">¿Desea retirar el proceso a realizar en esta cara del diente?</p>
+                    </div>
+                    <div class="botones" style=" display:flex; justify-content: center; align-items:center; gap:15px;">
+                        <a id="confirmarRetirarProceso"  class="btn btn-success">SI</a>
+                        <a onclick="$('.modal-opciones-click-derecho').modal('hide');" class="btn btn-danger">NO</a>
+                    </div>
+                    </div>
+
+                    {{-- <div class="modal-footer px-4">
+                        <button type="submit" class="btn btn-primary btn-pill">Guardar cambios</button>
+                    </div> --}}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="posCaraColorRetirar" id="posCaraColorRetirar">
+    
     <form id="formulario">
         @csrf
     </form>
 
     <script>
         var arregloProcesos = []
-        var idDiente = null, idCara = null; idCaraColor = null;
+        var diente_id = null, cara_id = null; idCaraColor = null;
         var arrayAzules = ['1','3','7','8','9','10','14','15','17','19','20','21']
+        var clickDerecho = false;
+        var idCaraColor = null;
+
         function showOptions(e)
         {
-            idDiente = e.target.parentNode.parentNode.parentNode.id
-            idDiente = idDiente.substr(6);
-            idCara = e.target.id;
-            idCara = idCara.substr(3)
-            idCaraColor = idCara;
+            diente_id = e.target.parentNode.parentNode.parentNode.id
+            diente_id = diente_id.substr(6);
+            cara_id = e.target.id;
+            cara_id = cara_id.substr(3)
+            idCaraColor = cara_id;
             //caso 1: 
-            if(idCara.length==1 && idCara>5)
+            if(cara_id.length==1 && cara_id>5)
             {
-                let numero = idCara;
-                if(numero==6){idCara=1}
-                if(numero==7){idCara=2}
-                if(numero==8){idCara=3}
-                if(numero==9){idCara=4}
-                if(numero==0){idCara=5}
+                let numero = cara_id;
+                if(numero==6){cara_id=1}
+                if(numero==7){cara_id=2}
+                if(numero==8){cara_id=3}
+                if(numero==9){cara_id=4}
+                if(numero==0){cara_id=5}
             }
             //caso 2:
-            if(idCara.length==2 && idCara.substr(1)<6 && idCara.substr(1)!=0)
+            if(cara_id.length==2 && cara_id.substr(1)<6 && cara_id.substr(1)!=0)
             {
-                idCara = idCara.substr(1);
+                cara_id = cara_id.substr(1);
             }
             //caso 3:
-            if(idCara.length==2 && (idCara.substr(1)>5 || idCara.substr(1)==0))
+            if(cara_id.length==2 && (cara_id.substr(1)>5 || cara_id.substr(1)==0))
             {
-                let numero = idCara.substr(1)
-                if(numero==6){idCara=1}
-                if(numero==7){idCara=2}
-                if(numero==8){idCara=3}
-                if(numero==9){idCara=4}
-                if(numero==0){idCara=5}
+                let numero = cara_id.substr(1)
+                if(numero==6){cara_id=1}
+                if(numero==7){cara_id=2}
+                if(numero==8){cara_id=3}
+                if(numero==9){cara_id=4}
+                if(numero==0){cara_id=5}
             }
             //caso 4:
-            if(idCara.length==3 && idCara.substr(2)<6 && idCara.substr(2)!=0)
+            if(cara_id.length==3 && cara_id.substr(2)<6 && cara_id.substr(2)!=0)
             {
-                idCara = idCara.substr(2);
+                cara_id = cara_id.substr(2);
             }
             //caso 5:
-            if(idCara.length==3 && (idCara.substr(2)>5 || idCara.substr(2)==0))
+            if(cara_id.length==3 && (cara_id.substr(2)>5 || cara_id.substr(2)==0))
             {
-                let numero = idCara.substr(2)
-                if(numero==6){idCara=1}
-                if(numero==7){idCara=2}
-                if(numero==8){idCara=3}
-                if(numero==9){idCara=4}
-                if(numero==0){idCara=5}
+                let numero = cara_id.substr(2)
+                if(numero==6){cara_id=1}
+                if(numero==7){cara_id=2}
+                if(numero==8){cara_id=3}
+                if(numero==9){cara_id=4}
+                if(numero==0){cara_id=5}
             }
-           
-            
                
-            console.log(idCara,idDiente)
+            console.log(cara_id,diente_id)
             $(".modal-add-contact").modal("show");
         }
 
-        function asignarReferencia(idReferencia)
+        function asignarReferencia(proceso_id)
         {
             let band = false;
             let data = 
             {
-                'idDiente':idDiente,
-                'idCara':idCara,
-                'idReferencia':idReferencia
+                'diente_id':diente_id,
+                'cara_id':cara_id,
+                'posicion_cara':idCaraColor,
+                'proceso_id':proceso_id
             }
-            arregloProcesos.push(data)
+            procesosNuevos.push(data)
             for(let i = 0 ; i<arrayAzules.length; i++)
             {
-                if(arrayAzules[i]==idReferencia)
+                if(arrayAzules[i]==proceso_id)
                 {
                     band = true;
                 }
@@ -1557,38 +1590,81 @@
                 document.getElementById('pos'+idCaraColor).style.backgroundColor="red";
             }
           
-            console.log('procesos:',arregloProcesos)
+            console.log('procesos:',procesosNuevos)
+            $(".modal-add-contact").modal("hide");
         }
 
         function guardarCambios()
         {
+            // let odontograma_id = document.getElementById('odontograma_id').value;
+            
             $.ajax({
-                        url: `{{ route('odontograma.store') }}`,
+                        url: `{{ route('odontograma.actualizar') }}`,
                         dataType: "json",
-                        method:'POST',
+                        method:'GET',
                         data: {
-                            procesos:arregloProcesos ,
+                            procesos:procesosNuevos ,
                             _token:$('input[name="_token"]').val() , 
-                            idTratamiento:document.getElementById('idTratamiento').value                        
+                            odontograma_id:document.getElementById('odontograma_id').value                        
                             }
                     }).done(function(res) {
-                        alert('hola')
-                        //    if(res==1)
-						//    {
-						// 	window.location.href = "/admin/tratamiento"
-						//    }else
-						//    {
-						// 	alert('No se pudo actualizar el tratamiento')
-						//    }
+                           if(res==1)
+						   {
+							window.location.href = "/admin/tratamiento"
+						   }else
+						   {
+							alert('No se pudo actualizar el odontograma.')
+						   }
                         })
         }
 
+    var procesosNuevos = []
+
+    function retirarProceso(e)
+    {
+        // console.log('la cara clickeada es:',caraClickeada)
+        let posCaraColor = document.getElementById('posCaraColorRetirar').value;
+        let cara = document.getElementById('pos'+posCaraColor)
+        cara.style.backgroundColor = "white";
+
+        console.log('poscaracolor:',posCaraColor)
+
+        let cant = Object.keys(procesosNuevos);
+        let long = cant.length;
+        // e.target.style.backgroundColor = 'white';
+        // console.log("procesos nuevos:",procesosNuevos)
+        for(let i = 0; i<procesosNuevos.length; i++)
+        {
+            if(procesosNuevos[i].posicion_cara == posCaraColor)
+            {
+                delete procesosNuevos[i]
+                let auxProcesos = []
+                                for (let x = 0; x < long; x++) {
+                                    if (procesosNuevos[x] !== undefined)
+                                        auxProcesos.push(procesosNuevos[x]);
+                                }
+                                procesosNuevos =[
+                                    ...auxProcesos
+                                ]
+                // console.log('arreglo de procesos:',procesosNuevos)
+            }
+        }
+        console.log(procesosNuevos)
+        //escondemos el modal
+        $(".modal-opciones-click-derecho").modal("hide");
+    }
+
    //  data-bs-toggle="modal" data-bs-target="#modalCrear"
+  
    document.addEventListener('DOMContentLoaded',function()
    {
+    // setTimeout(function() { alert("Vista para hacer cambios al odontograma que ya se habia guardado."); }, 2000);
     let datos = JSON.parse(document.getElementById('datos').value)
+    // console.log('datos:',datos)
+    procesosNuevos = datos;
+    // console.log('procesosNuevos en addEventListener:',procesosNuevos)
         datos.forEach(item => {
-            console.log(item)
+            
            let cara =  document.getElementById('pos'+item.posicion_cara)
            cara.title = item.descripcion;
            if(cara!=undefined || cara!=null)
@@ -1600,8 +1676,39 @@
         document.querySelectorAll('.estiloCubo').forEach((item,i) =>{
         // item.setAttribute('id',i)
         item.addEventListener('click',showOptions)
+        item.addEventListener("contextmenu",showOptionsProceso)//clic derecho
+
+        // item.addEventListener("contextmenu",retirarProceso)//clic derecho
+
     })
         
    })
+
+   function showOptionsProceso(e)
+   {
+        let tieneColorLaCara = e.target.style[0]
+        let pos = e.target.id
+        let posCaraColor = pos.substr(3)
+        idCaraColor = posCaraColor;
+        document.getElementById('posCaraColorRetirar').value = posCaraColor
+
+       
+        // console.log('procesos nuevos en showOptionsProceso:',procesosNuevos)
+
+        document.getElementById('confirmarRetirarProceso').addEventListener('click',retirarProceso)
+
+     
+            if(!clickDerecho && tieneColorLaCara != undefined)
+            {
+                
+                $(".modal-opciones-click-derecho").modal("show");
+                clickDerecho = true;
+            } 
+            else
+            {
+                $(".modal-opciones-click-derecho").modal("hide");
+                clickDerecho = false;
+            }        
+   }
     </script>
 @endsection

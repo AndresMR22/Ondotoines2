@@ -68,3 +68,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 Route::get('cita/validarhorario',[CitaController::class,'validarHorario'])->name('cita.validarHorario');
 Route::get('tratamiento/editarTratamiento',[TratamientoController::class,'editarTratamiento'])->name('tratamiento.editar');
 Route::get('tratamiento/buscar',[TratamientoController::class,'buscarPaciente'])->name('tratamiento.buscarPaciente');
+Route::get('odontograma/actualizar',[OdontogramaController::class,'actualizarOdontograma'])->name('odontograma.actualizar');

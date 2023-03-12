@@ -26,4 +26,3 @@
 <script src="{{asset('admin/assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
 <script src="{{asset('admin/assets/plugins/data-tables/datatables.bootstrap5.min.js')}}"></script>
 <script src="{{asset('admin/assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
-@include('sweetalert::alert')

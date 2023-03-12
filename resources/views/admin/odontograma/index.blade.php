@@ -32,6 +32,7 @@
                         <span><i class="mdi mdi-chevron-right"></i></span>Odontograma
                     </p>
                 </div>
+                
             </div>
 
             <style>
@@ -96,132 +97,174 @@
                             <div class="columna_izquierda" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
                                 {{-- FILA 1 CI --}}
                                 <div class="fila_ci my-1" style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
-                                    <div class="numeroDiente">8</div>
-                                    <div class="caja fondoCubo" id="diente18">
+                                    
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                         <div class="numeroDiente">
                                             <h5>8</h5>
                                         </div>
                                         <div class="diente">
-                                            <div class="contenedor">
-                                                <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                    <div  class="estiloCubo esconderEsquinas"></div>
-                                                    <div id="pos1"  class="estiloCubo"></div>
-                                                    <div  class="estiloCubo esconderEsquinas"></div>
+                                            <div class="caja fondoCubo" id="diente18">
+                                                    <div class="contenedor">
+                                                        <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                            <div  class="estiloCubo esconderEsquinas"></div>
+                                                            <div id="pos1"  class="estiloCubo"></div>
+                                                            <div  class="estiloCubo esconderEsquinas"></div>
+                                                        </div>
+                                                        <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                            <div id="pos2"  class="estiloCubo"></div>
+                                                            <div id="pos3"  class="estiloCubo"></div>
+                                                            <div id="pos4"  class="estiloCubo"></div>
+                                                        </div>
+                                                        <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                            <div  class="estiloCubo esconderEsquinas"></div>
+                                                            <div id="pos5"  class="estiloCubo"></div>
+                                                            <div  class="estiloCubo esconderEsquinas"></div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>7</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente17">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos6"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos7"  class="estiloCubo"></div>
+                                                        <div id="pos8"  class="estiloCubo"></div>
+                                                        <div id="pos9"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos10"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
                                                 </div>
-                                                <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                    <div id="pos2"  class="estiloCubo"></div>
-                                                    <div id="pos3"  class="estiloCubo"></div>
-                                                    <div id="pos4"  class="estiloCubo"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>6</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente16">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos11"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos12"  class="estiloCubo"></div>
+                                                        <div id="pos13"  class="estiloCubo"></div>
+                                                        <div id="pos14"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos15"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
                                                 </div>
-                                                <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                    <div  class="estiloCubo esconderEsquinas"></div>
-                                                    <div id="pos5"  class="estiloCubo"></div>
-                                                    <div  class="estiloCubo esconderEsquinas"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>5</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente15">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos16"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos17"  class="estiloCubo"></div>
+                                                        <div id="pos18"  class="estiloCubo"></div>
+                                                        <div id="pos19"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos20"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="caja fondoCubo" id="diente17">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos6"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos7"  class="estiloCubo"></div>
-                                                <div id="pos8"  class="estiloCubo"></div>
-                                                <div id="pos9"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos10"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>4</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente14">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos21"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos22"  class="estiloCubo"></div>
+                                                        <div id="pos23"  class="estiloCubo"></div>
+                                                        <div id="pos24"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos25"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="caja fondoCubo" id="diente16">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos11"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos12"  class="estiloCubo"></div>
-                                                <div id="pos13"  class="estiloCubo"></div>
-                                                <div id="pos14"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos15"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>3</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente13">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos26"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos27"  class="estiloCubo"></div>
+                                                        <div id="pos28"  class="estiloCubo"></div>
+                                                        <div id="pos29"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos30"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="caja fondoCubo" id="diente15">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos16"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos17"  class="estiloCubo"></div>
-                                                <div id="pos18"  class="estiloCubo"></div>
-                                                <div id="pos19"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos20"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>2</h5>
                                         </div>
-                                    </div>
-
-                                    <div class="caja fondoCubo" id="diente14">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos21"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos22"  class="estiloCubo"></div>
-                                                <div id="pos23"  class="estiloCubo"></div>
-                                                <div id="pos24"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos25"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="caja fondoCubo" id="diente13">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos26"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos27"  class="estiloCubo"></div>
-                                                <div id="pos28"  class="estiloCubo"></div>
-                                                <div id="pos29"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos30"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                        <div class="diente">
                                     <div class="caja fondoCubo" id="diente12">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -241,7 +284,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>1</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente11">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -262,6 +312,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
                                 {{-- FILA 2 CI --}}
                                 {{-- <div class="fila_ci my-2" style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
@@ -471,46 +523,65 @@
 
                                 {{-- FILA 4 CI --}}
                                 <div class="fila_ci" style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
-                                    <div class="caja fondoCubo" id="diente48">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos41"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos42"  class="estiloCubo"></div>
-                                                <div id="pos43"  class="estiloCubo"></div>
-                                                <div id="pos44"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos45"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>8</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente48">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos41"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos42"  class="estiloCubo"></div>
+                                                        <div id="pos43"  class="estiloCubo"></div>
+                                                        <div id="pos44"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos45"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
         
-                                    <div class="caja fondoCubo" id="diente47">
-                                        <div class="contenedor">
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos46"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                            </div>
-                                            <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div id="pos47"  class="estiloCubo"></div>
-                                                <div id="pos48"  class="estiloCubo"></div>
-                                                <div id="pos49"  class="estiloCubo"></div>
-                                            </div>
-                                            <div  style="display:flex; justify-content:center; gap:5px; ">
-                                                <div  class="estiloCubo esconderEsquinas"></div>
-                                                <div id="pos50"  class="estiloCubo"></div>
-                                                <div  class="estiloCubo esconderEsquinas"></div>
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>7</h5>
+                                        </div>
+                                        <div class="diente">
+                                            <div class="caja fondoCubo" id="diente47">
+                                                <div class="contenedor">
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos46"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                    <div class="my-2"  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div id="pos47"  class="estiloCubo"></div>
+                                                        <div id="pos48"  class="estiloCubo"></div>
+                                                        <div id="pos49"  class="estiloCubo"></div>
+                                                    </div>
+                                                    <div  style="display:flex; justify-content:center; gap:5px; ">
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                        <div id="pos50"  class="estiloCubo"></div>
+                                                        <div  class="estiloCubo esconderEsquinas"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
         
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>6</h5>
+                                        </div>
+                                        <div class="diente">
                                     <div class="caja fondoCubo" id="diente46">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -530,7 +601,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>5</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente45">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -550,7 +628,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>4</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente44">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -570,7 +655,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>3</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente43">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -590,7 +682,14 @@
                                             </div>
                                         </div>
                                     </div>
-        
+                                </div>
+                            </div>
+
+        <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>2</h5>
+                                        </div>
+                                        <div class="diente">
                                     <div class="caja fondoCubo" id="diente42">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -610,7 +709,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>1</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente41">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -632,6 +738,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
                             {{-- FIN COLUMNA IZQUIERDA --}}
 
@@ -639,6 +747,11 @@
 
                                 {{-- FILA 4 CD --}}
                                 <div class="fila_cd my-1" style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>1</h5>
+                                        </div>
+                                        <div class="diente">
                                     <div class="caja fondoCubo" id="diente31">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -658,7 +771,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>2</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente32">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -678,7 +798,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>3</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente33">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -698,7 +825,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>4</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente34">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -718,7 +852,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>5</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente35">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -738,7 +879,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>6</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente36">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -758,7 +906,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>7</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente37">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -778,7 +933,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>8</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente38">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -799,9 +961,16 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
                                 {{-- FILA 2 CD --}}
                                 <div class="fila_cd " style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
+                                    <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>1</h5>
+                                        </div>
+                                        <div class="diente">
                                     <div class="caja fondoCubo" id="diente21">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -821,7 +990,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>2</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente22">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -841,7 +1017,14 @@
                                             </div>
                                         </div>
                                     </div>
-        
+                                </div>
+                            </div>
+
+        <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                        <div class="numeroDiente">
+                                            <h5>3</h5>
+                                        </div>
+                                        <div class="diente">
                                     <div class="caja fondoCubo" id="diente23">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -861,7 +1044,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>4</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente24">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -881,7 +1071,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>5</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente25">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -901,7 +1098,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            
         
+                                <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                    <div class="numeroDiente">
+                                        <h5>6</h5>
+                                    </div>
+                                    <div class="diente">
                                     <div class="caja fondoCubo" id="diente26">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -921,7 +1126,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>7</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente27">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -941,7 +1153,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
         
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <div class="numeroDiente">
+                                    <h5>8</h5>
+                                </div>
+                                <div class="diente">
                                     <div class="caja fondoCubo" id="diente28">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -962,6 +1181,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
                                 {{-- FILA 2 CD --}}
                                 {{-- <div class="fila_cd my-2" style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
@@ -1187,6 +1408,7 @@
     </div> <!-- End Content Wrapper -->
 
 
+
      {{-- MODAL OPCIONES ODONTOGRAMA --}}
      <div class="modal fade modal-add-contact" id="modalOpciones" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -1387,7 +1609,7 @@
 							window.location.href = "/admin/tratamiento"
 						   }else
 						   {
-							alert('No se pudo actualizar el tratamiento')
+							alert('No se pudo guardar los cambios en el odontograma.')
 						   }
                         })
         }
@@ -1396,25 +1618,22 @@
    //  data-bs-toggle="modal" data-bs-target="#modalCrear"
    document.addEventListener('DOMContentLoaded',function()
    {
+    // setTimeout(function() { alert("Vista para crear mi primer odontograma."); }, 2000);
+
         document.querySelectorAll('.estiloCubo').forEach((item,i) =>{
         // item.setAttribute('id',i)
-        
         item.addEventListener('click',showOptions)
-        item.addEventListener("contextmenu",showOptionsProceso)
-
-           
-       
+        item.addEventListener("contextmenu",showOptionsProceso)//clic derecho
+        })
     })
-        
-   })
 
    function showOptionsProceso(e)
    {
-    let tieneColorLaCara = e.target.style[0]
-    let pos = e.target.id
-    let posCaraColor = pos.substr(3)
-    document.getElementById('posCaraColorRetirar').value = posCaraColor
-     document.getElementById('confirmarRetirarProceso').addEventListener('click',retirarProceso)
+        let tieneColorLaCara = e.target.style[0]
+        let pos = e.target.id
+        let posCaraColor = pos.substr(3)
+        document.getElementById('posCaraColorRetirar').value = posCaraColor
+        document.getElementById('confirmarRetirarProceso').addEventListener('click',retirarProceso)
 
      
             if(!clickDerecho && tieneColorLaCara != undefined)
@@ -1427,8 +1646,7 @@
             {
                 $(".modal-opciones-click-derecho").modal("hide");
                 clickDerecho = false;
-            }
-               
+            }        
    }
 
    function retirarProceso()
@@ -1453,6 +1671,9 @@
                 console.log('arreglo de procesos:',arregloProcesos)
             }
         }
+
+        //escondemos el modal
+        $(".modal-opciones-click-derecho").modal("hide");
    }
   
     </script>

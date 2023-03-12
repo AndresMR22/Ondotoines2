@@ -9,6 +9,7 @@ use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCitaRequest;
 use App\Http\Requests\UpdateCitaRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class CitaController extends Controller
@@ -65,13 +66,22 @@ class CitaController extends Controller
         "asunto" => $request->asunto
        ]);
 
-       $paciente = Paciente::find($request->paciente_id);
+       if($cita != null || $cita != "")
+       {
+        $paciente = Paciente::find($request->paciente_id);
 
-       Evento::create([
-        "start"=>$request->fecha_inicio,
-        "end"=>$request->fecha_fin,
-        "title"=>$paciente->nombre
-       ]);
+        Evento::create([
+         "start"=>$request->fecha_inicio,
+         "end"=>$request->fecha_fin,
+         "title"=>$paciente->nombre
+        ]);
+        Alert::toast('Cita agendada', 'success');
+       }else
+       {
+        Alert::toast('Hubo problemas para agendar la cita', 'warning');
+       }
+
+       
 
     //    $mensaje = Mensaje::create([
     //     "nombre"=>"Mensaje de prueba",
@@ -83,7 +93,7 @@ class CitaController extends Controller
     //    ]);
 
       
-
+    
        return back();
     }
 
@@ -144,7 +154,7 @@ class CitaController extends Controller
             "especialidad"=>$request->especialidad,
             "asunto" => $request->asunto
         ]);
-
+        Alert::toast('Cita actualizada', 'success');
         return back();
     }
 
@@ -157,6 +167,7 @@ class CitaController extends Controller
     public function destroy($id)
     {
         Cita::destroy($id);
+        Alert::toast('Cita eliminada', 'success');
         return back();
     }
 
@@ -174,7 +185,6 @@ class CitaController extends Controller
         {
             $fecha_inicio = $cita->fecha_inicio;
             $fecha_fin = $cita->fecha_fin;
-            // dd($fecha_inicio, $fechaIni, $fechaFin);
             if(($fechaIni<$fecha_inicio && $fechaFin > $fecha_inicio) || ($fechaIni>=$fecha_inicio && $fechaIni<=$fecha_fin) ||  ($fechaFin>=$fecha_inicio && $fechaFin<=$fecha_fin))
             {
                 $fechaInicioBD = $fecha_inicio;

@@ -298,7 +298,7 @@
 															<div class="media-body d-flex justify-content-between">
 																<div class="message-contents">
 																	<h4 class="title">{{$notification->data['nombres']}}</h4>
-																	<p class="last-msg">Cita: {{$notification->data['hora']}} de 2023-01-07</p>
+																	<p class="last-msg">Cita: Empieza mañana a las {{$notification->data['hora']}} </p>
 
 																	<span
 																		class="font-size-12 font-weight-medium text-secondary">
@@ -344,7 +344,7 @@
 
 		</div> <!-- End Page Wrapper -->
 	</div> <!-- End Wrapper -->
-
+	@include('sweetalert::alert')
 	@include('layouts.dashboard.scripts')
 </body>
 

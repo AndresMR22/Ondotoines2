@@ -7,6 +7,7 @@ use App\Models\Imagen;
 use App\Http\Requests\StoreProcedimientoRequest;
 use App\Http\Requests\UpdateProcedimientoRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProcedimientoController extends Controller
 {
@@ -42,6 +43,7 @@ class ProcedimientoController extends Controller
                   'public_id'=>$public_id
                   ]);   
         }
+        Alert::toast('Procedimiento registrado', 'success');
         return redirect()->route('procedimiento.index');
     }
 
@@ -114,6 +116,7 @@ class ProcedimientoController extends Controller
             }
       }
 
+      Alert::toast('Procedimiento actualizado', 'success');
         return redirect()->route('procedimiento.index');
     }
 
@@ -135,7 +138,7 @@ class ProcedimientoController extends Controller
         }
         
         Procedimiento::destroy($id); // eliminamos la procedimiento con sus datos, nombre, etc.
-     
+        Alert::toast('Procedimiento eliminado', 'success');
         return back();
     }
 }

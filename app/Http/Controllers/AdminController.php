@@ -8,6 +8,7 @@ use App\Models\Imagen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -141,7 +142,7 @@ class AdminController extends Controller
                   ]);
             }
       }
-
+      Alert::toast('Administrador actualizado', 'success');
         return back();
     }
 
@@ -163,7 +164,7 @@ class AdminController extends Controller
             Cloudinary::destroy($public_id); //eliminamos la imagen de la procedimiento de la nube
         }
         User::destroy($id);
-
+        Alert::toast('Administrador eliminado', 'success');
         return back();
     }
 }

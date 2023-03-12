@@ -9,6 +9,7 @@ use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTratamientoRequest;
 use App\Http\Requests\UpdateTratamientoRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TratamientoController extends Controller
 {
@@ -76,6 +77,8 @@ class TratamientoController extends Controller
         }
         //foreach de creacion de procedimientos
         //atach con id de creacion de procedimiento con el de tratamiento
+        Alert::toast('Tratamiento registrado', 'success');
+
         return redirect()->route('tratamiento.index');
     }
 
@@ -87,7 +90,6 @@ class TratamientoController extends Controller
  
     public function editarTratamiento(Request $request)
     {
-        
         $tratamiento = Tratamiento::find($request->id);
 
         if($tratamiento!=null)
@@ -95,7 +97,8 @@ class TratamientoController extends Controller
             $tratamiento->update([
                 // "asunto"=>$request->asunto,
                 "especialidad"=>$request->especialidad,
-                "medico",$request->medico
+                "medico"=>$request->medico,
+                // "asunto"=>$request->asunto
             ]);
     
             $cantidades = $request->data;
@@ -107,7 +110,7 @@ class TratamientoController extends Controller
                 //actualiza un campo de una relacion one-many
                 $tratamiento->procedimientos()->where('procedimiento_id', $procedimientoid)->where('tratamiento_id',$tratamiento->id)->update(['cantidad' => $cantidad]);
             }
-    
+            Alert::toast('Tratamiento actualizado', 'success');
             return 1;
         }
        
@@ -143,7 +146,7 @@ class TratamientoController extends Controller
         "especialidad"=>$request->get('especialidad'),
         "medico"=>$request->get('medico'),
        ]);
-
+       Alert::toast('Tratamiento actualizado', 'success');
        return back();
 
     }
@@ -157,6 +160,7 @@ class TratamientoController extends Controller
     public function destroy($id)
     {
         Tratamiento::destroy($id);
+        Alert::toast('Tratamiento eliminado', 'success');
         return back();
     }
 }

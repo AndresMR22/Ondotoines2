@@ -78,7 +78,8 @@
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" data-bs-toggle="modal"
                                                                 data-bs-target="#modalEditar{{ $pro->id }}">Editar</a>
-                                                            <a onclick="eliminarProcedimiento({{ $pro->id }})"
+                                                            <a data-bs-toggle="modal"
+                                                            data-bs-target="#modalEliminar{{ $pro->id }}"
                                                                 class="dropdown-item">Eliminar</a>
                                                         </div>
                                                         <form id="formEliminar{{ $pro->id }}" method="POST"
@@ -159,6 +160,42 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
+
+                                              {{-- MODAL PARA ELIMINAR  --}}
+
+                    <div class="modal fade modal-add-contact" id="modalEliminar{{$pro->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <form method="POST">
+                                    @method('PATCH')
+                                    @csrf
+                                    <div class="modal-header px-4">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+                                    </div>
+        
+                                    <div class="modal-body px-4">
+        
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                   <h5 class="text-center">¿Estas seguro de eliminar al procedimiento {{$pro->nombre}}</h5> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="modal-footer px-4">
+                                        <button type="button" class="btn btn-secondary btn-pill"
+                                            data-bs-dismiss="modal">No, cancelar</button>
+                                        <a onclick="eliminarProcedimiento({{ $pro->id }})"  class="btn btn-primary btn-pill">Si, eliminar.</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('odontograma_id');// 1
             $table->unsignedBigInteger('cdp_id');// 1          
-            $table->foreign('odontograma_id')->references('id')->on('odontogramas');
-            $table->foreign('cdp_id')->references('id')->on('cara_diente_proceso');
+            $table->foreign('odontograma_id')->references('id')->on('odontogramas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cdp_id')->references('id')->on('cara_diente_proceso')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

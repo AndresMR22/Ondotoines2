@@ -73,7 +73,8 @@
                                                     @endif
 
                                                     <div class="btn-group mb-1">
-                                                        <a onclick="eliminarTratamiento({{ $tra->id }})"
+                                                        <a data-bs-toggle="modal"
+                                                        data-bs-target="#modalEliminar{{ $tra->id }}"
                                                             class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
                                                     </div>
 
@@ -320,6 +321,40 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                             {{-- MODAL PARA ELIMINAR  --}}
+
+                    <div class="modal fade modal-add-contact" id="modalEliminar{{$tra->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <form method="POST">
+                                    @method('PATCH')
+                                    @csrf
+                                    <div class="modal-header px-4">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+                                    </div>
+        
+                                    <div class="modal-body px-4">
+        
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                   <h5 class="text-center">¿Estas seguro de eliminar el tratamiento?</h5> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="modal-footer px-4">
+                                        <button type="button" class="btn btn-secondary btn-pill"
+                                            data-bs-dismiss="modal">No, cancelar</button>
+                                        <a onclick="eliminarTratamiento({{ $tra->id }})"  class="btn btn-primary btn-pill">Si, eliminar.</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                                         @endforeach
                                     </tbody>
                                 </table>

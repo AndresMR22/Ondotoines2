@@ -75,7 +75,7 @@
 
 															<div class="dropdown-menu">
 																<a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#modalEditarCita{{$cita->id}}" >Editar</a>
-																<a onclick="eliminarCita({{$cita->id}});" class="dropdown-item" >Eliminar</a>
+																<a data-bs-toggle="modal" data-bs-target="#modalEliminar{{$cita->id}}"  class="dropdown-item" >Eliminar</a>
 															</div>
                                                             <form id="formEliminar{{$cita->id}}" method="POST" action="{{route('cita.destroy',$cita->id)}}">
                                                                 @csrf
@@ -153,6 +153,40 @@
                                                     </div>
                                                 </div>
 
+
+                                                   {{-- MODAL PARA ELIMINAR  --}}
+
+                                                <div class="modal fade modal-add-contact" id="modalEliminar{{$cita->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <form method="POST">
+                                                                @method('PATCH')
+                                                                @csrf
+                                                                <div class="modal-header px-4">
+                                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+                                                                </div>
+                                    
+                                                                <div class="modal-body px-4">
+                                    
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                            <h5 class="text-center">¿Estas seguro de eliminar la cita: {{$cita->asunto}} ?</h5> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                    
+                                                                <div class="modal-footer px-4">
+                                                                    <button type="button" class="btn btn-secondary btn-pill"
+                                                                        data-bs-dismiss="modal">No, cancelar</button>
+                                                                    <a onclick="eliminarCita({{ $cita->id }})"  class="btn btn-primary btn-pill">Si, eliminar.</a>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 @endforeach
 											</tbody>
 										</table>
@@ -182,6 +216,11 @@
                                             <label for="firstName">Médico</label>
                                             <input type="text" class="form-control" name="medico" id="medico" value="{{old('medico')}}" required>
                                         </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label">Asunto</label>
+                                        <input type="text" name="asunto" class="form-control" id="asunto" value="{{old('asunto')}}" required>
                                     </div>
 
                                     <div class="col-lg-6">
@@ -313,7 +352,6 @@
                         }).done(function(res) {
                             if (res.fechaInicio==null && res.fechaFin==null)
                             {
-                                alert('todo bien')
                                 form.submit();
                             }else
                             {

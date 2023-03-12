@@ -68,7 +68,7 @@
 
 															<div class="dropdown-menu">
 																<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditar{{$medico->id}}" >Editar</a>
-																<a onclick="eliminarPaciente({{$medico->id}})" class="dropdown-item" >Eliminar</a>
+																<a data-bs-toggle="modal" data-bs-target="#modalEliminar{{$medico->id}}" class="dropdown-item" >Eliminar</a>
 															</div>
                                                             <form id="formEliminar{{$medico->id}}" method="POST" action="{{route('medico.destroy',$medico->id)}}">
                                                                 @csrf
@@ -163,6 +163,40 @@
                         </div>
                     </div>
 
+
+                    {{-- MODAL PARA ELIMINAR  --}}
+
+                    <div class="modal fade modal-add-contact" id="modalEliminar{{$medico->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <form method="POST">
+                                    @method('PATCH')
+                                    @csrf
+                                    <div class="modal-header px-4">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+                                    </div>
+        
+                                    <div class="modal-body px-4">
+        
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                   <h5>¿Estas seguro de eliminar al medico {{$medico->nombre}}</h5> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="modal-footer px-4">
+                                        <button type="button" class="btn btn-secondary btn-pill"
+                                            data-bs-dismiss="modal">No, cancelar</button>
+                                        <a onclick="eliminarMedico({{$medico}})"  class="btn btn-primary btn-pill">Si, eliminar.</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                                                 @endforeach
 											</tbody>
 										</table>
@@ -175,10 +209,11 @@
 			</div> <!-- End Content Wrapper -->
 
             <script>
-            function eliminarPaciente(id)
+        
+            function eliminarMedico(medico)
             {
-                let form = document.getElementById('formEliminar'+id);
-                    form.submit();
+                let form = document.getElementById('formEliminar'+medico.id);
+                        form.submit(); // <--- submit form programmatically
             }
             </script>
            

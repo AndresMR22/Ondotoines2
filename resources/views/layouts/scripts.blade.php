@@ -42,10 +42,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
           events: citas,
           dateClick:function(data)
           {
-            let fecha = data.dateStr
-            document.getElementById('fecha').value = fecha;
-            $('#modalEditar').modal('toggle');
-            $('#modalEditar').modal('show');
+            // let fecha = data.dateStr
+            // document.getElementById('fecha').value = fecha;
+            // $('#modalEditar').modal('toggle');
+            // $('#modalEditar').modal('show');
             // $('#modalEditar').modal('hide');
 
           },
@@ -65,16 +65,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     document.getElementById('ordenar-form').submit();
 }
 
-function seleccionarSubcategoria(subcategoria_id)//header
-{
-    document.getElementById('')
-}
 
-function agregarAlCarrito(producto_id)
-{
-    var form = document.getElementById('formAddCar'+producto_id);
-    console.log(form)
-}
 
 </script>
 <!-- Main Js -->

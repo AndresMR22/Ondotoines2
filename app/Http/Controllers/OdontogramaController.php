@@ -8,9 +8,12 @@ use App\Models\Cara;
 use App\Models\Tratamiento;
 use App\Models\CaraDienteProceso;
 use App\Models\Proceso;
+use Illuminate\Http\Request;
 use App\Models\Odontograma_cdp;
 use App\Http\Requests\StoreOdontogramaRequest;
 use App\Http\Requests\UpdateOdontogramaRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class OdontogramaController extends Controller
 {
@@ -26,6 +29,7 @@ class OdontogramaController extends Controller
 
     public function store(StoreOdontogramaRequest $request)
     {
+        // dd($request->get('procesos'));
         $odontograma = Odontograma::create([
             "observacion"=>"Odontograma de prueba4",
             "tratamiento_id"=>$request->get('idTratamiento')
@@ -54,6 +58,8 @@ class OdontogramaController extends Controller
                         ]);
             }
         
+            Alert::toast('Odontograma guardado', 'success');
+
         return 1;
     }
 
@@ -65,6 +71,8 @@ class OdontogramaController extends Controller
         // dd($datos);
         foreach($datos as $key => $dato)
         {
+            $diente = Diente::find($dato->diente_id);
+            $dato->setAttribute('diente_id',$diente->posicion);
             $procesoId = $dato->proceso_id;
             $proceso = Proceso::find($procesoId);
             $color = $proceso->color;
@@ -73,7 +81,8 @@ class OdontogramaController extends Controller
             $dato->setAttribute('descripcion',$descripcion);
         }
         $idTratamiento = $id;
-    return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento'));
+        $odontograma_id = $odonto->id;
+    return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento','odontograma_id'));
     }
 
     public function edit($idTratamiento)
@@ -83,7 +92,48 @@ class OdontogramaController extends Controller
 
     public function update(UpdateOdontogramaRequest $request, Odontograma $odontograma)
     {
-        //
+       
+    }
+
+    public function actualizarOdontograma(Request $request)
+    {
+        // dd($request->get('procesos'));
+        $procesos = $request->get('procesos');
+        // dd($procesos);
+        $odontograma = Odontograma::find($request->odontograma_id);
+        // dd($odontograma->cdps()->get());
+
+        //elimino los cdps del odontograma editado
+        foreach($odontograma->cdps()->get() as $cdp)
+        {
+            CaraDienteProceso::destroy($cdp->id);
+        }
+        //coloco los nuevos cdps para el odontograma editado
+        // dd($procesos);
+        foreach($procesos as $key => $proceso)
+        {
+            // dd($proceso);
+            $idCara = $proceso['cara_id'];
+            $idDiente = $proceso['diente_id'];
+            $diente = Diente::where('posicion',$idDiente)->first();
+          
+            $idReferencia = $proceso['proceso_id'];
+            $posicionCara = $proceso['posicion_cara'];
+           
+            $cara = Cara::find($idCara);
+            $cara->dientes()->attach($diente->id,['proceso_id'=>$idReferencia,'posicion_cara'=>$posicionCara]);
+            
+            $cdp = CaraDienteProceso::orderBy('id','DESC')->take(1)->first();
+            Odontograma_cdp::create([
+                        "odontograma_id"=>$odontograma->id,
+                        "cdp_id" => $cdp->id
+                    ]);
+
+        }
+        Alert::toast('Odontograma actualizado', 'success');
+        return 1;
+        // dd($odontograma->cdps()->get());
+       
     }
 
     public function destroy(Odontograma $odontograma)

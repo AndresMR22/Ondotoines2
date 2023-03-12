@@ -77,7 +77,7 @@
 
 															<div class="dropdown-menu">
 																<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditar{{$paciente->id}}" >Editar</a>
-																<a onclick="eliminarPaciente({{$paciente->id}})" class="dropdown-item" >Eliminar</a>
+																<a data-bs-toggle="modal" data-bs-target="#modalEliminar{{$paciente->id}}" class="dropdown-item" >Eliminar</a>
 															</div>
                                                             <form id="formEliminar{{$paciente->id}}" method="POST" action="{{route('paciente.destroy',$paciente->id)}}">
                                                                 @csrf
@@ -115,13 +115,27 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="userName">Edad</label>
                                             <input type="number" class="form-control" name="edad" id="edad"
                                                 value="{{$paciente->edad}}" required>
                                         </div>
-                                    </div>
+                                    </div> --}}
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-4">
+                                                <label class="form-label">Fecha de nacimiento</label>
+                                                <input type="date" name="fecha_nac" class="form-control" id="fecha_nac"  value="{{$paciente->fecha_nac}}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-4">
+                                                <label for="inputEmail4" class="form-label">Lugar de nacimiento</label>
+                                                <input type="text" name="lugar_nac" class="form-control slug-title"  value="{{$paciente->lugar_nac}}" id="lugar_nac" required>
+                                            </div>
+                                        </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
@@ -157,7 +171,7 @@
 
 
                       {{-- MODAL OBSERVACION --}}
-                      <div class="modal fade modal-add-contact" id="modalObservacion{{$paciente->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade modal-add-contact" id="modalObservacion{{$paciente->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
                                 <form method="POST" action="{{route('paciente.update',$paciente->id)}}">
@@ -188,6 +202,39 @@
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary btn-pill">Guardar cambios</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                        {{-- MODAL PARA ELIMINAR  --}}
+
+                    <div class="modal fade modal-add-contact" id="modalEliminar{{$paciente->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <form method="POST">
+                                    @method('PATCH')
+                                    @csrf
+                                    <div class="modal-header px-4">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+                                    </div>
+        
+                                    <div class="modal-body px-4">
+        
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                   <h5 class="text-center">¿Estas seguro de eliminar al paciente {{$paciente->nombre}}</h5> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="modal-footer px-4">
+                                        <button type="button" class="btn btn-secondary btn-pill"
+                                            data-bs-dismiss="modal">No, cancelar</button>
+                                        <a onclick="eliminarPaciente({{ $paciente->id }})"  class="btn btn-primary btn-pill">Si, eliminar.</a>
                                     </div>
                                 </form>
                             </div>

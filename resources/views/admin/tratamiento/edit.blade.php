@@ -56,23 +56,21 @@
 											<div class="ec-vendor-upload-detail">
 												<form class="row g-3" id="formTratamiento" action="{{route('tratamiento.store')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-													<div class="col-md-6">
+													{{-- <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Asunto</label>
 														<input type="text" required name="asunto"  value="{{$tratamiento->asunto}}" class="form-control slug-title" id="asunto">
-													</div>
+													</div> --}}
 
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Especialidad</label>
 														<input type="text" required name="especialidad" value="{{$tratamiento->especialidad}}" class="form-control slug-title" id="especialidad">
 													</div>
 
-
-                                                <div class="col-md-12">
-                                                    <div class="col-md-6">
+													<div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Medico</label>
 														<input type="text" required name="medico" value="{{$tratamiento->medico}}" class="form-control slug-title" id="medico">
 													</div>
-                                                </div>
+												
 												</form>
 											</div>
 										</div>
@@ -91,7 +89,6 @@
 													<th>Cantidad</th>
 													<th>Precio</th>
 													<td>Subtotal</td>
-													<th>Acciones</th>
 												</tr>
 											</thead>
 		
@@ -112,29 +109,7 @@
 														<td><input id="cant{{$pro->id}}" onchange="calcularSub({{$pro}});" class="form-control cantidad" style="max-width: 200px;" type="number" value="{{$pro->cantidad}}"></td>
 														<td id="precioTd{{$pro->id}}" class="precio">{{ $pro->precio }}</td>
 														<td><p id="subtotalTd{{$pro->id}}">0</p></td>
-														<td>
-															<div class="btn-group mb-1">
-																<button type="button" class="btn btn-outline-success">Info</button>
-																<button type="button"
-																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-																	data-bs-toggle="dropdown" aria-haspopup="true"
-																	aria-expanded="false" data-display="static">
-																	<span class="sr-only">Info</span>
-																</button>
-		
-																<div class="dropdown-menu">
-																	<a class="dropdown-item" data-bs-toggle="modal"
-																		data-bs-target="#modalEditar{{ $pro->id }}">Editar</a>
-																	<a onclick="eliminarProcedimiento({{ $pro->id }})"
-																		class="dropdown-item">Eliminar</a>
-																</div>
-																<form id="formEliminar{{ $pro->id }}" method="POST"
-																	action="{{ route('procedimiento.destroy', $pro->id) }}">
-																	@csrf
-																	{{ method_field('DELETE') }}
-																</form>
-															</div>
-														</td>
+														
 													</tr>
 		
 													
@@ -191,7 +166,7 @@
 				function enviar(id)
 				{
 					// let form = document.getElementById('formTratamiento')
-					let asunto = document.getElementById('asunto').value;
+					// let asunto = document.getElementById('asunto').value;
 					let especialidad = document.getElementById('especialidad').value
 					let medico = document.getElementById('medico').value;
 
@@ -200,7 +175,7 @@
                         url: `{{ route('tratamiento.editar') }}`,
                         dataType: "json",
                         data: {
-                            asunto, especialidad, medico, id,
+                            especialidad, medico, id,
 							'data':ArrayCantidad                            
                             }
                         }).done(function(res) {

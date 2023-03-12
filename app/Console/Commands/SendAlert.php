@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\EnvioMensaje;
 use Illuminate\Support\Facades\Mail;
+use DateTime;
 
 class SendAlert extends Command
 {
@@ -34,10 +35,10 @@ class SendAlert extends Command
                 $fechaInicio = $cita->fecha_inicio;
                 $hoy = new Carbon('now');
                 $horaInicio = substr($fechaInicio,11,-3);
-
+                $fecha1 = new DateTime();
                 $date1 = strtotime($hoy);
                 $date2 = strtotime($horaInicio);
-                $diff = abs($date2 - $date1)/3600;
+                $diff = $fecha1->diff($horaInicio);
 
                 $fechaInicio = date("Y-m-d h:i:s",strtotime ( '-1 day' , strtotime ( $fechaInicio ) ) );
                 Storage::append('file.txt',$fechaInicio.'----'.$hoy);

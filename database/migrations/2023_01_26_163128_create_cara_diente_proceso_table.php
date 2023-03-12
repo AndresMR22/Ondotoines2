@@ -19,9 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('diente_id');
             $table->unsignedBigInteger('proceso_id');    
             $table->integer('posicion_cara');
-            $table->foreign('cara_id')->references('id')->on('caras');
-            $table->foreign('diente_id')->references('id')->on('dientes');
-            $table->foreign('proceso_id')->references('id')->on('procesos');
+            $table->foreign('cara_id')->references('id')->on('caras')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('diente_id')->references('id')->on('dientes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('proceso_id')->references('id')->on('procesos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
