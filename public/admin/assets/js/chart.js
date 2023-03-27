@@ -1048,27 +1048,31 @@ $(document).ready(function() {
   }
   /*======== 14. CURRENT USER BAR CHART ========*/
   var cUser = document.getElementById("currentUser");
+  let textos = []
+  let costos = []
+
+  let tratamientos = document.getElementById('tratamientos').value
+  tratamientos = JSON.parse(tratamientos)
+    console.log(tratamientos)
+    for(let i = 0 ; i<tratamientos.length; i++)
+    {
+      textos.push(tratamientos[i].observacion)
+      
+      costos.push(tratamientos[i].costoTratamiento)
+    }
+
+    console.log('textos:',textos)
+    console.log('costos:',costos)
+
   if (cUser !== null) {
     var myUChart = new Chart(cUser, {
       type: "bar",
       data: {
-        labels: [
-          "1h",
-          "10 m",
-          "50 m",
-          "30 m",
-          "40 m",
-          "20 m",
-          "30 m",
-          "25 m",
-          "20 m",
-          "5 m",
-          "10 m"
-        ],
+        labels: textos,
         datasets: [
           {
-            label: "signup",
-            data: [15, 30, 27, 43, 39, 18, 42, 25, 13, 18, 59],
+            label: "Costo",
+            data: costos,
             // data: [2, 3.2, 1.8, 2.1, 1.5, 3.5, 4, 2.3, 2.9, 4.5, 1.8, 3.4, 2.8],
             backgroundColor: "#88aaf3"
           }
@@ -1138,24 +1142,67 @@ $(document).ready(function() {
   }
   /*======== 15. ANALYTICS - USER ACQUISITION ========*/
   var acquisition = document.getElementById("acquisition");
+  var tratamientos2 = document.getElementById("tratamientos").value;
+  var numerosTratamiento = document.getElementById("numerosTratamiento").value;
+  var observaciones = document.getElementById("observaciones").value;
+
+  var arrayNumerosTratamientos = []
+  var arrayCostoTratamiento = []
   if (acquisition !== null) {
+
+    numerosTratamiento = JSON.parse(numerosTratamiento);
+    tratamientos2 = JSON.parse(tratamientos2);
+    observaciones = JSON.parse(observaciones);
+
+    console.log(tratamientos2,numerosTratamiento)
+
+    for(let i = 0; i<(numerosTratamiento.length); i++)
+    {
+      arrayNumerosTratamientos.push(numerosTratamiento[i]);
+      arrayCostoTratamiento.push(tratamientos2[i].costoTratamiento);
+    }
+
+    console.log('arrayidTratamiento:',arrayCostoTratamiento)
+
     var acqData = [
       {
-        first: [100, 180, 44, 75, 150, 66, 70],
-        second: [144, 44, 177, 76, 23, 189, 12],
-        third: [44, 167, 102, 123, 183, 88, 134]
+        first: arrayCostoTratamiento,
+        // second: [144, 44, 177, 76, 23, 189, 12],
+        // third: [44, 167, 102, 123, 183, 88, 134]
       },
-      {
-        first: [144, 44, 110, 5, 123, 89, 12],
-        second: [22, 123, 45, 130, 112, 54, 181],
-        third: [55, 44, 144, 75, 155, 166, 70]
-      },
-      {
-        first: [134, 80, 123, 65, 171, 33, 22],
-        second: [44, 144, 77, 76, 123, 89, 112],
-        third: [156, 23, 165, 88, 112, 54, 181]
-      }
+      // {
+      //   first: [144, 44, 110, 5, 123, 89, 12],
+      //   second: [22, 123, 45, 130, 112, 54, 181],
+      //   third: [55, 44, 144, 75, 155, 166, 70]
+      // },
+      // {
+      //   first: [134, 80, 123, 65, 171, 33, 22],
+      //   second: [44, 144, 77, 76, 123, 89, 112],
+      //   third: [156, 23, 165, 88, 112, 54, 181]
+      // }
     ];
+
+    //data a mostrar 
+    let dataText = []
+    console.log('obs:',observaciones)
+    observaciones.forEach((item,i)=>
+    {
+     dataText.push({label:item,
+      backgroundColor: "rgba(52, 116, 212, .2)",
+      borderColor: "rgba(52, 116, 212, .7)",
+      data: acqData[0].first,
+      lineTension: 0.3,
+      pointBackgroundColor: "rgba(52, 116, 212,0)",
+      pointHoverBackgroundColor: "rgba(52, 116, 212,1)",
+      pointHoverRadius: 3,
+      pointHitRadius: 30,
+      pointBorderWidth: 2,
+      pointStyle: "rectRounded"})
+     
+    })
+
+    console.log('--',dataText)
+    //fin data a mostrar
 
     var configAcq = {
       // The type of chart we want to create
@@ -1163,56 +1210,8 @@ $(document).ready(function() {
 
       // The data for our dataset
       data: {
-        labels: [
-          "4 Jan",
-          "5 Jan",
-          "6 Jan",
-          "7 Jan",
-          "8 Jan",
-          "9 Jan",
-          "10 Jan"
-        ],
-        datasets: [
-          {
-            label: "Via Referral",
-            backgroundColor: "rgba(52, 116, 212, .2)",
-            borderColor: "rgba(52, 116, 212, .7)",
-            data: acqData[0].first,
-            lineTension: 0.3,
-            pointBackgroundColor: "rgba(52, 116, 212,0)",
-            pointHoverBackgroundColor: "rgba(52, 116, 212,1)",
-            pointHoverRadius: 3,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: "rectRounded"
-          },
-          {
-            label: "Direct",
-            backgroundColor: "rgba(255, 192, 203, .3)",
-            borderColor: "rgba(255, 192, 203, .7)",
-            data: acqData[0].second,
-            lineTension: 0.3,
-            pointBackgroundColor: "rgba(255, 192, 203, 0)",
-            pointHoverBackgroundColor: "rgba(255, 192, 203, 1)",
-            pointHoverRadius: 3,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: "rectRounded"
-          },
-          {
-            label: "Via Social",
-            backgroundColor: "rgb(178, 251, 212, .3)",
-            borderColor: "rgba(178, 251, 212, .7)",
-            data: acqData[0].third,
-            lineTension: 0.3,
-            pointBackgroundColor: "rgba(178, 251, 212, 0)",
-            pointHoverBackgroundColor: "rgba(178, 251, 212, 1)",
-            pointHoverRadius: 3,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: "rectRounded"
-          }
-        ]
+        labels: arrayNumerosTratamientos,
+        datasets: dataText
       },
 
       // Configuration options go here
@@ -1273,8 +1272,8 @@ $(document).ready(function() {
     items.forEach(function (item, index) {
       item.addEventListener("click", function() {
         configAcq.data.datasets[0].data = acqData[index].first;
-        configAcq.data.datasets[1].data = acqData[index].second;
-        configAcq.data.datasets[2].data = acqData[index].third;
+        // configAcq.data.datasets[1].data = acqData[index].second;
+        // configAcq.data.datasets[2].data = acqData[index].third;
         lineAcq.update();
       });
     });

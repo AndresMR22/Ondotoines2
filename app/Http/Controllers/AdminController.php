@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Cita;
+use App\Models\Tratamiento;
+use App\Models\Procedimiento;
 use App\Models\Paciente;
 use App\Models\Imagen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon; 
 
 class AdminController extends Controller
 {
@@ -16,11 +19,58 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::orderBy('id', 'DESC')->take(5)->get();
+        $procedimientos = Procedimiento::all();
         $citas = Cita::all();
         $admins = User::all();
+        // $tratamientos = Tratamiento::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->get();
+        $tratamientos = Tratamiento::all();
+        $tratamientosRecientes = Tratamiento::orderBy('id', 'DESC')->take(3)->get();
 
-        return view('admin.estadisticas',compact('pacientes','citas','admins'));
+        $totalCosto = 0;
+        $totalesHoy = array();
+        $numerosTratamiento = array();
+        $observaciones = array();
+
+        foreach($tratamientosRecientes as $tra)
+        {
+            $pros = $tra->procedimientos()->get();
+            $cants = $tra->procedimientos()->get(['cantidad']);
+            foreach($pros as $key => $pro)
+            {
+                $total = $pro->precio*$cants[$key]->cantidad;
+                $totalCosto = $totalCosto+$total;
+            }
+            $tra->setAttribute('costoTratamiento',$totalCosto);
+            $totalCosto = 0;
+        }
+
+        foreach($tratamientos as $tra)
+        {
+            $pros = $tra->procedimientos()->get();
+            $cants = $tra->procedimientos()->get(['cantidad']);
+            foreach($pros as $key => $pro)
+            {
+                $total = $pro->precio*$cants[$key]->cantidad;
+                $totalCosto = $totalCosto+$total;
+            }
+            $tra->setAttribute('costoTratamiento',$totalCosto);
+            array_push($totalesHoy,$totalCosto);
+            array_push($numerosTratamiento,$tra->created_at->format('d/m/Y'));
+            array_push($observaciones,$tra->observacion);
+            $totalCosto = 0;
+        }
+        // dd($tratamientos);
+        // dd($observaciones);
+        $totalesHoy = json_encode($totalesHoy);
+        $numerosTratamiento = json_encode($numerosTratamiento);
+        // dd($numerosTratamiento);
+        $observaciones = json_encode($observaciones);
+ 
+
+        // dd($totalCosto);
+
+        return view('admin.estadisticas',compact('pacientes','procedimientos','citas','admins','tratamientos','tratamientosRecientes','totalesHoy','numerosTratamiento','observaciones'));
     }
     public function index()
     {
