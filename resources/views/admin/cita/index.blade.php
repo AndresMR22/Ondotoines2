@@ -212,9 +212,13 @@
 
                                 <div class="row mb-2">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="firstName">Médico</label>
-                                            <input type="text" class="form-control" name="medico" id="medico" value="{{old('medico')}}" required>
+                                        <div class="form-group mb-4">
+                                            <label class="form-label">Médico</label>
+                                            <select name="medico" id="medico" class="form-select" required>
+                                                    @foreach($medicos as $medico)
+                                                    <option value="{{$medico->id}}">{{$medico->nombre}}</option>
+                                                    @endforeach
+                                            </select>
                                         </div>
                                     </div>
 

@@ -28,21 +28,34 @@ class SendAlert extends Command
         {
             if($cita->mensaje_id==null || $cita->mensaje_id=="")
             {
+                
+
                 //Datos paciente
                 $paciente_id = $cita->paciente_id;
                 $paciente = Paciente::find($paciente_id);
-    
+                
                 $fechaInicio = $cita->fecha_inicio;
+                
                 $hoy = new Carbon('now');
-                $horaInicio = substr($fechaInicio,11,-3);
-                $fecha1 = new DateTime();
-                $date1 = strtotime($hoy);
-                $date2 = strtotime($horaInicio);
-                $diff = $fecha1->diff($horaInicio);
 
+                $horaInicio = substr($fechaInicio,11,-3);
+                
+                
+                // $date1 = strtotime($hoy);
+
+                // $date1 = new DateTime('2011-11-17 05:05');
+               
+                // $date2 = new DateTime($horaInicio);
+               
+                // $date2 = strtotime($horaInicio);
+                $diff = $hoy->diffInHours($horaInicio);
+                Storage::append('file.txt','hola2 '.$diff);
+                
                 $fechaInicio = date("Y-m-d h:i:s",strtotime ( '-1 day' , strtotime ( $fechaInicio ) ) );
                 Storage::append('file.txt',$fechaInicio.'----'.$hoy);
                 $mensajeAlerta = "El paciente ".$paciente->nombre." tiene una cita el día de mañana.";
+
+                
                 if($hoy >= $fechaInicio)
                 {
                     $mensaje = Mensaje::create([
@@ -66,10 +79,6 @@ class SendAlert extends Command
                     $email = $paciente->correo;
                     // Mail::to($email)->send(new EnvioMensaje($email, $paciente->nombre, $mensajeAlerta, $paciente->telefono, $cita->especialidad));
                     Storage::append('file.txt',$email);
-
-                   
-
-
                 }
                 
             }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cita;
 use App\Models\Paciente;
 use App\Models\Mensaje;
+use App\Models\Medico;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCitaRequest;
@@ -23,7 +24,8 @@ class CitaController extends Controller
     {
         $pacientes = Paciente::all();
         $citas = Cita::all();
-        return view('admin.cita.index',compact('pacientes','citas'));
+        $medicos = Medico::all();
+        return view('admin.cita.index',compact('pacientes','citas','medicos'));
     }
 
     /**
@@ -54,12 +56,12 @@ class CitaController extends Controller
      */
     public function store(StoreCitaRequest $request)
     {
-        
+        $medico = Medico::find($request->medico);
        $cita = Cita::create([
         "fecha_inicio"=>$request->fecha_inicio,
         "fecha_fin"=>$request->fecha_fin,
         "telefono"=>$request->telefono,
-        "medico"=>$request->medico,
+        "medico"=>$medico->nombre,
         "estado"=>"pendiente",
         "especialidad"=>$request->especialidad,
         "paciente_id"=>$request->paciente_id,

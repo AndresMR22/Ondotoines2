@@ -12,9 +12,9 @@
 			<div id="sidebar" class="sidebar ec-sidebar-footer">
 
 				<div class="ec-brand">
-					<a href="index.html" title="Ekka">
+					<a href="" title="Odontoines">
 						<img class="ec-brand-icon" src="{{asset('images/icons/logo.png')}}" alt="" />
-						<span class="ec-brand-name text-truncate">ODNTNS</span>
+						<span class="ec-brand-name text-truncate" style="font-size:15px;">ODONTOINES</span>
 					</a>
 				</div>
 
@@ -35,7 +35,7 @@
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
 								<i class="mdi mdi-account-key"></i>
-								<span class="nav-text">Admin</span> <b class="caret"></b>
+								<span class="nav-text">Administrador</span> <b class="caret"></b>
 							</a>
 							<div class="collapse">
 								<ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
@@ -247,11 +247,11 @@
 											{{auth()->user()->name}} <small class="pt-1">{{auth()->user()->email}}</small>
 										</div>
 									</li>
-									<li>
+									{{-- <li>
 										<a href="user-profile.html">
 											<i class="mdi mdi-account"></i> Mi Perfil
 										</a>
-									</li>
+									</li> --}}
 									
 									<li class="dropdown-footer">
 										<a onclick="event.preventDefault();
@@ -321,9 +321,9 @@
 									</div>
 								</div>
 							</li>
-							<li class="right-sidebar-in right-sidebar-2-menu">
+							{{-- <li class="right-sidebar-in right-sidebar-2-menu">
 								<i class="mdi mdi-settings-outline mdi-spin"></i>
-							</li>
+							</li> --}}
 						</ul>
 					</div>
 				</nav>
