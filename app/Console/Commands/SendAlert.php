@@ -36,9 +36,9 @@ class SendAlert extends Command
                 
                 $fechaInicio = $cita->fecha_inicio;
                 
-                $hoy = new Carbon('now');
+                $hoy = Carbon::now();
 
-                $horaInicio = substr($fechaInicio,11,-3);
+                $horaInicio = $fechaInicio;
                 
                 
                 // $date1 = strtotime($hoy);
@@ -49,10 +49,10 @@ class SendAlert extends Command
                
                 // $date2 = strtotime($horaInicio);
                 $diff = $hoy->diffInHours($horaInicio);
-                Storage::append('file.txt','hola2 '.$diff);
+                Storage::append('file.txt','----hoy:'.$hoy.' -----horaInicio:'.$horaInicio.'    DIFF:'.$diff);
                 
                 $fechaInicio = date("Y-m-d h:i:s",strtotime ( '-1 day' , strtotime ( $fechaInicio ) ) );
-                Storage::append('file.txt',$fechaInicio.'----'.$hoy);
+                Storage::append('file.txt','fechaInicio:'.$fechaInicio.'---- hoyy:'.$hoy);
                 $mensajeAlerta = "El paciente ".$paciente->nombre." tiene una cita el día de mañana.";
 
                 

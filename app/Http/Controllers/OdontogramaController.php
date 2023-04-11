@@ -19,7 +19,8 @@ class OdontogramaController extends Controller
 {
     public function index()
     {
-        return view('admin.odontograma.index');
+        $procesos = Proceso::all();
+        return view('admin.odontograma.index','procesos');
     }
 
     public function create()
@@ -68,6 +69,7 @@ class OdontogramaController extends Controller
         $tratamiento = Tratamiento::find($id);
         $odonto = Odontograma::where('tratamiento_id',$tratamiento->id)->first();
         $datos =  $odonto->cdps()->get();
+        $procesos = Proceso::all();
         // dd($datos);
         foreach($datos as $key => $dato)
         {
@@ -82,12 +84,13 @@ class OdontogramaController extends Controller
         }
         $idTratamiento = $id;
         $odontograma_id = $odonto->id;
-    return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento','odontograma_id'));
+    return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento','odontograma_id','procesos'));
     }
 
     public function edit($idTratamiento)
     {
-        return view('admin.odontograma.index',compact('idTratamiento'));
+        $procesos = Proceso::all();
+        return view('admin.odontograma.index',compact('idTratamiento','procesos'));
     }
 
     public function update(UpdateOdontogramaRequest $request, Odontograma $odontograma)

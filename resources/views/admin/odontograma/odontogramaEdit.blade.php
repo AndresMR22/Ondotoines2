@@ -1426,33 +1426,31 @@
                        <div class="opcionesOdontograma">
                         <div class="contenedor" style="display:flex; justify-content:center; gap:20px;">
                             <ul style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px;">
-                                <li ondblclick="asignarReferencia(1)" class="fondoAzulOpcion" title="diente obturado">Do</li>
-                                <li ondblclick="asignarReferencia(2)" class="fondoRojoOpcion" title="cariado">C</li>
-                                <li ondblclick="asignarReferencia(3)" class="fondoAzulOpcion" title="ausente">=</li>
-                                <li ondblclick="asignarReferencia(4)" class="fondoRojoOpcion" title="exodoncia">X</li>
-                                <li ondblclick="asignarReferencia(5)" class="fondoRojoOpcion" title="caries penetrante">CP</li>
-                                <li ondblclick="asignarReferencia(6)" class="fondoRojoOpcion" title="retenido">M</li>
-                                <li ondblclick="asignarReferencia(7)" class="fondoAzulOpcion" title="pieza de puente">PP</li>
+                                @for($i=0 ; $i<7; $i++)
+                                <li ondblclick="asignarReferencia({{$i+1}})" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px; height:70px;" class="{{$procesos[$i]['color'] == 'blue' ? 'fondoAzulOpcion' : 'fondoRojoOpcion'}}" title="{{$procesos[$i]['descripcion']}}">
+                                   <div>{{$procesos[$i]['nombre']}}</div> 
+                                    <div style="font-size:10px;">{{$procesos[$i]['descripcion']}}</div>
+                                </li>
+                                @endfor
                             </ul>
+                        
     
                             <ul style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px;">
-                                <li ondblclick="asignarReferencia(8)" class="fondoAzulOpcion" title="Corona">Co</li>
-                                <li ondblclick="asignarReferencia(9)" class="fondoAzulOpcion" title="Protesis removible">Pr</li>
-                                <li ondblclick="asignarReferencia(10)" class="fondoAzulOpcion" title="Incrustación">Inc</li>
-                                <li ondblclick="asignarReferencia(11)" class="fondoRojoOpcion" title="Enfermedad periododental">EP</li>
-                                <li ondblclick="asignarReferencia(12)" class="fondoRojoOpcion" title="Fractura dentaria">FD</li>
-                                <li ondblclick="asignarReferencia(13)" class="fondoRojoOpcion" title="Mala posición dentaria">MPD</li>
-                                <li ondblclick="asignarReferencia(14)" class="fondoAzulOpcion" title="Perno muñon">PM</li>
+                                @for($i=7 ; $i<14; $i++)
+                                <li ondblclick="asignarReferencia({{$i+1}})" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px; height:70px;" class="{{$procesos[$i]['color'] == 'blue' ? 'fondoAzulOpcion' : 'fondoRojoOpcion'}}" title="{{$procesos[$i]['descripcion']}}">
+                                    <div>{{$procesos[$i]['nombre']}}</div> 
+                                    <div style="font-size:10px;">{{$procesos[$i]['descripcion']}}</div>
+                                </li>
+                                @endfor
                             </ul>
 
                             <ul style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px;">
-                                <li ondblclick="asignarReferencia(15)" class="fondoAzulOpcion" title="Tratamiento de CLO">TC</li>
-                                <li ondblclick="asignarReferencia(16)" class="fondoRojoOpcion" title="Fluoresis">F</li>
-                                <li ondblclick="asignarReferencia(17)" class="fondoAzulOpcion" title="Implante dental">Imp</li>
-                                <li ondblclick="asignarReferencia(18)" class="fondoRojoOpcion" title="Mancha blanca">MB</li>
-                                <li ondblclick="asignarReferencia(19)" class="fondoAzulOpcion" title="Sellador">Sc</li>
-                                <li ondblclick="asignarReferencia(20)" class="fondoAzulOpcion" title="Surco profundo">SP SR</li>
-                                <li ondblclick="asignarReferencia(21)" class="fondoAzulOpcion" title="Hipoplasia de esmalte">Hp</li>
+                                @for($i=14 ; $i<21; $i++)
+                                <li ondblclick="asignarReferencia({{$i+1}})" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px; height:70px;" class="{{$procesos[$i]['color'] == 'blue' ? 'fondoAzulOpcion' : 'fondoRojoOpcion'}}" title="{{$procesos[$i]['descripcion']}}">
+                                    <div>{{$procesos[$i]['nombre']}}</div> 
+                                    <div style="font-size:10px;">{{$procesos[$i]['descripcion']}}</div>
+                                </li>
+                                @endfor
                             </ul>
 
                             
