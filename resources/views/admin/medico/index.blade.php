@@ -95,20 +95,16 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="firstName">Nombre</label>
-                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$medico->nombre}}" required>
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$medico->nombre}}" >
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="lastName">Especialidad</label>
-                                            <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$medico->especialidad}}" required>
+                                            <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$medico->especialidad}}" >
                                         </div>
                                     </div>
-
-                                   
-
-                                   
                                 </div>
                             </div>
 
@@ -135,24 +131,24 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Observación</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <textarea class="form-control">{{$medico->observacion}}</textarea>
                                                 </div>
                                             </div>
-        
-                                          
-        
-                                          
-        
-                                           
+
+
+
+
+
+
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">Cancelar</button>
@@ -175,18 +171,18 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                   <h5>¿Estas seguro de eliminar al medico {{$medico->nombre}}</h5> 
+                                                   <h5>¿Estas seguro de eliminar al medico {{$medico->nombre}}</h5>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">No, cancelar</button>
@@ -209,16 +205,15 @@
 			</div> <!-- End Content Wrapper -->
 
             <script>
-        
+
             function eliminarMedico(medico)
             {
                 let form = document.getElementById('formEliminar'+medico.id);
                         form.submit(); // <--- submit form programmatically
             }
             </script>
-           
-            
+
+
 @endsection
 
 
-		

@@ -21,7 +21,7 @@
             </ul>
         </div>
     @endif
-    
+
     <!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
         <div class="content">
@@ -199,7 +199,7 @@
                                         <tr>
                                             <th>Medico</th>
                                             <th>Especialidad</th>
-                                            <th>Asunto</th>
+                                            {{-- <th>Asunto</th> --}}
                                             <th>Observación</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -209,7 +209,7 @@
                                             <tr>
                                                 <td>{{ $tra->medico }}</td>
                                                 <td>{{ $tra->especialidad }}</td>
-                                                <td>{{ $tra->asunto }}</td>
+                                                {{-- <td>{{ $tra->asunto }}</td> --}}
                                                 <td>{{ $tra->observacion }}</td>
                                                 <td>
                                                     <div class="btn-group mb-1">
@@ -255,14 +255,14 @@
 
                                                             <div class="modal-body px-4">
                                                                 <div class="row mb-2">
-                                                                    <div class="col-lg-6">
+                                                                    {{-- <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label for="firstName">Asunto</label>
                                                                             <input type="text" class="form-control"
                                                                                 name="asunto" id="asunto"
                                                                                 value="{{ $tra->asunto }}">
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label for="firstName">Medico</label>
@@ -271,9 +271,6 @@
                                                                                 value="{{ $tra->medico }}">
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-                                                                <div class="row mb-2">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label for="firstName">Especialidad</label>
@@ -282,7 +279,11 @@
                                                                                 value="{{ $tra->especialidad }}">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-6">
+                                                                </div>
+
+                                                                <div class="row mb-2">
+
+                                                                    <div class="col-lg-12">
                                                                         <div class="form-group">
                                                                             <label for="firstName">Observación</label>
                                                                             <textarea class="form-control" name="observacion">{{ $tra->observacion }}</textarea>
@@ -454,6 +455,12 @@
 
         function eliminarCita(idCita) {
             let form = document.getElementById('formEliminarCita' + idCita);
+            form.submit();
+        }
+
+        function guardarCambios(idForm)
+        {
+            let form = document.getElementById('formEditarCita'+idForm)
             form.submit();
         }
     </script>

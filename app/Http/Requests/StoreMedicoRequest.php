@@ -24,7 +24,8 @@ class StoreMedicoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre'=>'required|string|min:3|max:150',
+            'especialidad'=>'required|string|min:3|max:100'
         ];
     }
 }

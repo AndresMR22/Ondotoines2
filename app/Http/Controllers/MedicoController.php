@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Medico;
 use App\Http\Requests\StoreMedicoRequest;
 use App\Http\Requests\UpdateMedicoRequest;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class MedicoController extends Controller
@@ -21,8 +22,23 @@ class MedicoController extends Controller
         return view('admin.medico.create');
     }
 
-    public function store(StoreMedicoRequest $request)
+    public function store(Request $request)
     {
+
+        $campos = [
+            'nombre' => 'required|string|min:3|max:255',
+            'especialidad' => 'required|string|min:3|max:255',
+
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'max' => ':attribute no debe sobrepasar los 255 caracteres',
+            'min' => ':attribute no debe tener menos de 3 caracteres',
+            'string' => ':attribute debe ser una cadena de tipo texto'
+        ];
+        $this->validate($request, $campos, $mensaje);
+
         Medico::create([
             "nombre"=>$request->nombre,
             "especialidad"=>$request->especialidad
@@ -41,8 +57,22 @@ class MedicoController extends Controller
         //
     }
 
-    public function update(UpdateMedicoRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $campos = [
+            'nombre' => 'required|string|min:3|max:255',
+            'especialidad' => 'required|string|min:3|max:255',
+
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'nombre.max' => 'El nombre no debe sobrepasar los 255 caracteres',
+            'nombre.min' => 'El nombre no debe tener menos de 3 caracteres',
+            'nombre.string' => 'El nombre debe ser una cadena de tipo texto'
+        ];
+        $this->validate($request, $campos, $mensaje);
+
         $medico = Medico::find($id);
        $medico->update([
         "nombre"=>$request->nombre,

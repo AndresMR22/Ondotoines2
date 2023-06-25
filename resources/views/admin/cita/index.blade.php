@@ -94,7 +94,7 @@
                                                                 <div class="modal-header px-4">
                                                                     <h5 class="modal-title" id="exampleModalCenterTitle">Editar Cita</h5>
                                                                 </div>
-                                    
+
                                                                 <div class="modal-body px-4">
                                                                     <div class="row mb-2">
                                                                         <div class="col-lg-6">
@@ -142,7 +142,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                    
+
                                                                 <div class="modal-footer px-4">
                                                                     <button type="button" class="btn btn-secondary btn-pill"
                                                                         data-bs-dismiss="modal">Cancelar</button>
@@ -165,18 +165,18 @@
                                                                 <div class="modal-header px-4">
                                                                     <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
                                                                 </div>
-                                    
+
                                                                 <div class="modal-body px-4">
-                                    
+
                                                                     <div class="row mb-2">
                                                                         <div class="col-lg-12">
                                                                             <div class="form-group">
-                                                                            <h5 class="text-center">¿Estas seguro de eliminar la cita: {{$cita->asunto}} ?</h5> 
+                                                                            <h5 class="text-center">¿Estas seguro de eliminar la cita: {{$cita->asunto}} ?</h5>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                    
+
                                                                 <div class="modal-footer px-4">
                                                                     <button type="button" class="btn btn-secondary btn-pill"
                                                                         data-bs-dismiss="modal">No, cancelar</button>
@@ -209,12 +209,11 @@
                             </div>
 
                             <div class="modal-body px-4">
-
                                 <div class="row mb-2">
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label class="form-label">Médico</label>
-                                            <select name="medico" id="medico" class="form-select" required>
+                                            <select name="medico" id="medico" class="form-select">
                                                     @foreach($medicos as $medico)
                                                     <option value="{{$medico->id}}">{{$medico->nombre}}</option>
                                                     @endforeach
@@ -234,7 +233,7 @@
                                         </div>
                                     </div>
 
-                                   
+
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
@@ -268,7 +267,7 @@
                                         </div>
                                     </div>
 
-                                   
+
                                 </div>
                             </div>
 
@@ -281,7 +280,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
                 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -361,15 +360,15 @@
                             {
                                 alert('Ya cuenta con una cita para el horario entre las '+res.fechaInicio+' y las '+res.fechaFin)
                             }
-                            
+
                         })
-                        
+
                     }
                     else
                     {
                         alert('Asegurese de indicar el horario de inicio y fin de la cita.')
                     }
-                       
+
                 }
 
                 function guardarCambios(idForm)
@@ -395,4 +394,3 @@
 @endsection
 
 
-		

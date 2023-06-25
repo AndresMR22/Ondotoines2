@@ -46,20 +46,30 @@
 
 								<div class="card-body">
 									<div class="row ec-vendor-uploads">
-										
+
 										<div class="col-lg-12">
 											<div class="ec-vendor-upload-detail">
 												<form class="row g-3" action="{{route('medico.store')}}" method="POST">
                                                     @csrf
 													<div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Nombre</label>
-														<input type="text" name="nombre" class="form-control slug-title" value="{{old('nombre')}}" id="nombre" required>
-													</div>
+														<input type="text" name="nombre" class="form-control slug-title @error('nombre') is-invalid @enderror" value="{{old('nombre')}}" id="nombre">
+                                                        @error('nombre')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    </div>
                                                     <div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Especialidad</label>
-														<input type="text" name="especialidad" class="form-control slug-title" value="{{ old('especialidad') }}" id="especialidad" required>
-													</div>
-													
+														<input type="text" name="especialidad" class="form-control slug-title @error('especialidad') is-invalid @enderror" value="{{ old('especialidad') }}" id="especialidad">
+                                                        @error('especialidad')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    </div>
+
 													<div class="col-md-12">
 														<button type="submit" class="btn btn-primary">Guardar</button>
 													</div>
@@ -75,4 +85,3 @@
 			</div> <!-- End Content Wrapper -->
 @endsection
 
-	

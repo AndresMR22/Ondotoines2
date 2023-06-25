@@ -22,16 +22,6 @@
 											style="width:100%">
 											<thead>
 												<tr>
-                                                    {{-- nombre
-                                                    apellido
-                                                    edad
-                                                    lugar_nac
-                                                    ocupacion
-                                                    direccion
-                                                    cedula
-                                                    telefono
-                                                    sexo
-                                                    observacion --}}
 													<th>Nombre</th>
 													<th>Telefono</th>
                                                     <th>Dirección</th>
@@ -81,7 +71,7 @@
                             </div>
 
                             <div class="modal-body px-4">
-                               
+
 
                                 <div class="row mb-2">
                                     <div class="col-lg-6">
@@ -124,10 +114,10 @@
                                 <div class="modal-header px-4">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">Crear Administrador</h5>
                                 </div>
-    
+
                                 <div class="modal-body px-4">
-                                   
-    
+
+
                                     <div class="row mb-2">
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -152,7 +142,7 @@
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="modal-footer px-4">
                                     {{-- <button type="button" class="btn btn-secondary btn-pill"
                                         data-bs-dismiss="modal">Cancelar</button> --}}
@@ -170,9 +160,8 @@
                     form.submit();
             }
             </script>
-           
-            
+
+
 @endsection
 
 
-		

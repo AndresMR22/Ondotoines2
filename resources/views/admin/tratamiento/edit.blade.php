@@ -51,7 +51,7 @@
 
 								<div class="card-body">
 									<div class="row ec-vendor-uploads">
-										
+
 										<div class="col-lg-12">
 											<div class="ec-vendor-upload-detail">
 												<form class="row g-3" id="formTratamiento" action="{{route('tratamiento.store')}}" method="POST" enctype="multipart/form-data">
@@ -70,7 +70,7 @@
 														<label for="inputEmail4" class="form-label">Medico</label>
 														<input type="text" required name="medico" value="{{$tratamiento->medico}}" class="form-control slug-title" id="medico">
 													</div>
-												
+
 												</form>
 											</div>
 										</div>
@@ -91,7 +91,7 @@
 													<td>Subtotal</td>
 												</tr>
 											</thead>
-		
+
 											<tbody>
 												@foreach ($tratamiento->procedimientos as $key => $pro)
 													<tr>
@@ -109,10 +109,10 @@
 														<td><input id="cant{{$pro->id}}" onchange="calcularSub({{$pro}});" class="form-control cantidad" style="max-width: 200px;" type="number" value="{{$pro->cantidad}}"></td>
 														<td id="precioTd{{$pro->id}}" class="precio">{{ $pro->precio }}</td>
 														<td><p id="subtotalTd{{$pro->id}}">0</p></td>
-														
+
 													</tr>
-		
-													
+
+
 												@endforeach
 											</tbody>
 										</table>
@@ -136,7 +136,7 @@
 					{
 						let idFila = cant.id;
 						let idPro = idFila.substr(4);//retiramos el texto cant del idFila, ejem: cant1 = 1
-						let objCant = 
+						let objCant =
 						{
 							'id':idPro,
 							'cantidad':cant.value
@@ -170,19 +170,22 @@
 					let especialidad = document.getElementById('especialidad').value
 					let medico = document.getElementById('medico').value;
 
-					
+
 					$.ajax({
                         url: `{{ route('tratamiento.editar') }}`,
                         dataType: "json",
                         data: {
                             especialidad, medico, id,
-							'data':ArrayCantidad                            
+							'data':ArrayCantidad
                             }
                         }).done(function(res) {
                            if(res==1)
 						   {
 							window.location.href = "/admin/tratamiento"
-						   }else
+						   }else if(res == 3)
+                           {
+                            alert('Complete los campos Especialidad y Medico')
+                           }else
 						   {
 							alert('No se pudo actualizar el tratamiento')
 						   }
@@ -191,4 +194,3 @@
 			</script>
 @endsection
 
-	

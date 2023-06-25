@@ -61,13 +61,12 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-      // dd($data);
       $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
       ]);
-      
+
       if(isset($data['foto']))
         {
             $file = $data['foto'];
@@ -77,7 +76,7 @@ class RegisterController extends Controller
                $user->imagen()->create([
                   'url'=>$url,
                   'public_id'=>$public_id
-                  ]);   
+                  ]);
         }
 
       $user->assignRole('Administrador');

@@ -15,11 +15,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CitaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $pacientes = Paciente::all();
@@ -28,11 +24,7 @@ class CitaController extends Controller
         return view('admin.cita.index',compact('pacientes','citas','medicos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $pacientes = Paciente::all();
@@ -48,14 +40,30 @@ class CitaController extends Controller
         return redirect()->route('cita.show', $cita->id);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCitaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCitaRequest $request)
+
+    public function store(Request $request)
     {
+
+        $campos = [
+            'medico' => 'required|numeric',
+            'especialidad' => 'required|string|min:3|max:255',
+            "fecha_inicio"=>'required|date',
+            "fecha_fin"=>'required|date',
+            "telefono"=>'required|regex:/[0-9]{10}/'
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'numeric' => ':attribute debe ser un número',
+            'max' => ':attribute no debe sobrepasar los 255 caracteres',
+            'min' => ':attribute no debe tener menos de 3 caracteres',
+            'string' => ':attribute debe ser una cadena de tipo texto',
+            'date'=>':attribute debe ser de tipo fecha',
+            'regex'=>':attribute no tiene el formato correcto'
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+
         $medico = Medico::find($request->medico);
        $cita = Cita::create([
         "fecha_inicio"=>$request->fecha_inicio,
@@ -83,7 +91,7 @@ class CitaController extends Controller
         Alert::toast('Hubo problemas para agendar la cita', 'warning');
        }
 
-       
+
 
     //    $mensaje = Mensaje::create([
     //     "nombre"=>"Mensaje de prueba",
@@ -94,17 +102,12 @@ class CitaController extends Controller
 
     //    ]);
 
-      
-    
+
+
        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $cita = Cita::find($id);
@@ -119,32 +122,44 @@ class CitaController extends Controller
         return view('admin.notificacion.index',compact('notificaciones'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Cita $cita)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCitaRequest  $request
-     * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCitaRequest $request, $id)
+
+    public function update(Request $request, $id)
     {
+
+        $campos = [
+            'medico' => 'required|string|min:3|max:255',
+            'especialidad' => 'required|string|min:3|max:255',
+            "fecha_inicio"=>'required|date',
+            "fecha_fin"=>'required|date',
+            "telefono"=>'required|regex:/[0-9]{10}/'
+
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'max' => ':attribute no debe sobrepasar los 255 caracteres',
+            'min' => ':attribute no debe tener menos de 3 caracteres',
+            'string' => ':attribute debe ser una cadena de tipo texto',
+            'date'=>':attribute debe ser de tipo fecha',
+            'regex'=>':attribute no tiene el formato correcto'
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+
        $fechaInicio = $request->get('fecha_inicio');
        $fechaFin = $request->get('fecha_fin');
         $fechaInicio = str_replace('T',' ', $fechaInicio);
         $fechaFin = str_replace('T',' ', $fechaFin);
         $fechaInicio = $fechaInicio.':00';
         $fechaFin = $fechaFin.':00';
+
+
 
         $cita = Cita::find($id);
         $cita->update([
@@ -160,12 +175,7 @@ class CitaController extends Controller
         return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         Cita::destroy($id);
@@ -180,7 +190,7 @@ class CitaController extends Controller
         $fechaFin = $request->get('fechaFN');
         $fechaIni = str_replace("T","",$fechaIni);
         $fechaFin = str_replace("T","",$fechaFin);
-       
+
         //
         $fechaInicioBD = null;$fechaFinBD = null;
         foreach($citas as $cita)
@@ -204,5 +214,5 @@ class CitaController extends Controller
         return back();
     }
 
-   
+
 }

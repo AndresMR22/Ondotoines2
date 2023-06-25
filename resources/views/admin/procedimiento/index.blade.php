@@ -113,7 +113,7 @@
                                                                             <label for="firstName">Nombre</label>
                                                                             <input type="text" class="form-control"
                                                                                 name="nombre" id="nombre"
-                                                                                value="{{ $pro->nombre }}" required>
+                                                                                value="{{ $pro->nombre }}" >
                                                                         </div>
                                                                     </div>
 
@@ -122,7 +122,7 @@
                                                                             <label for="lastName">Precio</label>
                                                                             <input type="number" class="form-control"
                                                                                 name="precio" id="precio"
-                                                                                value="{{ $pro->precio }}" required>
+                                                                                value="{{ $pro->precio }}" >
                                                                         </div>
                                                                     </div>
 
@@ -133,7 +133,7 @@
                                                                         <div class="form-group">
                                                                             <label for="firstName">Cambiar foto</label>
                                                                             <input type="file" class="form-control"
-                                                                                name="foto" id="foto" required>
+                                                                                name="foto" id="foto" >
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
@@ -146,7 +146,7 @@
                                                                             @endif
                                                                         </div>
                                                                     </div>
-                                                                </div> 
+                                                                </div>
                                                             </div>
 
                                                             <div class="modal-footer px-4">
@@ -174,18 +174,18 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                   <h5 class="text-center">¿Estas seguro de eliminar al procedimiento {{$pro->nombre}}</h5> 
+                                                   <h5 class="text-center">¿Estas seguro de eliminar al procedimiento {{$pro->nombre}}</h5>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">No, cancelar</button>

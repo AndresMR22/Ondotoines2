@@ -104,36 +104,29 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="firstName">Nombre</label>
-                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$paciente->nombre}}" required>
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="{{$paciente->nombre}}" >
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="lastName">Apellido</label>
-                                            <input type="text" class="form-control" name="apellido" id="apellido" value="{{$paciente->apellido}}" required>
+                                            <input type="text" class="form-control" name="apellido" id="apellido" value="{{$paciente->apellido}}" >
                                         </div>
                                     </div>
 
-                                    {{-- <div class="col-lg-6">
-                                        <div class="form-group mb-4">
-                                            <label for="userName">Edad</label>
-                                            <input type="number" class="form-control" name="edad" id="edad"
-                                                value="{{$paciente->edad}}" required>
-                                        </div>
-                                    </div> --}}
 
                                         <div class="col-lg-6">
                                             <div class="form-group mb-4">
                                                 <label class="form-label">Fecha de nacimiento</label>
-                                                <input type="date" name="fecha_nac" class="form-control" id="fecha_nac"  value="{{$paciente->fecha_nac}}" required>
+                                                <input type="date" name="fecha_nac" class="form-control" id="fecha_nac"  value="{{$paciente->fecha_nac}}" >
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6">
                                             <div class="form-group mb-4">
                                                 <label for="inputEmail4" class="form-label">Lugar de nacimiento</label>
-                                                <input type="text" name="lugar_nac" class="form-control slug-title"  value="{{$paciente->lugar_nac}}" id="lugar_nac" required>
+                                                <input type="text" name="lugar_nac" class="form-control slug-title"  value="{{$paciente->lugar_nac}}" id="lugar_nac" >
                                             </div>
                                         </div>
 
@@ -141,7 +134,7 @@
                                         <div class="form-group mb-4">
                                             <label for="email">Teléfono</label>
                                             <input type="tel" class="form-control" name="telefono" id="telefono"
-                                                value="{{$paciente->telefono}}" required>
+                                                value="{{$paciente->telefono}}" >
                                         </div>
                                     </div>
 
@@ -149,11 +142,11 @@
                                         <div class="form-group mb-4">
                                             <label for="Birthday">Sexo</label>
                                             <input type="text" class="form-control" name="sexo" id="sexo"
-                                                value="{{$paciente->sexo}}" required>
+                                                value="{{$paciente->sexo}}" >
                                         </div>
                                     </div>
 
-                                   
+
                                 </div>
                             </div>
 
@@ -180,24 +173,24 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Observación</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <textarea class="form-control">{{$paciente->observacion}}</textarea>
                                                 </div>
                                             </div>
-        
-                                          
-        
-                                          
-        
-                                           
+
+
+
+
+
+
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">Cancelar</button>
@@ -219,18 +212,18 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                   <h5 class="text-center">¿Estas seguro de eliminar al paciente {{$paciente->nombre}}</h5> 
+                                                   <h5 class="text-center">¿Estas seguro de eliminar al paciente {{$paciente->nombre}}</h5>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">No, cancelar</button>
@@ -259,9 +252,8 @@
                     form.submit();
             }
             </script>
-           
-            
+
+
 @endsection
 
 
-		

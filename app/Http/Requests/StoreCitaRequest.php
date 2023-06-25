@@ -24,13 +24,7 @@ class StoreCitaRequest extends FormRequest
     public function rules()
     {
         return [
-            // "paciente_id"=>"required|unique:pacientes,id",
-            "medico"=>"required",
-            // "estado"=>"required|string|max:20",
-            "especialidad"=>"required|string|min:3|max:100",
-            "fecha_inicio"=>"required|date",
-            "fecha_fin"=>"required|date",
-            "telefono"=>"required|string|min:10",
+           
         ];
     }
 }

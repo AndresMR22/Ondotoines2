@@ -54,16 +54,16 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-12 col-form-label"> Observación</label> 
+                                    <label class="col-12 col-form-label"> Observación</label>
                                     <div class="col-12">
                                         <textarea id="observacion" name="observacion" cols="40" rows="2" class="form-control"></textarea>
                                     </div>
-                                </div> 
+                                </div>
 
-                                <p id="textoId"></p> 
+                                <p id="textoId"></p>
 
                                 <div class="form-group row">
-                                    <label class="col-12 col-form-label"> Paciente</label> 
+                                    <label class="col-12 col-form-label"> Paciente</label>
                                     <div class="col-8">
                                         <input type="text" class="form-control" name="texto" id="texto">
                                     </div>
@@ -74,12 +74,12 @@
 
 
                                 <div class="resultadosPaciente" id="resultadosPaciente">
-                                    
+
                                 </div>
-                               
+
 
                                 <div class="form-group row">
-                                    <label for="slug" class="col-12 col-form-label">Especialidad</label> 
+                                    <label for="slug" class="col-12 col-form-label">Especialidad</label>
                                     <div class="col-12">
                                         <input id="especialidad" name="especialidad" class="form-control here set-slug" type="text">
                                         {{-- <small>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</small> --}}
@@ -93,7 +93,7 @@
                                 </div>
 
                                 <input type="hidden" name="procedimientos" id="procedimientos">
-                               
+
                                 <input type="hidden" name="paciente_id" id="paciente_id">
                             </form>
 
@@ -117,7 +117,7 @@
                                 </thead>
 
                                 <tbody id="proSelecccionados">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -133,7 +133,7 @@
                                      <div class="modal fade modal-add-contact" id="modalProcedimientos" tabindex="-1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                             <div class="modal-content">
-                                                
+
                                                     <div class="modal-header px-4 d-flex justify-content-between" >
                                                         <div>
                                                             <h5 class="modal-title" id="exampleModalCenterTitle">Procedimientos disponibles</h5>
@@ -143,7 +143,7 @@
                                                             data-bs-dismiss="modal">X</button>
                                                         </div>
                                                     </div>
-                        
+
                                                     <div class="modal-body px-4">
 
                                                         <div class="card-body">
@@ -159,7 +159,7 @@
                                                                             <th>Acciones</th>
                                                                         </tr>
                                                                     </thead>
-                        
+
                                                                     <tbody id="procedimientosTabla">
                                                                         @foreach($procedimientos as $key => $procedimiento)
                                                                         <tr >
@@ -182,16 +182,16 @@
                                                         </div>
 
                                                     </div>
-                        
+
                                                     {{-- <div class="modal-footer px-4">
                                                         <button type="button" class="btn btn-secondary btn-pill"
                                                             data-bs-dismiss="modal">Cancelar</button>
                                                         <button type="submit" class="btn btn-primary btn-pill">Guardar cambios</button>
                                                     </div> --}}
-                                               
-                                                    
-                                                    
-                                                
+
+
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -209,7 +209,7 @@
     var proSelected = []
 
     function guardar()
-    {   
+    {
         if(proSelected.length == 0)
         {
             alert('Debe agregar al menos 1 procedimiento al tratamiento.')
@@ -219,7 +219,7 @@
             document.getElementById('procedimientos').value = JSON.stringify(proSelected)
             form.submit();
         }
-       
+
     }
 
     document.addEventListener('DOMContentLoaded',function(){
@@ -234,7 +234,7 @@
             // console.log(id)
             document.getElementById(id).value = cantidad*precio;
         }
-        
+
     })
 
     function calcularTotal(idFila)
@@ -242,7 +242,7 @@
         let inputTotal = document.getElementById('total'+idFila)
         let cantidad = document.getElementById('cantidad'+idFila).value
         let precio = document.getElementById('precio'+idFila).value
-        inputTotal.value = cantidad*precio; 
+        inputTotal.value = cantidad*precio;
     }
 
     function estaMarcado(idFila)
@@ -297,7 +297,7 @@
                                             </div>
                                         </td>
                                     </tr>`
-        
+
             $(tbody).append(fila);
         }
     }
@@ -314,7 +314,7 @@
         console.log(proSelected)
     }
 
-       
+
 
     function buscarPaciente()
     {
@@ -335,19 +335,19 @@
                                     $(bodyPacientes).append(`
                                     <div style="display:flex; justify-content:center; transform: scale(0.7);">
                                    <input type="checkbox" class="checkbox" class="checkbox" name="paciente_id" id="paciente${item.id}" >
-                                    <label class="form-control">${item.nombre} ${item.apellido}</label>  
+                                    <label class="form-control">${item.nombre} ${item.apellido}</label>
                                     </div>
                                     `);
-    
+
                                     document.querySelectorAll('li.nav-item').forEach(item => {
-                                        
+
                                     });
-    
+
                                    document.querySelectorAll('.checkbox').forEach(item =>
                                    {
                                         item.addEventListener('click', traer);
                                    })
-    
+
                                 })
                             })
         }else
@@ -355,7 +355,7 @@
             alert('Ingrese minimo 3 letras para la búsqueda')
         }
 
-                    
+
     }
 
     var texto = "";
@@ -372,9 +372,9 @@
         let id = nowCheckbox.target.attributes.id.value;
         id = id.substr(8)
         // texto = nowCheckbox.target.attributes.id.value
-        
+
         document.getElementById('paciente_id').value = id;
-        
+
     }
 
 </script>

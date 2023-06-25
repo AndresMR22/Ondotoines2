@@ -7,6 +7,7 @@ use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PacienteController extends Controller
@@ -46,8 +47,35 @@ class PacienteController extends Controller
      * @param  \App\Http\Requests\StorePacienteRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePacienteRequest $request)
+    public function store(Request $request)
     {
+
+        $campos = [
+            'nombre' => 'required|string|min:3|max:255',
+            "apellido"=>'required|string|min:3|max:255',
+            'fecha_nac' => 'required|date',
+            "lugar_nac"=>'required|string',
+            'ocupacion' => 'required|string',
+            "direccion"=>'required|string',
+            'cedula' => 'required|string|min:10|max:10',
+            "telefono"=>'required|regex:/[0-9]{10}/',
+            'sexo' => 'required|string',
+            "observacion"=>'nullable|string',
+            'correo' => 'required|email',
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'numeric'=>':attribute debe un valor numérico',
+            'max' => ':attribute no debe sobrepasar los 255 caracteres',
+            'min' => ':attribute no debe tener menos de 3 caracteres',
+            'string' => ':attribute debe ser una cadena de tipo texto',
+            'date'=>':attribute debe ser de tipo fecha',
+            'regex'=>':attribute no tiene el formato correcto',
+            'email'=>':attribute no tiene formato correcto'
+        ];
+        $this->validate($request, $campos, $mensaje);
+
         Paciente::create([
             "nombre"=>$request->nombre,
             "apellido"=>$request->apellido,
@@ -95,8 +123,30 @@ class PacienteController extends Controller
      * @param  \App\Models\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePacienteRequest $request, $id)
+    public function update(Request $request, $id)
     {
+
+        $campos = [
+            'nombre' => 'required|string|min:3|max:255',
+            "apellido"=>'required|string|min:3|max:255',
+            'fecha_nac' => 'required|date',
+            "lugar_nac"=>'required|string',
+            "telefono"=>'required|regex:/[0-9]{10}/',
+            'sexo' => 'required|string',
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'numeric'=>':attribute debe un valor numérico',
+            'max' => ':attribute no debe sobrepasar los 255 caracteres',
+            'min' => ':attribute no debe tener menos de 3 caracteres',
+            'string' => ':attribute debe ser una cadena de tipo texto',
+            'date'=>':attribute debe ser de tipo fecha',
+            'regex'=>':attribute no tiene el formato correcto',
+            'email'=>':attribute no tiene formato correcto'
+        ];
+        $this->validate($request, $campos, $mensaje);
+
        $paciente = Paciente::find($id);
        $paciente->update([
         "nombre"=>$request->nombre,

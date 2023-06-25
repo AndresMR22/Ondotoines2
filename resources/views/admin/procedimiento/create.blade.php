@@ -46,27 +46,42 @@
 
 								<div class="card-body">
 									<div class="row ec-vendor-uploads">
-										
+
 										<div class="col-lg-12">
 											<div class="ec-vendor-upload-detail">
 												<form class="row g-3" action="{{route('procedimiento.store')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
 													<div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Nombre</label>
-														<input type="text" required name="nombre" value="{{old('nombre')}}" class="form-control slug-title" id="nombre">
-													</div>
+														<input type="text" name="nombre" value="{{old('nombre')}}" class="form-control slug-title @error('nombre') is-invalid @enderror" id="nombre">
+                                                        @error('nombre')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    </div>
 
 													<div class="col-md-6">
 														<label class="form-label">Precio</label>
-														<input type="number" required value="{{old('precio')}}" min="0" name="precio" class="form-control" id="precio">
-													</div>
+														<input type="number" value="{{old('precio')}}" min="0" name="precio" class="form-control @error('precio') is-invalid @enderror" id="precio">
+                                                        @error('precio')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    </div>
 
 													<div class="col-md-6">
 														<label class="form-label">Imagen</label>
-														<input type="file" required  name="imagen" class="form-control" id="imagen">
+														<input type="file" name="imagen" class="form-control @error('imagen') is-invalid @enderror" id="imagen">
+                                                        @error('imagen')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
 													</div>
-													
-													
+
+
 													<div class="col-md-12">
 														<button type="submit" class="btn btn-primary">Guardar</button>
 													</div>
@@ -82,4 +97,3 @@
 			</div> <!-- End Content Wrapper -->
 @endsection
 
-	

@@ -110,16 +110,16 @@
                                                                             <label for="firstName">Nombre</label>
                                                                             <input type="text" class="form-control"
                                                                                 name="nombre" id="nombre"
-                                                                                value="{{ $admin->name }}" required>
+                                                                                value="{{ $admin->name }}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label for="firstName">Foto actual</label>
                                                                             @if(isset($admin->imagen))
-                                                                         <img width="100px;"  src="{{$admin->imagen->url}}">  
+                                                                         <img width="100px;"  src="{{$admin->imagen->url}}">
                                                                             @else
-                                                                            <img src="" alt="imagen por defecto">  
+                                                                            <img src="" alt="imagen por defecto">
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -129,7 +129,7 @@
                                                                             <div class="form-group">
                                                                                 <label for="firstName">Foto</label>
                                                                                 <input type="file" class="form-control"
-                                                                                    name="foto" id="foto" required>
+                                                                                    name="foto" id="foto">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -160,18 +160,18 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                   <h5 class="text-center">¿Estas seguro de eliminar al administrador {{$admin->nombre}}</h5> 
+                                                   <h5 class="text-center">¿Estas seguro de eliminar al administrador {{$admin->nombre}}</h5>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">No, cancelar</button>
@@ -213,8 +213,13 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="firstName">Nombre</label>
-                                    <input type="text" class="form-control" value="{{ old('name') }}" name="name"
-                                        id="name" autocomplete="name" placeholder="Ingrese el nombre" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name"
+                                        id="name" autocomplete="name" placeholder="Ingrese el nombre" >
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -222,7 +227,7 @@
                                     <label for="firstName">Correo</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                         value="{{ old('email') }}" autocomplete="email" name="email" id="email"
-                                        placeholder="Ingrese su correo" required>
+                                        placeholder="Ingrese su correo" >
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -238,7 +243,7 @@
                                     <label for="firstName">Contraseña</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                                         minlength="8" autocomplete="current-password" name="password" id="password"
-                                        placeholder="Ingrese su contraseña" required>
+                                        placeholder="Ingrese su contraseña" >
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -251,7 +256,7 @@
                                     <label for="firstName">Foto</label>
                                     <input type="file" class="form-control @error('foto') is-invalid @enderror"
                                        name="foto" id="foto"
-                                        required>
+                                        >
                                     @error('foto')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
