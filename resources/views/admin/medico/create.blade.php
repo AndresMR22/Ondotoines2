@@ -70,6 +70,16 @@
                                                     @enderror
                                                     </div>
 
+                                                    <div class="col-md-6">
+														<label for="inputEmail4" class="form-label">Teléfono</label>
+														<input type="tel" name="telefono" minlength="10" maxlength="10" class="form-control slug-title @error('telefono') is-invalid @enderror" value="{{ old('telefono') }}" id="telefono">
+                                                        @error('especialidad')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    </div>
+
 													<div class="col-md-12">
 														<button type="submit" class="btn btn-primary">Guardar</button>
 													</div>

@@ -18,7 +18,8 @@ class MedicoFactory extends Factory
     {
         return [
             "nombre"=> $this->faker->sentence(),
-            "especialidad"=> $this->faker->sentence()
+            "especialidad"=> $this->faker->sentence(),
+            "telefono"=>"0988703046"
         ];
     }
 }

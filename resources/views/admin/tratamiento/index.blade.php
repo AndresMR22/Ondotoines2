@@ -38,7 +38,7 @@
                                 <table id="responsive-data-table" class="table" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Especialidad</th>
+                                            {{-- <th>Especialidad</th> --}}
                                             <th>Medico</th>
                                             <th>Paciente</th>
                                             <th>Acciones</th>
@@ -48,7 +48,7 @@
                                     <tbody>
                                         @foreach ($tratamientos as $key => $tra)
                                             <tr>
-                                                <td>{{ $tra->especialidad }}</td>
+                                                {{-- <td>{{ $tra->especialidad }}</td> --}}
                                                 <td>{{ $tra->medico }}</td>
                                                 <td>{{ $tra->paciente->nombre }}</td>
                                                 <td>
@@ -78,7 +78,7 @@
                                                             class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
                                                     </div>
 
-                                                    
+
                                                     <form id="formEliminar{{ $tra->id }}" method="POST"
                                                         action="{{ route('tratamiento.destroy', $tra->id) }}">
                                                         @csrf
@@ -236,7 +236,7 @@
                                                                         flex-direction: column;
                                                                         align-items: center;
                                                                     }
-                                                                
+
                                                                     .contenidoTratamientos
                                                                     {
                                                                         display:flex;
@@ -253,7 +253,7 @@
                                                                         text-align: center;
                                                                     }
 
-                                                                    
+
 
                                                                     /* .listadoNombres
                                                                     {
@@ -270,7 +270,7 @@
                                                                 </style>
                                                                 <div class="tratamientos my-3">
 
-                                                                   
+
 
                                                                     <div class="titulo " style="font-weight:bold; color:black;">TRATAMIENTOS</div>
                                                                     <div class="row" style="border: dashed black; border-radius:30px;">
@@ -300,13 +300,13 @@
                                                                                 <div class="col-md-4" >
                                                                                     <input class="form-control datos mb-1" id="pre{{$kp}}" type="number" name="precio" value="{{$procedimiento->precio}}" readonly>
                                                                                 </div>
-                                                                            
+
                                                                                 <div class="col-md-4" >
                                                                                     <input class="form-control datos mb-1" type="number" id="tot{{$kt}}" name="total" value="{{$procedimiento->precioPorCantidad}}" readonly>
                                                                                 </div>
                                                                     </div> --}}
 
-                                                                 
+
                                                                 </div>
                                                             </div>
 
@@ -333,18 +333,18 @@
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
                                     </div>
-        
+
                                     <div class="modal-body px-4">
-        
+
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                   <h5 class="text-center">¿Estas seguro de eliminar el tratamiento?</h5> 
+                                                   <h5 class="text-center">¿Estas seguro de eliminar el tratamiento?</h5>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="modal-footer px-4">
                                         <button type="button" class="btn btn-secondary btn-pill"
                                             data-bs-dismiss="modal">No, cancelar</button>
@@ -391,7 +391,7 @@
 
         function calcularTotal(fila)
         {
-           
+
             let cantidad = document.getElementById('cant'+fila).value
             alert(cantidad)
         }

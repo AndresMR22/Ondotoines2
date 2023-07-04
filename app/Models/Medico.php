@@ -10,6 +10,6 @@ class Medico extends Model
     use HasFactory;
 
     public $fillable=[
-        "nombre","especialidad"
+        "nombre","especialidad","telefono"
     ];
 }

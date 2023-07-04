@@ -12,7 +12,8 @@ class Proceso extends Model
     public $fillable=
     [
         "nombre",
-        "color","descripcion"
+        "color","descripcion",
+        "especialidad"
     ];
 
     // public function caras()
@@ -20,7 +21,7 @@ class Proceso extends Model
     //     return $this->hasMany(Cara::class);
     // }
 
-    // =========================== c d p 
+    // =========================== c d p
     public function caras()
     {
         return $this->belongsToMany(Cara::class,'cara_diente_proceso')->withTimestamps()->withPivot('diente_id');

@@ -28,7 +28,7 @@ class MedicoController extends Controller
         $campos = [
             'nombre' => 'required|string|min:3|max:255',
             'especialidad' => 'required|string|min:3|max:255',
-
+            'telefono'=> 'required'
         ];
 
         $mensaje = [
@@ -41,7 +41,8 @@ class MedicoController extends Controller
 
         Medico::create([
             "nombre"=>$request->nombre,
-            "especialidad"=>$request->especialidad
+            "especialidad"=>$request->especialidad,
+            "telefono"=>$request->telefono
         ]);
         Alert::toast('Medico agregado', 'success');
         return redirect()->route('medico.index');
@@ -62,6 +63,7 @@ class MedicoController extends Controller
         $campos = [
             'nombre' => 'required|string|min:3|max:255',
             'especialidad' => 'required|string|min:3|max:255',
+            'telefono'=>'required'
 
         ];
 
@@ -77,6 +79,7 @@ class MedicoController extends Controller
        $medico->update([
         "nombre"=>$request->nombre,
         "especialidad"=>$request->especialidad,
+        "telefono"=>$request->telefono
        ]);
        Alert::toast('Medico actualizado', 'success');
        return back();

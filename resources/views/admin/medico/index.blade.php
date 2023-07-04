@@ -46,6 +46,8 @@
 												<tr>
 													<th>Nombres</th>
 													<th>Especialidad</th>
+													<th>Teléfono</th>
+
 													<th>Acciones</th>
 												</tr>
 											</thead>
@@ -55,6 +57,7 @@
 												<tr>
 													<td>{{$medico->nombre}}</td>
 													<td>{{$medico->especialidad}}</td>
+													<td>{{$medico->telefono}}</td>
 													<td>
                                                      	<div class="btn-group mb-1">
 															<button type="button"
@@ -103,6 +106,13 @@
                                         <div class="form-group">
                                             <label for="lastName">Especialidad</label>
                                             <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$medico->especialidad}}" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="lastName">Teléfono</label>
+                                            <input type="tel" class="form-control" minlength="10" maxlength="10" name="telefono" id="telefono" value="{{$medico->telefono}}" >
                                         </div>
                                     </div>
                                 </div>

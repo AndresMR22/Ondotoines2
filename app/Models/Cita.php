@@ -15,7 +15,6 @@ class Cita extends Model
         "telefono",
         "medico",
         "estado",
-        "especialidad",
         "paciente_id",
         "mensaje_id",
         "asunto"

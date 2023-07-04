@@ -56,19 +56,15 @@
 											<div class="ec-vendor-upload-detail">
 												<form class="row g-3" id="formTratamiento" action="{{route('tratamiento.store')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-													{{-- <div class="col-md-6">
-														<label for="inputEmail4" class="form-label">Asunto</label>
-														<input type="text" required name="asunto"  value="{{$tratamiento->asunto}}" class="form-control slug-title" id="asunto">
-													</div> --}}
-
-                                                    <div class="col-md-6">
-														<label for="inputEmail4" class="form-label">Especialidad</label>
-														<input type="text" required name="especialidad" value="{{$tratamiento->especialidad}}" class="form-control slug-title" id="especialidad">
-													</div>
 
 													<div class="col-md-6">
 														<label for="inputEmail4" class="form-label">Medico</label>
 														<input type="text" required name="medico" value="{{$tratamiento->medico}}" class="form-control slug-title" id="medico">
+													</div>
+
+                                                    <div class="col-md-6">
+														<label for="inputEmail4" class="form-label">Observación</label>
+                                                        <textarea class="form-control" name="observacion" id="observacion">{{ $tratamiento->observacion }}</textarea>
 													</div>
 
 												</form>
@@ -167,15 +163,16 @@
 				{
 					// let form = document.getElementById('formTratamiento')
 					// let asunto = document.getElementById('asunto').value;
-					let especialidad = document.getElementById('especialidad').value
+					// let especialidad = document.getElementById('especialidad').value
 					let medico = document.getElementById('medico').value;
+                    let observacion = document.getElementById('observacion').value
 
 
 					$.ajax({
                         url: `{{ route('tratamiento.editar') }}`,
                         dataType: "json",
                         data: {
-                            especialidad, medico, id,
+                            observacion,medico, id,
 							'data':ArrayCantidad
                             }
                         }).done(function(res) {
@@ -184,7 +181,7 @@
 							window.location.href = "/admin/tratamiento"
 						   }else if(res == 3)
                            {
-                            alert('Complete los campos Especialidad y Medico')
+                            alert('Complete el campo de Medico')
                            }else
 						   {
 							alert('No se pudo actualizar el tratamiento')

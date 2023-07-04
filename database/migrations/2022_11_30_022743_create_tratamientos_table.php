@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->text("asunto")->nullable();
             $table->text("observacion")->nullable();
-            $table->text("especialidad")->nullable();
+            // $table->text("especialidad")->nullable();
             $table->text("medico")->nullable();
             $table->unsignedBigInteger('paciente_id')->nullable();
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade')->onUpdate('cascade');

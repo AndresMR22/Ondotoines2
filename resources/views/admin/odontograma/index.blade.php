@@ -32,7 +32,7 @@
                         <span><i class="mdi mdi-chevron-right"></i></span>Odontograma
                     </p>
                 </div>
-                
+
             </div>
 
             <style>
@@ -60,7 +60,7 @@
 
                 .fondoAzulOpcion
                 {
-                    padding:10px 10px; background: #1d6df7;  
+                    padding:10px 10px; background: #1d6df7;
                     cursor: pointer;
                     margin:5px 0px;
                     color:black;
@@ -97,7 +97,7 @@
                             <div class="columna_izquierda" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
                                 {{-- FILA 1 CI --}}
                                 <div class="fila_ci my-1" style="display:flex; flex-direction:row; justify-content:center; gap:10px;">
-                                    
+
                                     <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                         <div class="numeroDiente">
                                             <h5>8</h5>
@@ -336,7 +336,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente54">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -356,7 +356,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente53">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -376,7 +376,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente52">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -396,7 +396,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente51">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -439,7 +439,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente84">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -459,7 +459,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente83">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -479,7 +479,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente82">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -499,7 +499,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente81">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -549,7 +549,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                         <div class="numeroDiente">
                                             <h5>7</h5>
@@ -576,7 +576,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                         <div class="numeroDiente">
                                             <h5>6</h5>
@@ -603,7 +603,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>5</h5>
@@ -630,7 +630,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>4</h5>
@@ -657,7 +657,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>3</h5>
@@ -711,7 +711,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>1</h5>
@@ -773,7 +773,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>2</h5>
@@ -800,7 +800,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>3</h5>
@@ -827,7 +827,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>4</h5>
@@ -854,7 +854,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>5</h5>
@@ -881,7 +881,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>6</h5>
@@ -908,7 +908,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>7</h5>
@@ -935,7 +935,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>8</h5>
@@ -992,7 +992,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>2</h5>
@@ -1046,7 +1046,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>4</h5>
@@ -1073,7 +1073,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>5</h5>
@@ -1100,8 +1100,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-        
+
+
                                 <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                     <div class="numeroDiente">
                                         <h5>6</h5>
@@ -1128,7 +1128,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>7</h5>
@@ -1155,7 +1155,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <div class="numeroDiente">
                                     <h5>8</h5>
@@ -1205,7 +1205,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente62">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1225,7 +1225,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente63">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1245,7 +1245,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente64">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1265,7 +1265,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente65">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1285,7 +1285,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                 </div> --}}
 
                                  {{-- FILA 3 CD --}}
@@ -1309,7 +1309,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente72">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1329,7 +1329,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente73">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1349,7 +1349,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente74">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1369,7 +1369,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="caja fondoCubo" id="diente75">
                                         <div class="contenedor">
                                             <div  style="display:flex; justify-content:center; gap:5px; ">
@@ -1389,17 +1389,17 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                 </div> --}}
 
-                                
+
                             </div>
                             {{-- FIN COLUMNA DERECHA --}}
 
-                           
+
                         </div>
                         <div class="botones d-flex justify-content-center my-3">
-                            <a onclick="guardarCambios();" title="Guardar cambios" class="btn btn-outline-success"><i class="fas fa-save"></i></a> 
+                            <a onclick="guardarCambios();" title="Guardar cambios" class="btn btn-outline-success"><i class="fas fa-save"></i></a>
                          </div>
                     </div>
                 </div>
@@ -1416,7 +1416,7 @@
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header px-4">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">OPCIONES</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">OPCIONESs</h5>
                     </div>
 
                     <div class="modal-body px-4">
@@ -1427,17 +1427,17 @@
                             <ul style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px;">
                                 @for($i=0 ; $i<7; $i++)
                                 <li ondblclick="asignarReferencia({{$i+1}})" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px; height:70px;" class="{{$procesos[$i]['color'] == 'blue' ? 'fondoAzulOpcion' : 'fondoRojoOpcion'}}" title="{{$procesos[$i]['descripcion']}}">
-                                   <div>{{$procesos[$i]['nombre']}}</div> 
+                                   <div>{{$procesos[$i]['nombre']}}</div>
                                     <div style="font-size:10px;">{{$procesos[$i]['descripcion']}}</div>
                                 </li>
                                 @endfor
                             </ul>
-                        
-    
+
+
                             <ul style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px;">
                                 @for($i=7 ; $i<14; $i++)
                                 <li ondblclick="asignarReferencia({{$i+1}})" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px; height:70px;" class="{{$procesos[$i]['color'] == 'blue' ? 'fondoAzulOpcion' : 'fondoRojoOpcion'}}" title="{{$procesos[$i]['descripcion']}}">
-                                    <div>{{$procesos[$i]['nombre']}}</div> 
+                                    <div>{{$procesos[$i]['nombre']}}</div>
                                     <div style="font-size:10px;">{{$procesos[$i]['descripcion']}}</div>
                                 </li>
                                 @endfor
@@ -1446,18 +1446,18 @@
                             <ul style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px;">
                                 @for($i=14 ; $i<21; $i++)
                                 <li ondblclick="asignarReferencia({{$i+1}})" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:70px; height:70px;" class="{{$procesos[$i]['color'] == 'blue' ? 'fondoAzulOpcion' : 'fondoRojoOpcion'}}" title="{{$procesos[$i]['descripcion']}}">
-                                    <div>{{$procesos[$i]['nombre']}}</div> 
+                                    <div>{{$procesos[$i]['nombre']}}</div>
                                     <div style="font-size:10px;">{{$procesos[$i]['descripcion']}}</div>
                                 </li>
                                 @endfor
                             </ul>
 
-                            
+
                         </div>
 
                        </div>
 
-                        
+
                     </div>
 
                     {{-- <div class="modal-footer px-4">
@@ -1512,7 +1512,7 @@
             idCara = e.target.id;
             idCara = idCara.substr(3)
             idCaraColor = idCara;
-            //caso 1: 
+            //caso 1:
             if(idCara.length==1 && idCara>5)
             {
                 let numero = idCara;
@@ -1552,9 +1552,9 @@
                 if(numero==9){idCara=4}
                 if(numero==0){idCara=5}
             }
-           
-            
-               
+
+
+
             console.log(idCara,idDiente)
             $(".modal-add-contact").modal("show");
         }
@@ -1562,7 +1562,7 @@
         function asignarReferencia(idReferencia)
         {
             let band = false;
-            let data = 
+            let data =
             {
                 'idDiente':idDiente,
                 'idCara':idCara,
@@ -1584,7 +1584,7 @@
             {
                 document.getElementById('pos'+idCaraColor).style.backgroundColor="red";
             }
-          
+
             console.log('procesos:',arregloProcesos)
 
             $(".modal-add-contact").modal("hide");
@@ -1598,8 +1598,8 @@
                         method:'POST',
                         data: {
                             procesos:arregloProcesos ,
-                            _token:$('input[name="_token"]').val() , 
-                            idTratamiento:document.getElementById('idTratamiento').value                        
+                            _token:$('input[name="_token"]').val() ,
+                            idTratamiento:document.getElementById('idTratamiento').value
                             }
                     }).done(function(res) {
                            if(res==1)
@@ -1633,18 +1633,18 @@
         document.getElementById('posCaraColorRetirar').value = posCaraColor
         document.getElementById('confirmarRetirarProceso').addEventListener('click',retirarProceso)
 
-     
+
             if(!clickDerecho && tieneColorLaCara != undefined)
             {
-                
+
                 $(".modal-opciones-click-derecho").modal("show");
                 clickDerecho = true;
-            } 
+            }
             else
             {
                 $(".modal-opciones-click-derecho").modal("hide");
                 clickDerecho = false;
-            }        
+            }
    }
 
    function retirarProceso()
@@ -1673,6 +1673,6 @@
         //escondemos el modal
         $(".modal-opciones-click-derecho").modal("hide");
    }
-  
+
     </script>
 @endsection

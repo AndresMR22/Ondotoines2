@@ -18,7 +18,7 @@ class TratamientoSeeder extends Seeder
         $tratamiento = Tratamiento::create([
             // "asunto"=>"Tratamiento Prueba 1",
             "observacion"=>"Observación de prueba",
-            "especialidad"=>"Especialidad de prueba",
+            // "especialidad"=>"Especialidad de prueba",
             "medico"=>"Jorge",
             "paciente_id"=>1,
         ]);

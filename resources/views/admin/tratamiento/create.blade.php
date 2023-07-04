@@ -78,13 +78,7 @@
                                 </div>
 
 
-                                <div class="form-group row">
-                                    <label for="slug" class="col-12 col-form-label">Especialidad</label>
-                                    <div class="col-12">
-                                        <input id="especialidad" name="especialidad" class="form-control here set-slug" type="text">
-                                        {{-- <small>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</small> --}}
-                                    </div>
-                                </div>
+                                
 
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">

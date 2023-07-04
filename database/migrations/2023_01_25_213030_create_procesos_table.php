@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre')->nullable();
             $table->string('color');
             $table->text('descripcion');
+            $table->string('especialidad');
             $table->timestamps();
         });
     }

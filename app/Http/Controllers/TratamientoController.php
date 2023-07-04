@@ -54,7 +54,7 @@ class TratamientoController extends Controller
     {
         $campos = [
             'observacion' => 'nullable|string|max:255',
-            'especialidad' => 'required|string|min:3|max:255',
+            // 'especialidad' => 'required|string|min:3|max:255',
             "medico"=>'required|string',
             "paciente_id"=>'required|numeric',
             // "procedimiento_id"=>'required|numeric'
@@ -80,7 +80,7 @@ class TratamientoController extends Controller
 
         $tratamiento =  Tratamiento::create([
             "observacion"=>$request->observacion,
-            "especialidad"=>$request->especialidad,
+            // "especialidad"=>$request->especialidad,
             "medico"=>$request->medico,
             "paciente_id"=>$request->paciente_id,
         ]);
@@ -123,7 +123,7 @@ class TratamientoController extends Controller
         // ];
         // $this->validate($request, $campos, $mensaje);
 
-        if($request->especialidad!=null || $request->medico!=null)
+        if($request->medico==null)
         {
             return 3;
         }
@@ -133,8 +133,8 @@ class TratamientoController extends Controller
         if($tratamiento!=null)
         {
             $tratamiento->update([
-                "especialidad"=>$request->especialidad,
                 "medico"=>$request->medico,
+                "observacion"=>$request->observacion
             ]);
 
             $cantidades = $request->data;
@@ -177,7 +177,7 @@ class TratamientoController extends Controller
     {
 
         $campos = [
-            'especialidad' => 'required|string|min:3|max:255',
+            // 'especialidad' => 'required|string|min:3|max:255',
             "medico"=>'required|string',
             'observacion'=>'nullable|string|max:255'
         ];
@@ -197,7 +197,7 @@ class TratamientoController extends Controller
        $tra->update([
         // "asunto"=>$request->get('asunto'),
         "observacion"=>$request->get('observacion'),
-        "especialidad"=>$request->get('especialidad'),
+        // "especialidad"=>$request->get('especialidad'),
         "medico"=>$request->get('medico'),
        ]);
        Alert::toast('Tratamiento actualizado', 'success');
@@ -205,12 +205,7 @@ class TratamientoController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Tratamiento  $tratamiento
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         Tratamiento::destroy($id);

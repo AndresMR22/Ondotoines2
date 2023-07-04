@@ -12,7 +12,7 @@ class Tratamiento extends Model
     public $fillable = [
         // "asunto",
         "observacion",
-        "especialidad",
+        // "especialidad",
         "medico",
         "paciente_id",
     ];

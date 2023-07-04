@@ -103,12 +103,7 @@
                                                                                 <input type="text" class="form-control" name="medico" id="medico" value="{{$cita->medico}}" required>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6">
-                                                                            <div class="form-group">
-                                                                                <label for="firstName">Especialidad</label>
-                                                                                <input type="text" class="form-control" name="especialidad" id="especialidad" value="{{$cita->especialidad}}" required>
-                                                                            </div>
-                                                                        </div>
+
                                                                     </div>
                                                                     <div class="row mb-2">
                                                                         <div class="col-lg-6">
@@ -224,13 +219,6 @@
                                     <div class="col-md-6">
                                         <label for="inputEmail4" class="form-label">Asunto</label>
                                         <input type="text" name="asunto" class="form-control" id="asunto" value="{{old('asunto')}}" required>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="lastName">Especialidad</label>
-                                            <input type="text" class="form-control" name="especialidad" value="{{old('especialidad')}}"  id="especialidad" >
-                                        </div>
                                     </div>
 
 

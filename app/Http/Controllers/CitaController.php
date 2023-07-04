@@ -46,7 +46,7 @@ class CitaController extends Controller
 
         $campos = [
             'medico' => 'required|numeric',
-            'especialidad' => 'required|string|min:3|max:255',
+            // 'especialidad' => 'required|string|min:3|max:255',
             "fecha_inicio"=>'required|date',
             "fecha_fin"=>'required|date',
             "telefono"=>'required|regex:/[0-9]{10}/'
@@ -71,7 +71,7 @@ class CitaController extends Controller
         "telefono"=>$request->telefono,
         "medico"=>$medico->nombre,
         "estado"=>"pendiente",
-        "especialidad"=>$request->especialidad,
+        // "especialidad"=>$request->especialidad,
         "paciente_id"=>$request->paciente_id,
         "asunto" => $request->asunto
        ]);
@@ -134,7 +134,7 @@ class CitaController extends Controller
 
         $campos = [
             'medico' => 'required|string|min:3|max:255',
-            'especialidad' => 'required|string|min:3|max:255',
+            // 'especialidad' => 'required|string|min:3|max:255',
             "fecha_inicio"=>'required|date',
             "fecha_fin"=>'required|date',
             "telefono"=>'required|regex:/[0-9]{10}/'
@@ -168,7 +168,7 @@ class CitaController extends Controller
             "telefono"=>$request->telefono,
             "medico"=>$request->medico,
             "estado"=>$request->estado,
-            "especialidad"=>$request->especialidad,
+            // "especialidad"=>$request->especialidad,
             "asunto" => $request->asunto
         ]);
         Alert::toast('Cita actualizada', 'success');
