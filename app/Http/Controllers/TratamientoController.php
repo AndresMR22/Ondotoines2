@@ -107,7 +107,7 @@ class TratamientoController extends Controller
     public function editarTratamiento(Request $request)
     {
 
-        // dd($request);
+
 
         // $campos = [
         //     'especialidad' => 'required|string|min:3|max:255',
@@ -122,7 +122,7 @@ class TratamientoController extends Controller
         //     'string' => ':attribute debe ser una cadena de tipo texto',
         // ];
         // $this->validate($request, $campos, $mensaje);
-
+        // dd($request->cantidades);
         if($request->medico==null)
         {
             return 3;
@@ -137,10 +137,22 @@ class TratamientoController extends Controller
                 "observacion"=>$request->observacion
             ]);
 
-            $cantidades = $request->data;
+        $procedimientos = $request->nuevosProcedimientos;
+        // dd($procedimientos);
+        foreach($procedimientos as $pro)
+        {
+            $proce = Procedimiento::find($pro['id']);
+            $proce->tratamientos()->attach($tratamiento->id, ['cantidad'=>$pro['cantidad']]);
+        }
+
+            $cantidades = $request->cantidades;
 
             for($i = 0; $i<count($cantidades); $i++)
             {
+                if(strlen($cantidades[$i]["id"])>4)
+                {
+                    $cantidades[$i]["id"] = substr($cantidades[$i]["id"], 4);
+                }
                 $procedimientoid = $cantidades[$i]["id"];
                 $cantidad = $cantidades[$i]["cantidad"];
                 //actualiza un campo de una relacion one-many
@@ -156,9 +168,9 @@ class TratamientoController extends Controller
 
     public function edit($id)
     {
-
             $tratamiento = Tratamiento::find($id);
             $proceds = $tratamiento->procedimientos()->get();
+            $procedimientos = Procedimiento::all();
 
             $arrayCant = $tratamiento->procedimientos()->get(['cantidad']);
 
@@ -169,7 +181,7 @@ class TratamientoController extends Controller
                 $pro->setAttribute('precioPorCantidad',$arrayCant[$key]->cantidad*$pro->precio);
             }
             $tratamiento->setAttribute('procedimientos',$proceds);
-        return view('admin.tratamiento.edit',compact('tratamiento'));
+        return view('admin.tratamiento.edit',compact('tratamiento','procedimientos'));
     }
 
 

@@ -7,7 +7,7 @@ use App\Models\Paciente;
 
 class SeguimientoController extends Controller
 {
-    
+
     public function index()
     {
         $pacientes = Paciente::all();
@@ -29,6 +29,25 @@ class SeguimientoController extends Controller
             }
             $tra->setAttribute('procedimientos',$proceds);
         }
+
+        // $tratamiento = Tratamiento::find($id);
+        // $odonto = Odontograma::where('tratamiento_id',$tratamiento->id)->first();
+        // $datos =  $odonto->cdps()->get();
+        // $procesos = Proceso::all();
+        // // dd($datos);
+        // foreach($datos as $key => $dato)
+        // {
+        //     $diente = Diente::find($dato->diente_id);
+        //     $dato->setAttribute('diente_id',$diente->posicion);
+        //     $procesoId = $dato->proceso_id;
+        //     $proceso = Proceso::find($procesoId);
+        //     $color = $proceso->color;
+        //     $descripcion = $proceso->descripcion;
+        //     $dato->setAttribute('color',$color);
+        //     $dato->setAttribute('descripcion',$descripcion);
+        // }
+        // $idTratamiento = $id;
+        // $odontograma_id = $odonto->id;
 
         return view('admin.seguimiento.datosByPaciente',compact('citas','tratamientos'));
     }

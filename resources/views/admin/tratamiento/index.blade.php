@@ -109,7 +109,10 @@
                                                             <div class="row-100 d-flex flex-direction-row">
                                                                 <div class="col-6 mx-2"
                                                                     style="border: dashed black; border-radius:30px;">
-                                                                    <div class="procedimientos text-center">Procedimientos
+                                                                    <div class="procedimientos text-center">
+                                                                        <p>
+                                                                            Procedimientos
+                                                                        </p>
                                                                     </div>
                                                                     <div class="titulos d-flex justify-content-around ">
                                                                         <div class="titulo">Nombre</div>

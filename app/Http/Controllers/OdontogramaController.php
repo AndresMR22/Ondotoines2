@@ -35,8 +35,8 @@ class OdontogramaController extends Controller
             "observacion"=>"Odontograma de prueba4",
             "tratamiento_id"=>$request->get('idTratamiento')
         ]);
-            
-            
+
+
             foreach($request->procesos as $key => $proceso)
             {
 
@@ -51,14 +51,14 @@ class OdontogramaController extends Controller
                 // $posicionCara);
                 $cara = Cara::find($idCara);
                 $cara->dientes()->attach($diente->id,['proceso_id'=>$idReferencia,'posicion_cara'=>$posicionCara]);
-                
+
                 $cdp = CaraDienteProceso::orderBy('id','DESC')->take(1)->first();
                 Odontograma_cdp::create([
                             "odontograma_id"=>$odontograma->id,
                             "cdp_id" => $cdp->id
                         ]);
             }
-        
+
             Alert::toast('Odontograma guardado', 'success');
 
         return 1;
@@ -87,6 +87,8 @@ class OdontogramaController extends Controller
     return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento','odontograma_id','procesos'));
     }
 
+    
+
     public function edit($idTratamiento)
     {
         $procesos = Proceso::all();
@@ -95,7 +97,7 @@ class OdontogramaController extends Controller
 
     public function update(UpdateOdontogramaRequest $request, Odontograma $odontograma)
     {
-       
+
     }
 
     public function actualizarOdontograma(Request $request)
@@ -119,13 +121,13 @@ class OdontogramaController extends Controller
             $idCara = $proceso['cara_id'];
             $idDiente = $proceso['diente_id'];
             $diente = Diente::where('posicion',$idDiente)->first();
-          
+
             $idReferencia = $proceso['proceso_id'];
             $posicionCara = $proceso['posicion_cara'];
-           
+
             $cara = Cara::find($idCara);
             $cara->dientes()->attach($diente->id,['proceso_id'=>$idReferencia,'posicion_cara'=>$posicionCara]);
-            
+
             $cdp = CaraDienteProceso::orderBy('id','DESC')->take(1)->first();
             Odontograma_cdp::create([
                         "odontograma_id"=>$odontograma->id,
@@ -136,7 +138,7 @@ class OdontogramaController extends Controller
         Alert::toast('Odontograma actualizado', 'success');
         return 1;
         // dd($odontograma->cdps()->get());
-       
+
     }
 
     public function destroy(Odontograma $odontograma)

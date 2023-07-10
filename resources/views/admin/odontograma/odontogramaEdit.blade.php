@@ -687,7 +687,7 @@
                                 </div>
                             </div>
 
-        <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                         <div class="numeroDiente">
                                             <h5>2</h5>
                                         </div>
@@ -1022,7 +1022,7 @@
                                 </div>
                             </div>
 
-        <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                            <div class="contenedorDienteNumero" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                         <div class="numeroDiente">
                                             <h5>3</h5>
                                         </div>
