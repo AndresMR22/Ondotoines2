@@ -13,7 +13,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\OdontogramaController;
 use App\Http\Controllers\MedicoController;
-
+use App\Http\Controllers\ReporteController;
 Auth::routes();
 
 //=================== RUTAS PÚBLICAS =======================//
@@ -41,12 +41,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::resource('administrador',AdminController::class);
     Route::resource('odontograma',OdontogramaController::class);
     Route::resource('medico',MedicoController::class);
+    Route::resource('reporte',ReporteController::class);
+
     //Seguimiento pacientes
     Route::get('/seguimiento',[SeguimientoController::class,'index'])->name('seguimiento.index');
     Route::get('/seguimiento/paciente/{id}',[SeguimientoController::class,'datosByPaciente'])->name('seguimiento.datosByPaciente');
-    
+
     Route::get('/calendario',[AdminController::class,'calendario'])->name('admin.calendario');
-   
+
     // Route::get('/deuda/abonos/{cliente_id}',[AbonoController::class,'abonosByCliente'])->name('abono.abonosByCliente');
     // Route::post('/venta/guardarVenta',[VentaController::class,'guardarVenta'])->name('venta.guardarVenta');
 

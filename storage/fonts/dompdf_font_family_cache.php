@@ -81,5 +81,11 @@ return array (
   'nunito' => array(
     'normal' => $fontDir . '/nunito_normal_51ab6e3e316a21ef3af811c849f34cc6',
   ),
+  'fontawesome' => array(
+    'normal' => $fontDir . '/fontawesome_normal_0d054c01a20249458ebc59d71623830f',
+  ),
+  'glyphicons halflings' => array(
+    'normal' => $fontDir . '/glyphicons_halflings_normal_448cf7c5a9f8cf5b480d96c9606cc001',
+  ),
 );
 }; ?>

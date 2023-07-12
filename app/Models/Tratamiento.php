@@ -15,6 +15,7 @@ class Tratamiento extends Model
         // "especialidad",
         "medico",
         "paciente_id",
+        "created_at"
     ];
 
     public function procedimientos()
@@ -27,7 +28,7 @@ class Tratamiento extends Model
         return $this->belongsTo(Paciente::class);
     }
 
-    
+
 
 
 }

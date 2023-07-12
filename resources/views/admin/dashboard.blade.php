@@ -111,7 +111,7 @@
 							</div>
 						</li> --}}
 
-						
+
 
 						<!-- Category -->
 						<li class="has-sub">
@@ -183,18 +183,25 @@
 							<li class="has-sub">
 								<a class="sidenav-item-link" href="{{route('seguimiento.index')}}">
 									<i class="mdi mdi-account-search"></i>
-									<span class="nav-text">Seguimiento</span> 
+									<span class="nav-text">Seguimiento</span>
 								</a>
 							</li>
 
 							<li class="has-sub">
 								<a class="sidenav-item-link" href="{{route('cita.showNotificaciones')}}">
 									<i class="mdi mdi-bell-ring"></i>
-									<span class="nav-text">Notificaciones</span> 
+									<span class="nav-text">Notificaciones</span>
 								</a>
 							</li>
 
-						
+                            <li class="has-sub">
+								<a class="sidenav-item-link" href="{{route('reporte.index')}}">
+									<i class="mdi mdi-file-chart"></i>
+									<span class="nav-text">Reportes</span>
+								</a>
+							</li>
+
+
 					</ul>
 				</div>
 			</div>
@@ -252,7 +259,7 @@
 											<i class="mdi mdi-account"></i> Mi Perfil
 										</a>
 									</li> --}}
-									
+
 									<li class="dropdown-footer">
 										<a onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();"> <i class="mdi mdi-logout"></i> Cerrar sesión </a>
@@ -294,7 +301,7 @@
 																<i class="fas {{$notification->data['icon']}}"></i>
 																{{-- <span class="status away"></span> --}}
 															</div>
-														
+
 															<div class="media-body d-flex justify-content-between">
 																<div class="message-contents">
 																	<h4 class="title">{{$notification->data['nombres']}}</h4>
@@ -306,17 +313,17 @@
 																	</span>
 																</div>
 															</div>
-														
+
 														</a>
 													</li>
 													@endforeach
-													
+
 
 												</ul>
 											</div>
 										<div style="display:flex; justify-content:center; margin-bottom:20px;">
 											<a class="btn btn-outline-info" href="{{route('cita.showNotificaciones')}}">Ver mensajes</a>
-										</div>	
+										</div>
 										</div>
 									</div>
 								</div>
