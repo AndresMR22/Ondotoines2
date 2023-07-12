@@ -89,7 +89,7 @@
 
             </style>
 
-            <input type="hidden" name="idTratamiento" id="idTratamiento" value="{{$idTratamiento}}">
+            <input type="hidden" name="idPaciente" id="idPaciente" value="{{$idPaciente}}">
 
             <div class="row">
                 <div class="col-12">
@@ -1472,7 +1472,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                           
+
 
 
                         </div>

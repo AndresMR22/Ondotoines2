@@ -12,12 +12,12 @@ class Odontograma extends Model
     [
         "id",
         "observacion",
-        "tratamiento_id"
+        "paciente_id"
     ];
 
-    public function tratamiento()
+    public function paciente()
     {
-        return $this->belongsTo(Tratamiento::class);
+        return $this->belongsTo(Paciente::class);
     }
 
       // =========================== dieta_alimento_comida_dia

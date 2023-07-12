@@ -35,7 +35,12 @@ class Paciente extends Model
     {
         return $this->hasMany(Tratamiento::class);
     }
-
     
+    public function odontograma()
+    {
+        return $this->hasOne(Odontograma::class);
+    }
+
+
 
 }

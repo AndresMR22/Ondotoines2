@@ -27,10 +27,7 @@ class Tratamiento extends Model
         return $this->belongsTo(Paciente::class);
     }
 
-    public function odontograma()
-    {
-        return $this->hasOne(Odontograma::class);
-    }
+    
 
 
 }

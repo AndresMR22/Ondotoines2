@@ -1068,14 +1068,15 @@
 
                             </div>
                             <div class="botones d-flex justify-content-center my-3">
-                                <a onclick="guardarCambios();" title="Guardar cambios" class="btn btn-outline-success"><i
-                                        class="fas fa-save"></i></a>
+                                <a href="{{route('odontograma.show',$paciente->id)}}" title="Empezar a editar" class="btn btn-outline-success"><i
+                                        class="fas fa-edit"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div> <!-- End Content -->
 
+            <input type="hidden" name="datos" id="datos" value="{{$datos}}">
 
             <!-- CITAS POR PACIENTE -->
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-center">
@@ -1519,5 +1520,22 @@
             let form = document.getElementById('formEditarCita' + idForm)
             form.submit();
         }
+
+        addEventListener('DOMContentLoaded', function()
+        {
+            let datos = JSON.parse(document.getElementById('datos').value)
+            console.log('datos:',datos)
+            procesosNuevos = datos;
+            datos.forEach(item => {
+            let cara =  document.getElementById('pos'+item.posicion_cara)
+            cara.title = item.descripcion;
+            if(cara!=undefined || cara!=null)
+            {
+                cara.style.backgroundColor=item.color;
+            }
+            })
+
+
+        });
     </script>
 @endsection

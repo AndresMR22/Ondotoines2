@@ -64,6 +64,16 @@
 													<td>{{$paciente->telefono}}</td>
 													<td>{{$paciente->sexo}}</td>
 													<td>
+                                                        @if(isset($paciente->odontograma))
+                                                        <div class="btn-group mb-1">
+                                                            <a title="Ver mi odontograma" href="{{route('odontograma.show',$paciente->id)}}" class="btn btn-outline-primary"><i class="fas fa-teeth"></i></a>
+                                                        </div>
+                                                        @else
+                                                        <div class="btn-group mb-1">
+                                                            <a title="Rellenar odontograma" href="{{route('odontograma.edit',$paciente->id)}}" class="btn btn-outline-info"><i class="fas fa-teeth"></i></a>
+                                                        </div>
+                                                        @endif
+
                                                         <a class="btn btn-info" title="Observaciones" data-bs-toggle="modal" data-bs-target="#modalObservacion{{$paciente->id}}" ><i class="fas fa-eye"></i></a>
 														<div class="btn-group mb-1">
 															<button type="button"

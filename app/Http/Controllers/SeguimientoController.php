@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Models\Diente;
+use App\Models\Proceso;
+use App\Models\Tratamiento;
+use App\Models\Odontograma;
 
 class SeguimientoController extends Controller
 {
@@ -30,25 +34,27 @@ class SeguimientoController extends Controller
             $tra->setAttribute('procedimientos',$proceds);
         }
 
-        // $tratamiento = Tratamiento::find($id);
-        // $odonto = Odontograma::where('tratamiento_id',$tratamiento->id)->first();
-        // $datos =  $odonto->cdps()->get();
-        // $procesos = Proceso::all();
-        // // dd($datos);
-        // foreach($datos as $key => $dato)
-        // {
-        //     $diente = Diente::find($dato->diente_id);
-        //     $dato->setAttribute('diente_id',$diente->posicion);
-        //     $procesoId = $dato->proceso_id;
-        //     $proceso = Proceso::find($procesoId);
-        //     $color = $proceso->color;
-        //     $descripcion = $proceso->descripcion;
-        //     $dato->setAttribute('color',$color);
-        //     $dato->setAttribute('descripcion',$descripcion);
-        // }
-        // $idTratamiento = $id;
-        // $odontograma_id = $odonto->id;
+        // $paciente = Paciente::find($id);
+        $odonto = Odontograma::where('paciente_id',$id)->first();
 
-        return view('admin.seguimiento.datosByPaciente',compact('citas','tratamientos'));
+        $datos = null;
+        if($odonto!=null)
+        {
+            $datos = $odonto->cdps()->get();
+            foreach($datos as $key => $dato)
+            {
+                $diente = Diente::find($dato->diente_id);
+                $dato->setAttribute('diente_id',$diente->posicion);
+                $procesoId = $dato->proceso_id;
+                $proceso = Proceso::find($procesoId);
+                $color = $proceso->color;
+                $descripcion = $proceso->descripcion;
+                $dato->setAttribute('color',$color);
+                $dato->setAttribute('descripcion',$descripcion);
+            }
+        }
+
+
+        return view('admin.seguimiento.datosByPaciente',compact('datos','citas','tratamientos','paciente'));
     }
 }

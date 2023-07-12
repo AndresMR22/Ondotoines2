@@ -6,6 +6,7 @@ use App\Models\Odontograma;
 use App\Models\Diente;
 use App\Models\Cara;
 use App\Models\Tratamiento;
+use App\Models\Paciente;
 use App\Models\CaraDienteProceso;
 use App\Models\Proceso;
 use Illuminate\Http\Request;
@@ -25,7 +26,6 @@ class OdontogramaController extends Controller
 
     public function create()
     {
-        //
     }
 
     public function store(StoreOdontogramaRequest $request)
@@ -33,7 +33,7 @@ class OdontogramaController extends Controller
         // dd($request->get('procesos'));
         $odontograma = Odontograma::create([
             "observacion"=>"Odontograma de prueba4",
-            "tratamiento_id"=>$request->get('idTratamiento')
+            "paciente_id"=>$request->get('idPaciente')
         ]);
 
 
@@ -66,11 +66,13 @@ class OdontogramaController extends Controller
 
     public function show($id)
     {
-        $tratamiento = Tratamiento::find($id);
-        $odonto = Odontograma::where('tratamiento_id',$tratamiento->id)->first();
+        $paciente = Paciente::find($id);
+        $odonto = Odontograma::where('paciente_id',$paciente->id)->first();
         $datos =  $odonto->cdps()->get();
         $procesos = Proceso::all();
-        // dd($datos);
+
+        // dd($odonto, $datos, $procesos);
+
         foreach($datos as $key => $dato)
         {
             $diente = Diente::find($dato->diente_id);
@@ -82,17 +84,19 @@ class OdontogramaController extends Controller
             $dato->setAttribute('color',$color);
             $dato->setAttribute('descripcion',$descripcion);
         }
-        $idTratamiento = $id;
+
+        $idPaciente = $id;
         $odontograma_id = $odonto->id;
-    return view('admin.odontograma.odontogramaEdit',compact('datos','idTratamiento','odontograma_id','procesos'));
+
+    return view('admin.odontograma.odontogramaEdit',compact('datos','idPaciente','odontograma_id','procesos'));
     }
 
-    
 
-    public function edit($idTratamiento)
+
+    public function edit($idPaciente)
     {
         $procesos = Proceso::all();
-        return view('admin.odontograma.index',compact('idTratamiento','procesos'));
+        return view('admin.odontograma.index',compact('idPaciente','procesos'));
     }
 
     public function update(UpdateOdontogramaRequest $request, Odontograma $odontograma)

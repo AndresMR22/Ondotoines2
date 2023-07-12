@@ -107,22 +107,6 @@ class TratamientoController extends Controller
     public function editarTratamiento(Request $request)
     {
 
-
-
-        // $campos = [
-        //     'especialidad' => 'required|string|min:3|max:255',
-        //     "medico"=>'required|string',
-        // ];
-
-        // $mensaje = [
-        //     'required' => ':attribute es requerido',
-        //     'numeric'=>':attribute debe un valor numérico',
-        //     'max' => ':attribute no debe sobrepasar los 255 caracteres',
-        //     'min' => ':attribute no debe tener menos de 3 caracteres',
-        //     'string' => ':attribute debe ser una cadena de tipo texto',
-        // ];
-        // $this->validate($request, $campos, $mensaje);
-        // dd($request->cantidades);
         if($request->medico==null)
         {
             return 3;

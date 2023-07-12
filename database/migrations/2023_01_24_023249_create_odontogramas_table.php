@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('odontogramas', function (Blueprint $table) {
             $table->id();
             $table->text('observacion')->nullable();
-            $table->unsignedBigInteger('tratamiento_id');
-            $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade')->onUpdate('cascade');
-            
+            $table->unsignedBigInteger('paciente_id');
+            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

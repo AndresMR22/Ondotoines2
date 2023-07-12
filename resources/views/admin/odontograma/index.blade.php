@@ -87,7 +87,7 @@
 
             </style>
 
-            <input type="hidden" name="idTratamiento" id="idTratamiento" value="{{$idTratamiento}}">
+            <input type="hidden" name="idPaciente" id="idPaciente" value="{{$idPaciente}}">
 
             <div class="row">
                 <div class="col-12">
@@ -1416,7 +1416,7 @@
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header px-4">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">OPCIONESs</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">OPCIONES</h5>
                     </div>
 
                     <div class="modal-body px-4">
@@ -1599,7 +1599,7 @@
                         data: {
                             procesos:arregloProcesos ,
                             _token:$('input[name="_token"]').val() ,
-                            idTratamiento:document.getElementById('idTratamiento').value
+                            idPaciente:document.getElementById('idPaciente').value
                             }
                     }).done(function(res) {
                            if(res==1)

@@ -62,15 +62,15 @@
                                                              href="{{route('tratamiento.edit', $tra->id)}}"
                                                             ><i class="fas fa-edit"></i></a>
                                                     </div>
-                                                    @if(isset($tra->odontograma))
+                                                    {{-- @if(isset($tra->paciente->odontograma))
                                                     <div class="btn-group mb-1">
-                                                        <a title="Ver mi odontograma" href="{{route('odontograma.show',$tra->id)}}" class="btn btn-outline-primary"><i class="fas fa-teeth"></i></a>
+                                                        <a title="Ver mi odontograma" href="{{route('odontograma.show',$tra->paciente->id)}}" class="btn btn-outline-primary"><i class="fas fa-teeth"></i></a>
                                                     </div>
                                                     @else
                                                     <div class="btn-group mb-1">
-                                                        <a title="Rellenar odontograma" href="{{route('odontograma.edit',$tra->id)}}" class="btn btn-outline-info"><i class="fas fa-teeth"></i></a>
+                                                        <a title="Rellenar odontograma" href="{{route('odontograma.edit',$tra->paciente->id)}}" class="btn btn-outline-info"><i class="fas fa-teeth"></i></a>
                                                     </div>
-                                                    @endif
+                                                    @endif --}}
 
                                                     <div class="btn-group mb-1">
                                                         <a data-bs-toggle="modal"
@@ -369,6 +369,10 @@
         </div> <!-- End Content -->
     </div> <!-- End Content Wrapper -->
 
+    {{-- <input type="hidden" name="datos" id="datos" value="{{$datos}}"> --}}
+
+
+
     <script>
 
         function obtener(e)
@@ -381,10 +385,21 @@
              document.querySelectorAll('.cantidad').forEach(item =>{
                 item.addEventListener('onchange',obtener)
             })
-            // for(let i = 0; i<cantidades.length; i++)
-            // {
-            //     console.log(cantidades[i])
-            // }
+
+            let datos = JSON.parse(document.getElementById('datos').value)
+            procesosNuevos = datos;
+            datos.forEach(item => {
+
+            let cara =  document.getElementById('pos'+item.posicion_cara)
+            cara.title = item.descripcion;
+            if(cara!=undefined || cara!=null)
+            {
+
+                cara.style.backgroundColor=item.color;
+            }
+            })
+
+
         });
 
         function eliminarTratamiento(id) {

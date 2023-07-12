@@ -17,7 +17,7 @@ class OdontogramaSeeder extends Seeder
     {
         Odontograma::create([
             "observacion"=>"Observación de prueba",
-            "tratamiento_id"=>1
+            "paciente_id"=>1
         ]);
 
     }
