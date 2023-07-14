@@ -47,6 +47,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/seguimiento',[SeguimientoController::class,'index'])->name('seguimiento.index');
     Route::get('/seguimiento/paciente/{id}',[SeguimientoController::class,'datosByPaciente'])->name('seguimiento.datosByPaciente');
 
+    Route::get('/paciente/editar/observacion/{id}',[PacienteController::class,'editarObservacion'])->name('paciente.editarObservacion');
+
     Route::get('/calendario',[AdminController::class,'calendario'])->name('admin.calendario');
 
     // Route::get('/deuda/abonos/{cliente_id}',[AbonoController::class,'abonosByCliente'])->name('abono.abonosByCliente');

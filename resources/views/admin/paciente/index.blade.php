@@ -177,8 +177,7 @@
                     <div class="modal fade modal-add-contact" id="modalObservacion{{$paciente->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
-                                <form method="POST" action="{{route('paciente.update',$paciente->id)}}">
-                                    @method('PATCH')
+                                <form method="GET" action="{{route('paciente.editarObservacion',$paciente->id)}}">
                                     @csrf
                                     <div class="modal-header px-4">
                                         <h5 class="modal-title" id="exampleModalCenterTitle">Observación</h5>
@@ -189,7 +188,7 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <textarea class="form-control">{{$paciente->observacion}}</textarea>
+                                                    <textarea name="observacion" class="form-control">{{$paciente->observacion}}</textarea>
                                                 </div>
                                             </div>
 

@@ -162,6 +162,16 @@ class PacienteController extends Controller
        return back();
     }
 
+    public function editarObservacion(Request $request, $id)
+    {
+        $paciente = Paciente::find($id);
+        $paciente->update([
+         "observacion"=>$request->observacion,
+        ]);
+        Alert::toast('Paciente actualizado', 'success');
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
