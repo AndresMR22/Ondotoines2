@@ -57,7 +57,7 @@ class PacienteController extends Controller
             "lugar_nac"=>'required|string',
             'ocupacion' => 'required|string',
             "direccion"=>'required|string',
-            'cedula' => 'required|string|min:10|max:10',
+            'cedula' => 'required|string|min:10|max:10|unique:pacientes',
             "telefono"=>'required|regex:/[0-9]{10}/',
             'sexo' => 'required|string',
             "observacion"=>'nullable|string',
@@ -72,7 +72,8 @@ class PacienteController extends Controller
             'string' => ':attribute debe ser una cadena de tipo texto',
             'date'=>':attribute debe ser de tipo fecha',
             'regex'=>':attribute no tiene el formato correcto',
-            'email'=>':attribute no tiene formato correcto'
+            'email'=>':attribute no tiene formato correcto',
+            'unique'=>':attribute debe ser única'
         ];
         $this->validate($request, $campos, $mensaje);
 

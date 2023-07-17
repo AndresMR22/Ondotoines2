@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('lugar_nac')->nullable();
             $table->text('ocupacion')->nullable();
             $table->text('direccion')->nullable();
-            $table->string('cedula')->nullable();
+            $table->string('cedula')->unique();
             $table->string('telefono')->nullable();
             $table->string('sexo')->nullable();
             $table->string('correo')->nullable();

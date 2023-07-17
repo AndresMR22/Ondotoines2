@@ -9,7 +9,7 @@
         </div>
     @endif
 
-  
+
 
     <!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
@@ -151,7 +151,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="form-label">Observación</label>
-                                                <textarea name="observacion" class="form-control @error('observacion') is-invalid @enderror" value="{{ old('observacion') }}" rows="4"></textarea>
+                                                <textarea name="observacion" class="form-control @error('observacion') is-invalid @enderror"  rows="4">{{ old('observacion') }}</textarea>
                                                 @error('observacion')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

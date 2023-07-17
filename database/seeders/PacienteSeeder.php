@@ -37,7 +37,7 @@ class PacienteSeeder extends Seeder
             "ocupacion"=>"Dev",
             "correo"=> "daniel@gmail.com",
             "direccion"=>"Macas",
-            "cedula"=>"2100463187",
+            "cedula"=>"1500415052",
             "telefono"=>"0988703043",
             "sexo"=>"M",
             "observacion"=>"",
